@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "avoid:block/void_vines_plant_lit"
+  }
+}

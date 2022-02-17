@@ -1,0 +1,29 @@
+{
+  "type": "avoid:floating_blob",
+  "config": {
+    "blobMaterial": {
+      "Name": "minecraft:end_stone"
+    },
+    "blobMass": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 26,
+        "max_inclusive": 170
+      }
+    },
+    "blobWidth": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 7
+      }
+    },
+    "blobHeight": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 4,
+        "max_inclusive": 7
+      }
+    }
+  }
+}

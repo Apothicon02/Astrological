@@ -1,0 +1,18 @@
+{
+  "type": "avoid:lichen",
+  "config": {
+    "material": {
+      "Name": "avoid:blazing_lichen"
+    },
+    "search_range": 20,
+    "chance_of_spreading": 0.9,
+    "can_place_on_floor": true,
+    "can_place_on_ceiling": true,
+    "can_place_on_wall": true,
+    "can_be_placed_on": [
+      "minecraft:magma_block",
+      "minecraft:blackstone",
+      "minecraft:deepslate"
+    ]
+  }
+}
