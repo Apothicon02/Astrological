@@ -23,7 +23,7 @@
       "type": "minecraft:uniform",
       "value": {
         "min_inclusive": 154,
-        "max_inclusive": 162
+        "max_inclusive": 196
       }
     },
     "blobWidth": {

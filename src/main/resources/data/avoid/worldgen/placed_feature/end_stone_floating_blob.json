@@ -3,27 +3,10 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 1,
-          "max_inclusive": 3
-        }
-      }
+      "count": 60
     },
     {
       "type": "minecraft:in_square"
-    },
-    {
-      "type": "minecraft:environment_scan",
-      "direction_of_search": "up",
-      "max_steps": 12,
-      "target_condition": {
-        "type": "minecraft:solid"
-      },
-      "allowed_search_condition": {
-        "type": "minecraft:true"
-      }
     },
     {
       "type": "minecraft:height_range",
