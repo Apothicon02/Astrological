@@ -106,10 +106,22 @@
         {
           "biome": "avoid:obsidian_spirals",
           "parameters": {
-            "temperature": 0.0,
+            "temperature": 0.2,
             "humidity": 0.8,
             "continentalness": 0.2,
             "erosion": 0.4,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "avoid:geodeial_caverns",
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.3,
+            "continentalness": 0.1,
+            "erosion": 0.1,
             "weirdness": 0,
             "depth": 0,
             "offset": 0

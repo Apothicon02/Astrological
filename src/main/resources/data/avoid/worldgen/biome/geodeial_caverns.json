@@ -1,10 +1,10 @@
 {
-  "temperature": 0.6,
-  "downfall": 0,
+  "temperature": 0.0,
+  "downfall": 0.3,
   "precipitation": "none",
   "temperature_modifier": "none",
   "category": "underground",
-  "creature_spawn_probability": 0.33,
+  "creature_spawn_probability": 0.27,
   "effects": {
     "sky_color": 0,
     "fog_color": 0,
@@ -13,26 +13,26 @@
     "grass_color_modifier": "dark_forest",
     "ambient_sound": "minecraft:ambient.basalt_deltas.loop",
     "mood_sound": {
-      "sound": "minecraft:ambient.basalt_deltas.mood",
+      "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
     },
     "additions_sound": {
-      "sound": "minecraft:ambient.basalt_deltas.additions",
-      "tick_chance": 0.0111
+      "sound": "minecraft:block.amethyst_block.chime",
+      "tick_chance": 0.02
     },
     "music": {
-      "sound": "minecraft:music.nether.basalt_deltas",
+      "sound": "minecraft:music.overworld.dripstone_caves",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false
     },
     "particle": {
       "options": {
-        "type": "minecraft:white_ash"
+        "type": "minecraft:portal"
       },
-      "probability": 0.118093334
+      "probability": 0.038093334
     }
   },
   "spawners": {
@@ -50,7 +50,7 @@
         "maxCount": 1
       },
       {
-        "type": "minecraft:blaze",
+        "type": "minecraft:stray",
         "weight": 4,
         "minCount": 1,
         "maxCount": 1
@@ -94,7 +94,7 @@
       "energy_budget": 1,
       "charge": 1
     },
-    "minecraft:blaze": {
+    "minecraft:stray": {
       "energy_budget": 2,
       "charge": 1
     },
@@ -114,20 +114,30 @@
   },
   "features": [
     [
-      "avoid:blackstone_crystal_spike",
+      "avoid:amethyst_crystal_spike",
       "avoid:smooth_basalt_pillar",
-      "avoid:thin_blackstone_pillar"
+      "avoid:thin_calcite_pillar"
     ],
     [
-      "avoid:basalt_blob",
-      "avoid:basalt_ground_blob"
+      "avoid:smooth_basalt_blob",
+      "avoid:calcite_ground_blob"
     ],
     [
-      "avoid:magma_blob",
-      "avoid:basalt_magma_blob"
+      "avoid:deepslate_calcite_blob",
+      "avoid:smooth_basalt_calcite_blob"
     ],
     [
-      "avoid:lava_fall"
+      "avoid:amethyst_spiral"
+    ],
+    [
+      "avoid:water_fall"
+    ],
+    [
+      "avoid:amethyst_void_crystals",
+      "avoid:amethyst_void_ceiling_crystals"
+    ],
+    [
+      "avoid:void_vine"
     ]
   ]
 }

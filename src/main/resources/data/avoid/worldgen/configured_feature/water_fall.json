@@ -10,11 +10,13 @@
     "valid_blocks": [
       "minecraft:blackstone",
       "minecraft:deepslate",
-      "minecraft:end_stone"
+      "minecraft:end_stone",
+      "minecraft:smooth_basalt"
     ],
     "invalid_blocks": [
       "minecraft:obsidian",
-      "minecraft:crying_obsidian"
+      "minecraft:crying_obsidian",
+      "minecraft:amethyst_block"
     ],
     "basinMaterial": {
       "Name": "minecraft:obsidian"

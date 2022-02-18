@@ -1,6 +1,6 @@
 {
-  "temperature": 0,
-  "downfall": 0,
+  "temperature": 0.2,
+  "downfall": 0.2,
   "precipitation": "none",
   "temperature_modifier": "none",
   "category": "underground",
@@ -30,7 +30,7 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:warped_spore"
+        "type": "minecraft:rain"
       },
       "probability": 0.07428
     }
@@ -111,12 +111,14 @@
       "avoid:obsidian_spiral",
       "avoid:blackstone_blob",
       "avoid:blackstone_ground_blob",
-      "avoid:end_stone_blob",
       "avoid:end_stone_floating_blob"
     ],
     [
+      "avoid:end_stone_blob",
+      "avoid:crying_blob"
+    ],
+    [
       "avoid:water_fall",
-      "avoid:crying_blob",
       "avoid:void_vine",
       "avoid:very_low_void_chorus_plant",
       "avoid:low_void_chorus_plant",

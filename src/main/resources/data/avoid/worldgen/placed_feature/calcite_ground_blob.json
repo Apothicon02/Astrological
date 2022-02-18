@@ -1,9 +1,9 @@
 {
-  "feature": "avoid:basalt_ground_blob",
+  "feature": "avoid:calcite_ground_blob",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 142
+      "count": 23
     },
     {
       "type": "minecraft:in_square"

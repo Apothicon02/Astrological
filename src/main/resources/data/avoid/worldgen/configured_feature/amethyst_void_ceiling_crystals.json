@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 5,
+          "data": {
+            "Name": "minecraft:large_amethyst_bud",
+            "Properties": {
+              "waterlogged": "false",
+              "facing": "down"
+            }
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Name": "minecraft:amethyst_cluster",
+            "Properties": {
+              "waterlogged": "false",
+              "facing": "down"
+            }
+          }
+        },
+        {
+          "weight": 35,
+          "data": {
+            "Name": "minecraft:small_amethyst_bud",
+            "Properties": {
+              "waterlogged": "false",
+              "facing": "down"
+            }
+          }
+        },
+        {
+          "weight": 50,
+          "data": {
+            "Name": "minecraft:medium_amethyst_bud",
+            "Properties": {
+              "waterlogged": "false",
+              "facing": "down"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

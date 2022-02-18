@@ -16,7 +16,7 @@ public class VerticalBlobConfiguration implements FeatureConfiguration {
             return v.blobMaterial;
         }), IntProvider.codec(1, 1024).fieldOf("blobMass").forGetter((v) -> {
             return v.blobMass;
-        }), IntProvider.codec(1, 14).fieldOf("blobWidth").forGetter((v) -> {
+        }), IntProvider.codec(1, 32).fieldOf("blobWidth").forGetter((v) -> {
             return v.blobWidth;
         }), IntProvider.codec(1, 128).fieldOf("blobHeight").forGetter((v) -> {
             return v.blobHeight;

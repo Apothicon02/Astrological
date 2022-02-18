@@ -40,6 +40,9 @@ public abstract class AvoidFeatureRegistry {
     public static final RegistryObject<Feature<LargeDripstoneConfiguration>> THIN_BLACKSTONE_PILLAR = FEATURES.register("thin_blackstone_pillar", () ->
             new LargeBlackstonePillarFeature(LargeDripstoneConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<LargeDripstoneConfiguration>> THIN_CALCITE_PILLAR = FEATURES.register("thin_calcite_pillar", () ->
+            new LargeCalcitePillarFeature(LargeDripstoneConfiguration.CODEC));
+
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> CRYSTAL_SPIKE = FEATURES.register("crystal_spike", () ->
             new CrystalSpikeFeature(VerticalBlobConfiguration.CODEC));
 
