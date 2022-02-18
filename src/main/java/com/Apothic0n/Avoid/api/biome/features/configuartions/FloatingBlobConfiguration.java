@@ -8,30 +8,28 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 
 public class FloatingBlobConfiguration implements FeatureConfiguration {
     public static final Codec<FloatingBlobConfiguration> CODEC = RecordCodecBuilder.create((fields) -> {
-        return fields.group(BlockState.CODEC.fieldOf("blobMaterial").forGetter((v) -> {
+        return fields.group(BlockState.CODEC.fieldOf("blobSurfaceMaterial").forGetter((v) -> {
+            return v.blobSurfaceMaterial;
+        }), BlockState.CODEC.fieldOf("blobMaterial").forGetter((v) -> {
             return v.blobMaterial;
-        }), IntProvider.codec(1, 512).fieldOf("blobMass").forGetter((v) -> {
-            return v.blobMass;
-        }), IntProvider.codec(1, 32).fieldOf("blobWidth").forGetter((v) -> {
-            return v.blobWidth;
-        }), IntProvider.codec(1, 128).fieldOf("blobHeight").forGetter((v) -> {
-            return v.blobHeight;
+        }), IntProvider.codec(1, 1024).fieldOf("blobSize").forGetter((v) -> {
+            return v.blobSize;
+        }), IntProvider.codec(1, 6).fieldOf("blobStretch").forGetter((v) -> {
+            return v.blobStretch;
         })).apply(fields, FloatingBlobConfiguration::new);
     });
+    public final BlockState blobSurfaceMaterial;
     public final BlockState blobMaterial;
-    private final IntProvider blobMass;
-    private final IntProvider blobWidth;
-    private final IntProvider blobHeight;
+    private final IntProvider blobSize;
+    private final IntProvider blobStretch;
 
-    public FloatingBlobConfiguration(BlockState blobMaterial, IntProvider blobMass, IntProvider blobWidth, IntProvider blobHeight) {
+    public FloatingBlobConfiguration(BlockState blobSurfaceMaterial, BlockState blobMaterial, IntProvider blobSize, IntProvider blobStretch) {
+        this.blobSurfaceMaterial = blobSurfaceMaterial;
         this.blobMaterial = blobMaterial;
-        this.blobMass = blobMass;
-        this.blobWidth = blobWidth;
-        this.blobHeight = blobHeight;
+        this.blobSize = blobSize;
+        this.blobStretch = blobStretch;
     }
 
-    public IntProvider getBlobMass() {return this.blobMass;}
-    public IntProvider getBlobWidth() {return this.blobWidth;}
-    public IntProvider getBlobHeight() {return this.blobHeight;}
-
+    public IntProvider getBlobSize() {return this.blobSize;}
+    public IntProvider getBlobStretch() {return this.blobStretch;}
 }

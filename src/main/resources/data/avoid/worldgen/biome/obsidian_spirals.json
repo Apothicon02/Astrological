@@ -118,7 +118,9 @@
       "avoid:water_fall",
       "avoid:crying_blob",
       "avoid:void_vine",
-      "minecraft:chorus_plant"
+      "avoid:very_low_void_chorus_plant",
+      "avoid:low_void_chorus_plant",
+      "avoid:void_chorus_plant"
     ]
   ]
 }

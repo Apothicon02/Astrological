@@ -53,7 +53,7 @@ public class SpiralFeature extends Feature<VerticalBlobConfiguration> {
                 if (eastNegative) {zFactor = -1;}
                 int spiralStep = 1;
 
-                for (int i = 0; i < blobMass*4; ++i) {
+                for (int i = 0; i < blobMass*4;) {
                     int randomNumber2 = (int)(Math.random()*(4)+1);
                     if (randomNumber2 >= 4) { //25% chance to move to the side
                         blockpos1 = new BlockPos(blockpos1.getX() + xFactor, blockpos1.getY() - 1, blockpos1.getZ() + zFactor);
@@ -62,9 +62,6 @@ public class SpiralFeature extends Feature<VerticalBlobConfiguration> {
                     }
                     int xDistance = blockpos1.getX() - blockpos.getX();
                     int zDistance = blockpos1.getZ() - blockpos.getZ();
-                    if (xDistance >= blobWidth || zDistance >= blobWidth) {
-                        i = blobMass*5;
-                    }
                     worldgenlevel.setBlock(blockpos1, blobMaterial.defaultBlockState(), 2);
                     worldgenlevel.setBlock(blockpos1.below(), blobMaterial.defaultBlockState(), 2);
                     worldgenlevel.setBlock(blockpos1.above(), blobMaterial.defaultBlockState(), 2);
@@ -81,6 +78,9 @@ public class SpiralFeature extends Feature<VerticalBlobConfiguration> {
                         worldgenlevel.setBlock(blockpos1.west(), blobMaterial.defaultBlockState(), 2);
                         worldgenlevel.setBlock(blockpos1.north(), blobMaterial.defaultBlockState(), 2);
                         spiralStep = 0;
+                    }
+                    if (xDistance >= blobWidth || zDistance >= blobWidth) {
+                        break;
                     }
                     spiralStep++;
                     i += 3;

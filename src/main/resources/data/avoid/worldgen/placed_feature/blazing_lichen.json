@@ -6,13 +6,10 @@
       "count": {
         "type": "minecraft:uniform",
         "value": {
-          "min_inclusive": 1,
-          "max_inclusive": 200
+          "min_inclusive": 104,
+          "max_inclusive": 157
         }
       }
-    },
-    {
-      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:height_range",
@@ -22,9 +19,17 @@
           "above_bottom": 0
         },
         "max_inclusive": {
-          "absolute": 250
+          "absolute": 256
         }
       }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:surface_relative_threshold_filter",
+      "heightmap": "OCEAN_FLOOR_WG",
+      "max_inclusive": -13
     },
     {
       "type": "minecraft:biome"

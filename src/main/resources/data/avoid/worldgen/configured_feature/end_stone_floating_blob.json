@@ -1,28 +1,24 @@
 {
   "type": "avoid:floating_blob",
   "config": {
-    "blobMaterial": {
+    "blobSurfaceMaterial": {
       "Name": "minecraft:end_stone"
     },
-    "blobMass": {
+    "blobMaterial": {
+      "Name": "minecraft:dead_brain_coral_block"
+    },
+    "blobSize": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 26,
-        "max_inclusive": 170
+        "min_inclusive": 5,
+        "max_inclusive": 14
       }
     },
-    "blobWidth": {
+    "blobStretch": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 4,
-        "max_inclusive": 7
-      }
-    },
-    "blobHeight": {
-      "type": "minecraft:uniform",
-      "value": {
-        "min_inclusive": 4,
-        "max_inclusive": 7
+        "min_inclusive": 1,
+        "max_inclusive": 3
       }
     }
   }
