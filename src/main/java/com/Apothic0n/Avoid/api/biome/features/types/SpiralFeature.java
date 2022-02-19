@@ -55,7 +55,7 @@ public class SpiralFeature extends Feature<VerticalBlobConfiguration> {
 
                 for (int i = 0; i < blobMass*4;) {
                     int randomNumber2 = (int)(Math.random()*(4)+1);
-                    if (randomNumber2 >= 4) { //25% chance to move to the side
+                    if (randomNumber2 >= 4/blobHeight) { //25% chance per number up to 4.
                         blockpos1 = new BlockPos(blockpos1.getX() + xFactor, blockpos1.getY() - 1, blockpos1.getZ() + zFactor);
                     } else {
                         blockpos1 = new BlockPos(blockpos1.getX(), blockpos1.getY() - 1, blockpos1.getZ());

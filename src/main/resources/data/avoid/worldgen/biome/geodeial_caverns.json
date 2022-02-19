@@ -4,7 +4,7 @@
   "precipitation": "none",
   "temperature_modifier": "none",
   "category": "underground",
-  "creature_spawn_probability": 0.27,
+  "creature_spawn_probability": 0.44,
   "effects": {
     "sky_color": 0,
     "fog_color": 0,
@@ -114,12 +114,16 @@
   },
   "features": [
     [
-      "avoid:amethyst_crystal_spike",
-      "avoid:smooth_basalt_pillar",
-      "avoid:thin_calcite_pillar"
+      "avoid:smooth_basalt_pillar"
     ],
     [
+      "minecraft:amethyst_geode"
+    ],
+    [
+      "avoid:amethyst_crystal_spike",
+      "avoid:amethyst_crystal_ground_spike",
       "avoid:smooth_basalt_blob",
+      "avoid:calcite_blob",
       "avoid:calcite_ground_blob"
     ],
     [
@@ -130,14 +134,15 @@
       "avoid:amethyst_spiral"
     ],
     [
-      "avoid:water_fall"
+      "avoid:amethyst_water_fall"
     ],
     [
       "avoid:amethyst_void_crystals",
       "avoid:amethyst_void_ceiling_crystals"
     ],
     [
-      "avoid:void_vine"
+      "avoid:amethyst_vine",
+      "avoid:lush_spore_blossom"
     ]
   ]
 }

@@ -8,20 +8,18 @@
     "hole_count": 1,
     "requires_block_below": false,
     "valid_blocks": [
-      "minecraft:blackstone",
+      "minecraft:smooth_basalt",
       "minecraft:deepslate",
-      "minecraft:end_stone"
+      "minecraft:calcite"
     ],
     "invalid_blocks": [
-      "minecraft:obsidian",
-      "minecraft:crying_obsidian",
       "minecraft:amethyst_block"
     ],
     "basinMaterial": {
-      "Name": "minecraft:obsidian"
+      "Name": "minecraft:amethyst_block"
     },
     "basinMaterial2": {
-      "Name": "minecraft:crying_obsidian"
+      "Name": "minecraft:budding_amethyst"
     }
   }
 }

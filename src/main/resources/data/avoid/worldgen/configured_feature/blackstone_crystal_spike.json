@@ -25,11 +25,8 @@
       }
     },
     "blobHeight": {
-      "type": "minecraft:uniform",
-      "value": {
-        "min_inclusive": 4,
-        "max_inclusive": 16
-      }
+      "type": "minecraft:constant",
+      "value": 1
     }
   }
 }

@@ -1,20 +1,20 @@
 {
-  "type": "avoid:spiral",
+  "type": "avoid:crystal_spike",
   "config": {
     "blockOn": {
-      "Name": "minecraft:blackstone"
+      "Name": "minecraft:calcite"
     },
     "blockOn2": {
       "Name": "minecraft:deepslate"
     },
     "blobMaterial": {
-      "Name": "minecraft:obsidian"
+      "Name": "minecraft:amethyst_block"
     },
     "blobMass": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 96,
-        "max_inclusive": 148
+        "min_inclusive": 3,
+        "max_inclusive": 6
       }
     },
     "blobWidth": {
@@ -25,8 +25,11 @@
       }
     },
     "blobHeight": {
-      "type": "minecraft:constant",
-      "value": 1
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 3,
+        "max_inclusive": 4
+      }
     }
   }
 }

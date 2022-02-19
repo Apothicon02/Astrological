@@ -27,7 +27,7 @@
         {
           "weight": 35,
           "data": {
-            "Name": "minecraft:small_amethyst_bud",
+            "Name": "avoid:glowing_amethyst",
             "Properties": {
               "waterlogged": "false",
               "facing": "down"

@@ -1,15 +1,9 @@
 {
-  "feature": "avoid:blazing_lichen",
+  "feature": "avoid:lush_spore_blossom",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 0,
-          "max_inclusive": 95
-        }
-      }
+      "count": 1
     },
     {
       "type": "minecraft:in_square"
