@@ -24,11 +24,11 @@ public final class AvoidBlocks {
 
     public static final RegistryObject<Block> VOID_VINES = BLOCKS.register("void_vines", () ->
             new VoidVinesBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_PURPLE)
-                    .randomTicks().noCollission().lightLevel(CaveVines.emission(14)).instabreak().sound(SoundType.CAVE_VINES)));
+                    .randomTicks().noCollission().lightLevel(VoidVines.emission(14)).instabreak().sound(SoundType.CAVE_VINES)));
 
     public static final RegistryObject<Block> VOID_VINES_PLANT = BLOCKS.register("void_vines_plant", () ->
             new VoidVinesBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_PURPLE)
-                    .noCollission().lightLevel(CaveVines.emission(14)).instabreak().sound(SoundType.CAVE_VINES)));
+                    .noCollission().lightLevel(VoidVines.emission(14)).instabreak().sound(SoundType.CAVE_VINES)));
 
     public static final RegistryObject<Block> AMETHYST_VINES = BLOCKS.register("amethyst_vines", () ->
             new AmethystVinesBlock(BlockBehaviour.Properties.of(Material.AMETHYST, MaterialColor.COLOR_PURPLE)
@@ -40,7 +40,7 @@ public final class AvoidBlocks {
 
     public static final RegistryObject<Block> GLOWING_AMETHYST = BLOCKS.register("glowing_amethyst", () ->
             new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD)
-                    .lightLevel(CaveVines.emission(14))));
+                    .lightLevel(brightness -> {return 11;})));
 
     public static void fixBlockRenderLayers() {
         ItemBlockRenderTypes.setRenderLayer(BLAZING_LICHEN.get(), RenderType.cutout());
