@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 99,
+          "data": {
+            "Name": "inversia:blazing_lichen",
+            "Properties": {
+              "waterlogged": "false",
+              "facing": "down"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "minecraft:glow_lichen",
+            "Properties": {
+              "waterlogged": "false",
+              "facing": "down"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

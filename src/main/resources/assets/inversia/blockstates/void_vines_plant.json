@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "inversia:block/void_vines_plant"
+    },
+    "berries=true": {
+      "model": "inversia:block/void_vines_plant_lit"
+    }
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "avoid:block/amethyst_vines_plant_ripe"
-  }
-}

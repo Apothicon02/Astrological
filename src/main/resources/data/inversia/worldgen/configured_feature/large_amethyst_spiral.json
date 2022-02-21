@@ -1,0 +1,35 @@
+{
+  "type": "inversia:spiral",
+  "config": {
+    "blockOn": {
+      "Name": "minecraft:smooth_basalt"
+    },
+    "blockOn2": {
+      "Name": "minecraft:deepslate"
+    },
+    "blobMaterial": {
+      "Name": "minecraft:amethyst_block"
+    },
+    "blobMass": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 46,
+        "max_inclusive": 92
+      }
+    },
+    "blobWidth": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 16,
+        "max_inclusive": 24
+      }
+    },
+    "blobHeight": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 2,
+        "max_inclusive": 3
+      }
+    }
+  }
+}

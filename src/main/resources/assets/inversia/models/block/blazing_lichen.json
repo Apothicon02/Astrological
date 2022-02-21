@@ -1,0 +1,40 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "blazing_lichen": "inversia:block/blazing_lichen"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0.1
+      ],
+      "to": [
+        16,
+        16,
+        0.1
+      ],
+      "faces": {
+        "north": {
+          "texture": "#blazing_lichen",
+          "uv": [
+            16,
+            0,
+            0,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#blazing_lichen",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    }
+  ]
+}

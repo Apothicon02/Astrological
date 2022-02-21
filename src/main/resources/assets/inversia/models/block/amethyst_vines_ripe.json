@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "inversia:block/amethyst_vines_ripe"
+  }
+}
