@@ -114,9 +114,14 @@
   },
   "features": [
     [
-      "avoid:blackstone_crystal_spike",
       "avoid:smooth_basalt_pillar",
       "avoid:thin_blackstone_pillar"
+    ],
+    [
+      "avoid:gilded_geode"
+    ],
+    [
+      "avoid:blackstone_crystal_spike"
     ],
     [
       "avoid:basalt_blob",

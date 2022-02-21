@@ -30,9 +30,9 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:rain"
+        "type": "minecraft:glow"
       },
-      "probability": 0.07428
+      "probability": 0.018
     }
   },
   "spawners": {
@@ -104,10 +104,13 @@
   },
   "features": [
     [
-      "avoid:obsidian_crystal_spike",
       "avoid:thin_blackstone_pillar"
     ],
     [
+      "avoid:obsidian_geode"
+    ],
+    [
+      "avoid:obsidian_crystal_spike",
       "avoid:obsidian_spiral",
       "avoid:blackstone_blob",
       "avoid:blackstone_ground_blob",

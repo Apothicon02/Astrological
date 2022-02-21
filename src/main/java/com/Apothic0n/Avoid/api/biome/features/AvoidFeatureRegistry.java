@@ -7,10 +7,7 @@ import com.Apothic0n.Avoid.api.biome.features.configuartions.LichenConfiguration
 import com.Apothic0n.Avoid.api.biome.features.configuartions.VerticalBlobConfiguration;
 import com.Apothic0n.Avoid.api.biome.features.types.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.LargeDripstoneConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -51,6 +48,10 @@ public abstract class AvoidFeatureRegistry {
 
     public static final RegistryObject<Feature<LichenConfiguration>> LICHEN = FEATURES.register("lichen", () ->
             new LichenFeature(LichenConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<GeodeConfiguration>> VOID_GEODE = FEATURES.register("void_geode", () ->
+            new VoidGeodeFeature(GeodeConfiguration.CODEC));
+
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
