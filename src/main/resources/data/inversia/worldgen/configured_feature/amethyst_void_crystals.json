@@ -15,9 +15,9 @@
           }
         },
         {
-          "weight": 10,
+          "weight": 15,
           "data": {
-            "Name": "minecraft:amethyst_cluster",
+            "Name": "minecraft:small_amethyst_bud",
             "Properties": {
               "waterlogged": "false",
               "facing": "up"
@@ -25,7 +25,7 @@
           }
         },
         {
-          "weight": 35,
+          "weight": 30,
           "data": {
             "Name": "inversia:glowing_amethyst",
             "Properties": {

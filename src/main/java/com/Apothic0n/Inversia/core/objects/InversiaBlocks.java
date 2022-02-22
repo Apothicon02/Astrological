@@ -37,7 +37,7 @@ public final class InversiaBlocks {
                     .noCollission().strength(0.2F).sound(SoundType.LARGE_AMETHYST_BUD)));
 
     public static final RegistryObject<Block> GLOWING_AMETHYST = BLOCKS.register("glowing_amethyst", () ->
-            new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD)
+            new GlowingAmethystBlock(3, 4, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER)
                     .lightLevel(brightness -> {return 11;})));
 
     public static void fixBlockRenderLayers() {

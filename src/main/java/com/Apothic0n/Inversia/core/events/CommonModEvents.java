@@ -1,6 +1,7 @@
 package com.Apothic0n.Inversia.core.events;
 
 import com.Apothic0n.Inversia.Inversia;
+import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.Apothic0n.Inversia.world.dimension.InversiaDimensions;
 import com.Apothic0n.Inversia.world.dimension.InversiaITeleporter;
 import com.Apothic0n.Inversia.world.dimension.InversiaTeleporter;
@@ -12,13 +13,20 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -94,6 +102,19 @@ public class CommonModEvents {
         if (livingEntity instanceof ServerPlayer serverPlayer) {
             if (serverPlayer.getCooldowns().isOnCooldown(Items.INK_SAC)) {
                 event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void itemUsed(PlayerInteractEvent.RightClickBlock event) {
+        Level pLevel = event.getWorld();
+        BlockPos pPos =  event.getHitVec().getBlockPos();
+        BlockState pBlock = pLevel.getBlockState(pPos);
+        ItemStack pStack = event.getItemStack();
+        if (!pLevel.isClientSide) { //Runs stuff on the server every time a player right clicks a block
+            if (pStack.getItem() == Items.GLOW_INK_SAC && pBlock.getBlock() == Blocks.AMETHYST_CLUSTER) {
+                pLevel.setBlock(pPos, InversiaBlocks.GLOWING_AMETHYST.get().withPropertiesOf(pBlock), 2);
             }
         }
     }
