@@ -32,6 +32,9 @@ public abstract class InversiaFeatureRegistry {
     public static final RegistryObject<Feature<LargeDripstoneConfiguration>> LARGE_BASALT_PILLAR = FEATURES.register("large_basalt_pillar", () ->
             new LargeBasaltPillarFeature(LargeDripstoneConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<LargeDripstoneConfiguration>> PACKED_ICE_PILLAR = FEATURES.register("packed_ice_pillar", () ->
+            new LargePackedIcePillarFeature(LargeDripstoneConfiguration.CODEC));
+
     public static final RegistryObject<Feature<LargeDripstoneConfiguration>> THIN_BLACKSTONE_PILLAR = FEATURES.register("thin_blackstone_pillar", () ->
             new LargeBlackstonePillarFeature(LargeDripstoneConfiguration.CODEC));
 

@@ -1,38 +1,37 @@
 {
-  "temperature": 0.2,
-  "downfall": 0.2,
-  "precipitation": "none",
+  "temperature": -0.5,
+  "downfall": 1.0,
+  "precipitation": "snow",
   "temperature_modifier": "none",
   "category": "underground",
-  "creature_spawn_probability": 0.69,
+  "creature_spawn_probability": 0.6,
   "effects": {
     "sky_color": 0,
     "fog_color": 0,
     "water_color": 6307812,
     "water_fog_color": 1115443,
     "grass_color_modifier": "dark_forest",
-    "ambient_sound": "minecraft:ambient.warped_forest.loop",
     "mood_sound": {
-      "sound": "minecraft:ambient.warped_forest.mood",
+      "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
     },
     "additions_sound": {
-      "sound": "minecraft:ambient.warped_forest.additions",
-      "tick_chance": 0.0111
+      "sound": "minecraft:block.powder_snow.fall",
+      "tick_chance": 0.0069
     },
     "music": {
-      "sound": "minecraft:music.end",
+      "sound": "minecraft:music.overworld.frozen_peaks",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false
     },
     "particle": {
       "options": {
-        "type": "minecraft:water"
+        "type": "minecraft:snowflake"
       },
-      "probability": 0.018
+      "probability": 0.033
     }
   },
   "spawners": {
@@ -50,6 +49,12 @@
         "maxCount": 1
       },
       {
+        "type": "minecraft:stray",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
         "type": "minecraft:illusioner",
         "weight": 1,
         "minCount": 1,
@@ -57,12 +62,6 @@
       }
     ],
     "water_creature": [
-      {
-        "type": "minecraft:axolotl",
-        "weight": 1,
-        "minCount": 2,
-        "maxCount": 7
-      },
       {
         "type": "minecraft:cod",
         "weight": 7,
@@ -88,12 +87,16 @@
       "energy_budget": 1,
       "charge": 1
     },
+    "minecraft:stray": {
+      "energy_budget": 2,
+      "charge": 1
+    },
     "minecraft:witch": {
       "energy_budget": 4,
       "charge": 2
     },
     "minecraft:illusioner": {
-      "energy_budget": 6,
+      "energy_budget": 3,
       "charge": 2
     }
   },
@@ -104,28 +107,28 @@
   },
   "features": [
     [
-      "inversia:thin_blackstone_pillar"
+      "inversia:packed_ice_pillar"
     ],
     [
-      "inversia:obsidian_geode"
+      "inversia:ice_crystal_spike",
+      "inversia:ice_crystal_ground_spike",
+      "inversia:blue_ice_crystal_spike",
+      "inversia:frosted_ice_blob",
+      "inversia:ice_blob"
     ],
     [
-      "inversia:obsidian_crystal_spike",
-      "inversia:obsidian_spiral",
-      "inversia:blackstone_blob",
-      "inversia:blackstone_ground_blob",
-      "inversia:end_stone_floating_blob"
+      "inversia:calcite_blob",
+      "inversia:calcite_ground_blob"
     ],
     [
-      "inversia:end_stone_blob",
-      "inversia:crying_blob"
+      "inversia:deepslate_calcite_blob",
+      "inversia:deepslate_snow_blob"
     ],
     [
-      "inversia:water_fall",
-      "inversia:void_vine",
-      "inversia:very_low_void_chorus_plant",
-      "inversia:low_void_chorus_plant",
-      "inversia:void_chorus_plant"
+      "inversia:ice_spiral"
+    ],
+    [
+      "inversia:water_fall"
     ]
   ]
 }

@@ -22,7 +22,7 @@
           "above_bottom": 0
         },
         "max_inclusive": {
-          "absolute": 250
+          "absolute": 255
         }
       }
     },

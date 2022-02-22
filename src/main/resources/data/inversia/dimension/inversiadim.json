@@ -82,22 +82,10 @@
         {
           "biome": "inversia:molten_seeps",
           "parameters": {
-            "temperature": 0.6,
+            "temperature": 0.5,
             "humidity": 0,
             "continentalness": 0.5,
-            "erosion": 1,
-            "weirdness": 0,
-            "depth": 0,
-            "offset": 0
-          }
-        },
-        {
-          "biome": "minecraft:lush_caves",
-          "parameters": {
-            "temperature": 0.3,
-            "humidity": 1,
-            "continentalness": 0.4,
-            "erosion": 0.4,
+            "erosion": 1.0,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
@@ -120,8 +108,20 @@
           "parameters": {
             "temperature": 0.0,
             "humidity": 0.3,
-            "continentalness": 0.1,
+            "continentalness": 0.4,
             "erosion": 0.1,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "inversia:glacial_caverns",
+          "parameters": {
+            "temperature": -0.5,
+            "humidity": 1,
+            "continentalness": 0.1,
+            "erosion": 0.7,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
