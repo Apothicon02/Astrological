@@ -107,28 +107,12 @@
   },
   "features": [
     [
-      "inversia:packed_ice_pillar"
+      "inversia:ice_cube",
+      "inversia:packed_ice_slab"
     ],
     [
-      "inversia:ice_crystal_spike",
-      "inversia:ice_crystal_ground_spike",
-      "inversia:blue_ice_crystal_spike",
-      "inversia:frosted_ice_blob",
-      "inversia:ice_blob"
-    ],
-    [
-      "inversia:calcite_blob",
-      "inversia:calcite_ground_blob"
-    ],
-    [
-      "inversia:deepslate_calcite_blob",
-      "inversia:deepslate_snow_blob"
-    ],
-    [
-      "inversia:ice_spiral"
-    ],
-    [
-      "inversia:water_fall"
+      "inversia:frosted_ice_slab",
+      "inversia:frosted_ice_ground_slab"
     ]
   ]
 }

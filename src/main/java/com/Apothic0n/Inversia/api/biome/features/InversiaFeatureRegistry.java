@@ -1,10 +1,7 @@
 package com.Apothic0n.Inversia.api.biome.features;
 
 import com.Apothic0n.Inversia.Inversia;
-import com.Apothic0n.Inversia.api.biome.features.configuartions.CatchingFallConfiguration;
-import com.Apothic0n.Inversia.api.biome.features.configuartions.FloatingBlobConfiguration;
-import com.Apothic0n.Inversia.api.biome.features.configuartions.LichenConfiguration;
-import com.Apothic0n.Inversia.api.biome.features.configuartions.VerticalBlobConfiguration;
+import com.Apothic0n.Inversia.api.biome.features.configuartions.*;
 import com.Apothic0n.Inversia.api.biome.features.types.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
@@ -53,6 +50,8 @@ public abstract class InversiaFeatureRegistry {
     public static final RegistryObject<Feature<GeodeConfiguration>> VOID_GEODE = FEATURES.register("void_geode", () ->
             new VoidGeodeFeature(GeodeConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<CubeConfiguration>> CUBE = FEATURES.register("cube", () ->
+            new CubeFeature(CubeConfiguration.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
