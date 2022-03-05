@@ -12,9 +12,6 @@
     "doGradient": true,
     "materials": [
       {
-        "Name": "minecraft:ice"
-      },
-      {
         "Name": "minecraft:packed_ice"
       },
       {

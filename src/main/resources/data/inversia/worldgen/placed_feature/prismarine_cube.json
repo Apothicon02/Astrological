@@ -1,29 +1,9 @@
 {
-  "feature": "inversia:frosted_ice_ground_slab",
+  "feature": "inversia:prismarine_cube",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "weight": 60,
-            "data": 8
-          },
-          {
-            "weight": 20,
-            "data": 6
-          },
-          {
-            "weight": 10,
-            "data": 3
-          },
-          {
-            "weight": 10,
-            "data": 1
-          }
-        ]
-      }
+      "count": 222
     },
     {
       "type": "minecraft:in_square"
@@ -36,13 +16,13 @@
           "above_bottom": 0
         },
         "max_inclusive": {
-          "absolute": 256
+          "absolute": 216
         }
       }
     },
     {
       "type": "minecraft:environment_scan",
-      "direction_of_search": "down",
+      "direction_of_search": "up",
       "max_steps": 32,
       "target_condition": {
         "type": "minecraft:solid"
@@ -50,6 +30,11 @@
       "allowed_search_condition": {
         "type": "minecraft:true"
       }
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": 2
     },
     {
       "type": "minecraft:biome"

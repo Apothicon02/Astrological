@@ -12,16 +12,13 @@
         "Name": "minecraft:ice"
       },
       {
-        "Name": "minecraft:packed_ice"
-      },
-      {
-        "Name": "minecraft:snow_block"
+        "Name": "minecraft:quartz_block"
       }
     ],
     "doGradient": false,
     "materials": [
       {
-        "Name": "minecraft:frosted_ice"
+        "Name": "minecraft:chiseled_quartz_block"
       }
     ],
     "cubeWidth": {

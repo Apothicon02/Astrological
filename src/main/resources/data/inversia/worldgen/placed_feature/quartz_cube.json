@@ -1,9 +1,25 @@
 {
-  "feature": "inversia:amethyst_void_crystals",
+  "feature": "inversia:quartz_cube",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 69
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 93,
+            "data": 0
+          },
+          {
+            "weight": 5,
+            "data": 1
+          },
+          {
+            "weight": 2,
+            "data": 9
+          }
+        ]
+      }
     },
     {
       "type": "minecraft:in_square"
@@ -22,30 +38,19 @@
     },
     {
       "type": "minecraft:environment_scan",
-      "direction_of_search": "down",
+      "direction_of_search": "up",
       "max_steps": 32,
       "target_condition": {
-        "type": "minecraft:matching_blocks",
-        "offset": [
-          0,
-          -1,
-          0
-        ],
-        "blocks": [
-          "minecraft:amethyst_block",
-          "minecraft:budding_amethyst",
-          "minecraft:smooth_basalt",
-          "minecraft:basalt",
-          "minecraft:calcite",
-          "minecraft:deepslate"
-        ]
+        "type": "minecraft:solid"
       },
       "allowed_search_condition": {
-        "type": "minecraft:matching_blocks",
-        "blocks": [
-          "minecraft:air"
-        ]
+        "type": "minecraft:true"
       }
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": 1
     },
     {
       "type": "minecraft:biome"

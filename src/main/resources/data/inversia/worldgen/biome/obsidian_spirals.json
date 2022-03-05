@@ -30,7 +30,7 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:water"
+        "type": "minecraft:falling_water"
       },
       "probability": 0.018
     }

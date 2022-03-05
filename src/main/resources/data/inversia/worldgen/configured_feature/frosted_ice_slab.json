@@ -13,6 +13,9 @@
       },
       {
         "Name": "minecraft:packed_ice"
+      },
+      {
+        "Name": "minecraft:snow_block"
       }
     ],
     "doGradient": false,
@@ -28,13 +31,7 @@
         "max_inclusive": 2
       }
     },
-    "cubeHeight": {
-      "type": "minecraft:uniform",
-      "value": {
-        "min_inclusive": 1,
-        "max_inclusive": 2
-      }
-    },
+    "cubeHeight": 1,
     "onCeiling": true
   }
 }

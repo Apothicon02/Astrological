@@ -7,31 +7,22 @@
       },
       {
         "Name": "minecraft:gravel"
-      },
-      {
-        "Name": "minecraft:ice"
-      },
-      {
-        "Name": "minecraft:packed_ice"
-      },
-      {
-        "Name": "minecraft:snow_block"
       }
     ],
     "doGradient": false,
     "materials": [
       {
-        "Name": "minecraft:frosted_ice"
+        "Name": "minecraft:snow_block"
       }
     ],
-    "cubeWidth": {
+    "cubeWidth": 2,
+    "cubeHeight": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 1,
-        "max_inclusive": 3
+        "min_inclusive": 2,
+        "max_inclusive": 4
       }
     },
-    "cubeHeight": 1,
-    "onCeiling": false
+    "onCeiling": true
   }
 }
