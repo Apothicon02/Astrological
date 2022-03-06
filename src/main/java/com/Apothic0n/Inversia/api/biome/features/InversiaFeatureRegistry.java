@@ -41,8 +41,8 @@ public abstract class InversiaFeatureRegistry {
     public static final RegistryObject<Feature<VerticalBlobConfiguration>> CRYSTAL_SPIKE = FEATURES.register("crystal_spike", () ->
             new CrystalSpikeFeature(VerticalBlobConfiguration.CODEC));
 
-    public static final RegistryObject<Feature<VerticalBlobConfiguration>> SPIRAL = FEATURES.register("spiral", () ->
-            new SpiralFeature(VerticalBlobConfiguration.CODEC));
+    public static final RegistryObject<Feature<SpiralConfiguration>> SPIRAL = FEATURES.register("spiral", () ->
+            new SpiralFeature(SpiralConfiguration.CODEC));
 
     public static final RegistryObject<Feature<LichenConfiguration>> LICHEN = FEATURES.register("lichen", () ->
             new LichenFeature(LichenConfiguration.CODEC));

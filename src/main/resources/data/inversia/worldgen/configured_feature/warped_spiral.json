@@ -2,33 +2,35 @@
   "type": "inversia:spiral",
   "config": {
     "validBlocks": [
-      "minecraft:smooth_basalt",
-      "minecraft:deepslate"
+      "minecraft:obsidian",
+      "minecraft:deepslate",
+      "minecraft:warped_wart_block",
+      "minecraft:prismarine"
     ],
     "stemMaterial": {
-      "Name": "minecraft:amethyst_block"
+      "Name": "minecraft:warped_hyphae"
     },
     "leafMaterial": {
-      "Name": "minecraft:air"
+      "Name": "minecraft:warped_wart_block"
     },
     "blobMass": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 26,
-        "max_inclusive": 38
+        "min_inclusive": 28,
+        "max_inclusive": 72
       }
     },
     "blobWidth": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 12,
-        "max_inclusive": 18
+        "min_inclusive": 6,
+        "max_inclusive": 9
       }
     },
     "blobHeight": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 2,
+        "min_inclusive": 1,
         "max_inclusive": 3
       }
     }

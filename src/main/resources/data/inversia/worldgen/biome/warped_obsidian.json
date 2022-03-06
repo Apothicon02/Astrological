@@ -122,14 +122,16 @@
       "inversia:obsidian_slab"
     ],
     [
-      "inversia:warped_fungus_cube"
+      "inversia:warped_wart_cube"
     ],
     [
       "inversia:obsidian_ground_pillar"
     ],
     [
-      "inversia:blackstone_slab",
-      "inversia:blackstone_ground_slab"
+      "inversia:warped_spiral"
+    ],
+    [
+      "inversia:water_fall"
     ]
   ]
 }

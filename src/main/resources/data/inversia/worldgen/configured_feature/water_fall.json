@@ -10,7 +10,9 @@
     "valid_blocks": [
       "minecraft:blackstone",
       "minecraft:deepslate",
-      "minecraft:end_stone"
+      "minecraft:end_stone",
+      "minecraft:warped_wart_block",
+      "minecraft:calcite"
     ],
     "invalid_blocks": [
       "minecraft:obsidian",

@@ -1,14 +1,15 @@
 {
   "type": "inversia:spiral",
   "config": {
-    "blockOn": {
-      "Name": "minecraft:blackstone"
-    },
-    "blockOn2": {
-      "Name": "minecraft:deepslate"
-    },
-    "blobMaterial": {
+    "validBlocks": [
+      "minecraft:blackstone",
+      "minecraft:deepslate"
+    ],
+    "stemMaterial": {
       "Name": "minecraft:obsidian"
+    },
+    "leafMaterial": {
+      "Name": "minecraft:air"
     },
     "blobMass": {
       "type": "minecraft:uniform",

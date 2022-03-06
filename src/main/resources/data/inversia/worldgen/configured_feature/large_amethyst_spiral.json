@@ -1,14 +1,15 @@
 {
   "type": "inversia:spiral",
   "config": {
-    "blockOn": {
-      "Name": "minecraft:smooth_basalt"
-    },
-    "blockOn2": {
-      "Name": "minecraft:deepslate"
-    },
-    "blobMaterial": {
+    "validBlocks": [
+      "minecraft:smooth_basalt",
+      "minecraft:deepslate"
+    ],
+    "stemMaterial": {
       "Name": "minecraft:amethyst_block"
+    },
+    "leafMaterial": {
+      "Name": "minecraft:air"
     },
     "blobMass": {
       "type": "minecraft:uniform",
