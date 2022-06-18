@@ -6,7 +6,7 @@ import com.Apothic0n.Inversia.world.dimension.InversiaDimensions;
 import com.Apothic0n.Inversia.world.dimension.InversiaITeleporter;
 import com.Apothic0n.Inversia.world.dimension.InversiaTeleporter;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,16 +18,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -68,11 +63,11 @@ public class CommonModEvents {
         if (level.isClientSide) { //Do something to the player from the client every tick
             if (!player.getCooldowns().isOnCooldown(Items.AIR)) { //Use a shared 50s delay. DO NOT USE WITH TWO THINGS THAT CAN HAPPEN AT THE SAME TIME
                 if (level.getBlockState(player.blockPosition().below()) == Blocks.BEDROCK.defaultBlockState() && level.dimension().equals(Level.OVERWORLD)) {
-                    player.displayClientMessage(new TranslatableComponent("block.minecraft.bedrock.under"), true);
+                    player.displayClientMessage(Component.translatable("block.minecraft.bedrock.under"), true);
                     player.playSound(SoundEvents.PORTAL_AMBIENT, 0.3f, 0.8f);
                     player.getCooldowns().addCooldown(Items.AIR, 1000);
                 } else if (level.getBlockState(player.blockPosition().above(2)) == Blocks.BEDROCK.defaultBlockState() && level.dimension().equals(InversiaDimensions.InversiaDim)) {
-                    player.displayClientMessage(new TranslatableComponent("block.minecraft.bedrock.above"), true);
+                    player.displayClientMessage(Component.translatable("block.minecraft.bedrock.above"), true);
                     player.playSound(SoundEvents.PORTAL_AMBIENT, 0.3f, 0.8f);
                     player.getCooldowns().addCooldown(Items.AIR, 1000);
                 }

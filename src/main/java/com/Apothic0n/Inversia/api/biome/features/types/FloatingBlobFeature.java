@@ -4,6 +4,7 @@ import com.Apothic0n.Inversia.api.biome.features.configuartions.FloatingBlobConf
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -20,7 +21,7 @@ public class FloatingBlobFeature extends Feature<FloatingBlobConfiguration> {
     public boolean place(FeaturePlaceContext<FloatingBlobConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        Random random = pContext.random();
+        RandomSource random = pContext.random();
         FloatingBlobConfiguration config = pContext.config();
         Block blobSurfaceMaterial = config.blobSurfaceMaterial.getBlock();
         Block blobMaterial = config.blobMaterial.getBlock();

@@ -4,6 +4,7 @@ import com.Apothic0n.Inversia.api.biome.features.configuartions.SpiralConfigurat
 import com.Apothic0n.Inversia.api.biome.features.configuartions.VerticalBlobConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -23,7 +24,7 @@ public class SpiralFeature extends Feature<SpiralConfiguration> {
     public boolean place(FeaturePlaceContext<SpiralConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        Random random = pContext.random();
+        RandomSource random = pContext.random();
         SpiralConfiguration config = pContext.config();
         Set<Block> validBlocks = config.validBlocks;
         Block stemMaterial = config.stemMaterial.getBlock();

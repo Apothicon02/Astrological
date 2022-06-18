@@ -3,6 +3,7 @@ package com.Apothic0n.Inversia.core.objects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -41,7 +42,7 @@ public class VoidVinesBlock extends GrowingPlantHeadBlock implements Bonemealabl
         return blockState2.setValue(BERRIES, blockState1.getValue(BERRIES));
     }
 
-    protected BlockState getGrowIntoState(BlockState blockState1, Random blockState2) {
+    protected BlockState getGrowIntoState(BlockState blockState1, RandomSource blockState2) {
         return super.getGrowIntoState(blockState1, blockState2).setValue(BERRIES, Boolean.valueOf(blockState2.nextFloat() < CHANCE_OF_BERRIES_ON_GROWTH));
     }
 
@@ -63,6 +64,11 @@ public class VoidVinesBlock extends GrowingPlantHeadBlock implements Bonemealabl
      */
     public boolean isValidBonemealTarget(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, boolean bool) {
         return !blockState.getValue(BERRIES);
+    }
+
+    @Override
+    protected int getBlocksToGrowWhenBonemealed(RandomSource p_221341_) {
+        return 3;
     }
 
     public boolean isBonemealSuccess(Level level, Random random, BlockPos blockPos, BlockState blockState) {
