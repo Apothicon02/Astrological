@@ -3,20 +3,23 @@ package com.Apothic0n.Inversia.api.biome.features.types;
 import com.Apothic0n.Inversia.api.biome.features.configuartions.VerticalBlobConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
+import java.util.Random;
+
 public class AdditiveGroundBlobFeature extends Feature<VerticalBlobConfiguration> {
-    public AdditiveGroundBlobFeature(Codec<VerticalBlobConfiguration> pContext) {super(pContext);}
+    public AdditiveGroundBlobFeature(Codec<VerticalBlobConfiguration> pContext) {
+        super(pContext);
+    }
 
     public boolean place(FeaturePlaceContext<VerticalBlobConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        RandomSource random = pContext.random();
+        Random random = pContext.random();
         VerticalBlobConfiguration config = pContext.config();
         Block standOn = config.blockOn.getBlock();
         Block standOn2 = config.blockOn2.getBlock();

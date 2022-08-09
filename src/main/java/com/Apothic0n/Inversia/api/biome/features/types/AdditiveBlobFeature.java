@@ -3,7 +3,6 @@ package com.Apothic0n.Inversia.api.biome.features.types;
 import com.Apothic0n.Inversia.api.biome.features.configuartions.VerticalBlobConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,7 +19,7 @@ public class AdditiveBlobFeature extends Feature<VerticalBlobConfiguration> {
     public boolean place(FeaturePlaceContext<VerticalBlobConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        RandomSource random = pContext.random();
+        Random random = pContext.random();
         VerticalBlobConfiguration config = pContext.config();
         Block hangFrom = config.blockOn.getBlock();
         Block hangFrom2 = config.blockOn2.getBlock();

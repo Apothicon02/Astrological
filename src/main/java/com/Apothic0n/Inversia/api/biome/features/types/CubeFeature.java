@@ -3,7 +3,6 @@ package com.Apothic0n.Inversia.api.biome.features.types;
 import com.Apothic0n.Inversia.api.biome.features.configuartions.CubeConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,7 +17,7 @@ public class CubeFeature extends Feature<CubeConfiguration> {
     public boolean place(FeaturePlaceContext<CubeConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        RandomSource random = pContext.random();
+        Random random = pContext.random();
         CubeConfiguration config = pContext.config();
         List<BlockState> validSurfaces = config.validSurfaces;
         Boolean doGradient = config.doGradient;

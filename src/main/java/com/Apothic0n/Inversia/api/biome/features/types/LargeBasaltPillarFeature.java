@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.FloatProvider;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
@@ -30,7 +29,7 @@ public class LargeBasaltPillarFeature extends Feature<LargeDripstoneConfiguratio
     public boolean place(FeaturePlaceContext<LargeDripstoneConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        RandomSource random = pContext.random();
+        Random random = pContext.random();
         LargeDripstoneConfiguration config = pContext.config();
 
         if (!DripstoneUtils.isEmptyOrWaterOrLava(worldgenlevel, blockpos)) {
@@ -71,7 +70,7 @@ public class LargeBasaltPillarFeature extends Feature<LargeDripstoneConfiguratio
             }
         }
     }
-    private static LargeBasaltPillarFeature.LargePillar makeBasalt(BlockPos pRoot, boolean pPointingUp, RandomSource pRandom, int pRadius, FloatProvider pBluntnessBase, FloatProvider pScaleBase) {
+    private static LargeBasaltPillarFeature.LargePillar makeBasalt(BlockPos pRoot, boolean pPointingUp, Random pRandom, int pRadius, FloatProvider pBluntnessBase, FloatProvider pScaleBase) {
         return new LargeBasaltPillarFeature.LargePillar(pRoot, pPointingUp, pRadius, (double)pBluntnessBase.sample(pRandom), (double)pScaleBase.sample(pRandom));
     }
 
@@ -130,7 +129,7 @@ public class LargeBasaltPillarFeature extends Feature<LargeDripstoneConfiguratio
             return (int)DripstoneUtils.getDripstoneHeight((double)pRadius, (double)this.radius, this.scale, this.bluntness);
         }
 
-        void placeBlocks(WorldGenLevel pLevel, RandomSource pRandom, LargeBasaltPillarFeature.WindOffsetter pWindOffsetter) {
+        void placeBlocks(WorldGenLevel pLevel, Random pRandom, LargeBasaltPillarFeature.WindOffsetter pWindOffsetter) {
             for(int i = -this.radius; i <= this.radius; ++i) {
                 for(int j = -this.radius; j <= this.radius; ++j) {
                     float f = Mth.sqrt((float)(i * i + j * j));
@@ -177,7 +176,7 @@ public class LargeBasaltPillarFeature extends Feature<LargeDripstoneConfiguratio
         @Nullable
         private final Vec3 windSpeed;
 
-        WindOffsetter(int pOriginY, RandomSource pRandom, FloatProvider pMagnitude) {
+        WindOffsetter(int pOriginY, Random pRandom, FloatProvider pMagnitude) {
             this.originY = pOriginY;
             float f = pMagnitude.sample(pRandom);
             float f1 = Mth.randomBetween(pRandom, 0.0F, (float)Math.PI);

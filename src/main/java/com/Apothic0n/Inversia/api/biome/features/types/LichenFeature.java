@@ -5,7 +5,6 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GlowLichenBlock;
@@ -26,7 +25,7 @@ public class LichenFeature extends Feature<LichenConfiguration> {
     public boolean place(FeaturePlaceContext<LichenConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
         BlockPos blockpos = pContext.origin();
-        RandomSource random = pContext.random();
+        Random random = pContext.random();
         LichenConfiguration lichenconfiguration = pContext.config();
         if (!isAirOrWater(worldgenlevel.getBlockState(blockpos))) {
             return false;
@@ -55,7 +54,7 @@ public class LichenFeature extends Feature<LichenConfiguration> {
         }
     }
 
-    public static boolean placeLichenIfPossible(WorldGenLevel pLevel, BlockPos pPos, BlockState pState, LichenConfiguration pConfig, RandomSource pRandom, List<Direction> pDirections) {
+    public static boolean placeLichenIfPossible(WorldGenLevel pLevel, BlockPos pPos, BlockState pState, LichenConfiguration pConfig, Random pRandom, List<Direction> pDirections) {
         BlockPos.MutableBlockPos blockpos$mutableblockpos = pPos.mutable();
 
         for(Direction direction : pDirections) {
@@ -70,7 +69,7 @@ public class LichenFeature extends Feature<LichenConfiguration> {
                 pLevel.setBlock(pPos, blockstate1, 3);
                 pLevel.getChunk(pPos).markPosForPostprocessing(pPos);
                 if (pRandom.nextFloat() < pConfig.chanceOfSpreading) {
-                    lichenblock.getSpreader().spreadFromFaceTowardRandomDirection(blockstate1, pLevel, pPos, direction, pRandom, true);
+                    lichenblock.spreadFromFaceTowardRandomDirection(blockstate1, pLevel, pPos, direction, pRandom, true);
                 }
 
                 return true;
@@ -80,17 +79,17 @@ public class LichenFeature extends Feature<LichenConfiguration> {
         return false;
     }
 
-    public static List<Direction> getShuffledDirections(LichenConfiguration pConfig, RandomSource pRandom) {
+    public static List<Direction> getShuffledDirections(LichenConfiguration pConfig, Random pRandom) {
         List<Direction> list = Lists.newArrayList(pConfig.validDirections);
-        Collections.shuffle(list, (Random) pRandom);
+        Collections.shuffle(list, pRandom);
         return list;
     }
 
-    public static List<Direction> getShuffledDirectionsExcept(LichenConfiguration pConfig, RandomSource pRandom, Direction pExcludedDirection) {
+    public static List<Direction> getShuffledDirectionsExcept(LichenConfiguration pConfig, Random pRandom, Direction pExcludedDirection) {
         List<Direction> list = pConfig.validDirections.stream().filter((p_159857_) -> {
             return p_159857_ != pExcludedDirection;
         }).collect(Collectors.toList());
-        Collections.shuffle(list, (Random) pRandom);
+        Collections.shuffle(list, pRandom);
         return list;
     }
 
