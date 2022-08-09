@@ -1,6 +1,7 @@
 package com.Apothic0n.Inversia.core.events;
 
 import com.Apothic0n.Inversia.Inversia;
+import com.Apothic0n.Inversia.config.CommonConfig;
 import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.Apothic0n.Inversia.world.dimension.InversiaDimensions;
 import com.Apothic0n.Inversia.world.dimension.InversiaITeleporter;
@@ -74,20 +75,22 @@ public class CommonModEvents {
             }
         } else if (minecraftServer != null) { //Do something to the player from the server every tick
             ServerPlayer serverPlayer = ((ServerPlayer) event.player);
-            if (InversiaDimensions.InversiaDim.equals(level.dimension())) { //Do something to the player from the server as long as they are in the Inversia dimension
-                if (player.blockPosition().getY() <= -64) {
-                    ArrayList teleporterData = InversiaITeleporter.fallToNetherRoof(serverPlayer);
-                    ServerPlayer newServerPlayer = (ServerPlayer) teleporterData.get(0);
-                    BlockPos newPlayerPosition = (BlockPos) teleporterData.get(1);
-                    newServerPlayer.teleportTo(minecraftServer.getLevel(Level.NETHER), newPlayerPosition.getX(), newPlayerPosition.getY(), newPlayerPosition.getZ(), 0, 0);
-                    player.getCooldowns().addCooldown(Items.INK_SAC, 200);
-                }
-            } else if (Level.NETHER.equals(level.dimension())) { //Do something to the player from the server as long as they are in the nether dimension
-                if (player.blockPosition().getY() >= 320) {
-                    ArrayList teleporterData = InversiaITeleporter.acsendFromNetherRoof(serverPlayer);
-                    ServerPlayer newServerPlayer = (ServerPlayer) teleporterData.get(0);
-                    BlockPos newPlayerPosition = (BlockPos) teleporterData.get(1);
-                    newServerPlayer.teleportTo(minecraftServer.getLevel(InversiaDimensions.InversiaDim), newPlayerPosition.getX(), newPlayerPosition.getY(), newPlayerPosition.getZ(), 0, 0);
+            if (CommonConfig.teleporting.get()) { //Do something only if the teleportation config is set to true.
+                if (InversiaDimensions.InversiaDim.equals(level.dimension())) { //Do something to the player from the server as long as they are in the Inversia dimension
+                    if (player.blockPosition().getY() <= -64) {
+                        ArrayList teleporterData = InversiaITeleporter.fallToNetherRoof(serverPlayer);
+                        ServerPlayer newServerPlayer = (ServerPlayer) teleporterData.get(0);
+                        BlockPos newPlayerPosition = (BlockPos) teleporterData.get(1);
+                        newServerPlayer.teleportTo(minecraftServer.getLevel(Level.NETHER), newPlayerPosition.getX(), newPlayerPosition.getY(), newPlayerPosition.getZ(), 0, 0);
+                        player.getCooldowns().addCooldown(Items.INK_SAC, 200);
+                    }
+                } else if (Level.NETHER.equals(level.dimension())) { //Do something to the player from the server as long as they are in the nether dimension
+                    if (player.blockPosition().getY() >= 320) {
+                        ArrayList teleporterData = InversiaITeleporter.acsendFromNetherRoof(serverPlayer);
+                        ServerPlayer newServerPlayer = (ServerPlayer) teleporterData.get(0);
+                        BlockPos newPlayerPosition = (BlockPos) teleporterData.get(1);
+                        newServerPlayer.teleportTo(minecraftServer.getLevel(InversiaDimensions.InversiaDim), newPlayerPosition.getX(), newPlayerPosition.getY(), newPlayerPosition.getZ(), 0, 0);
+                    }
                 }
             }
         }
@@ -95,7 +98,7 @@ public class CommonModEvents {
 
     @SubscribeEvent
     public static void playerFall(LivingFallEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+        LivingEntity livingEntity = event.getEntity();
         if (livingEntity instanceof ServerPlayer serverPlayer) {
             if (serverPlayer.getCooldowns().isOnCooldown(Items.INK_SAC)) {
                 event.setCanceled(true);
@@ -105,11 +108,11 @@ public class CommonModEvents {
 
     @SubscribeEvent
     public static void itemUsed(PlayerInteractEvent.RightClickBlock event) {
-        Level pLevel = event.getWorld();
+        Level pLevel = event.getLevel();
         BlockPos pPos =  event.getHitVec().getBlockPos();
         BlockState pBlock = pLevel.getBlockState(pPos);
         ItemStack pStack = event.getItemStack();
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         if (!pLevel.isClientSide) { //Runs stuff on the server every time a player right clicks a block
             if (pStack.getItem() == Items.GLOW_INK_SAC && pBlock.getBlock() == Blocks.AMETHYST_CLUSTER) {
                 pLevel.setBlock(pPos, InversiaBlocks.GLOWING_AMETHYST.get().withPropertiesOf(pBlock), 2);

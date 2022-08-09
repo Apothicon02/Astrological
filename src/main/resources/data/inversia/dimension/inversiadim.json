@@ -2,7 +2,6 @@
   "type": "inversia:inversiadim_type",
   "generator": {
     "type": "minecraft:noise",
-    "seed": -1924774623,
     "settings": {
       "sea_level": 200,
       "disable_mob_generation": false,
@@ -19,56 +18,7 @@
         "min_y": 0,
         "height": 256,
         "size_horizontal": 2,
-        "size_vertical": 2,
-        "sampling": {
-          "xz_scale": 1,
-          "y_scale": 3,
-          "xz_factor": 54,
-          "y_factor": 355
-        },
-        "bottom_slide": {
-          "target": -0.9,
-          "size": 2,
-          "offset": 23
-        },
-        "top_slide": {
-          "target": 0.1375,
-          "size": 3,
-          "offset": 2
-        },
-        "terrain_shaper": {
-          "offset": 0,
-          "factor": 0.05,
-          "jaggedness": {
-            "coordinate": "continents",
-            "points": [
-              {
-                "location": 0,
-                "derivative": 0,
-                "value": {
-                  "coordinate": "continents",
-                  "points": [
-                    {
-                      "location": 0,
-                      "derivative": 0,
-                      "value": 0
-                    },
-                    {
-                      "location": 1,
-                      "derivative": 1,
-                      "value": 1
-                    }
-                  ]
-                }
-              },
-              {
-                "location": 1,
-                "derivative": 1,
-                "value": 3
-              }
-            ]
-          }
-        }
+        "size_vertical": 2
       },
       "noise_router": {
         "barrier": 0,
@@ -122,8 +72,41 @@
               "argument": {
                 "type": "minecraft:blend_density",
                 "argument": {
-                  "type": "minecraft:slide",
-                  "argument": "minecraft:overworld/sloped_cheese"
+                  "type": "minecraft:add",
+                  "argument1": {
+                    "type": "minecraft:mul",
+                    "argument1": {
+                      "type": "minecraft:y_clamped_gradient",
+                      "from_y": 184,
+                      "to_y": 200,
+                      "from_value": 0,
+                      "to_value": 1
+                    },
+                    "argument2": {
+                      "type": "minecraft:add",
+                      "argument1": {
+                        "type": "minecraft:add",
+                        "argument1": {
+                          "type": "minecraft:mul",
+                          "argument1": {
+                            "type": "minecraft:y_clamped_gradient",
+                            "from_y": 216,
+                            "to_y": 240,
+                            "from_value": 1,
+                            "to_value": 0
+                          },
+                          "argument2": {
+                            "type": "minecraft:add",
+                            "argument1": "minecraft:overworld/sloped_cheese",
+                            "argument2": -0.1375
+                          }
+                        },
+                        "argument2": 0.1375
+                      },
+                      "argument2": 0.9
+                    }
+                  },
+                  "argument2": -0.9
                 }
               }
             }
@@ -329,7 +312,57 @@
             }
           }
         ]
-      }
+      },
+      "spawn_target": [
+        {
+          "erosion": [
+            -1,
+            1
+          ],
+          "depth": 0,
+          "weirdness": [
+            -1,
+            -0.16
+          ],
+          "offset": 0,
+          "temperature": [
+            -1,
+            1
+          ],
+          "humidity": [
+            -1,
+            1
+          ],
+          "continentalness": [
+            -0.11,
+            1
+          ]
+        },
+        {
+          "erosion": [
+            -1,
+            1
+          ],
+          "depth": 0,
+          "weirdness": [
+            0.16,
+            1
+          ],
+          "offset": 0,
+          "temperature": [
+            -1,
+            1
+          ],
+          "humidity": [
+            -1,
+            1
+          ],
+          "continentalness": [
+            -0.11,
+            1
+          ]
+        }
+      ]
     },
     "biome_source": {
       "type": "minecraft:multi_noise",
@@ -340,7 +373,7 @@
             "temperature": 0.4,
             "humidity": 0,
             "continentalness": 0.3,
-            "erosion": 1.0,
+            "erosion": 1,
             "weirdness": 0,
             "depth": 0,
             "offset": 0
@@ -362,7 +395,7 @@
           "biome": "inversia:warped_obsidian",
           "parameters": {
             "temperature": 0.1,
-            "humidity": 0.0,
+            "humidity": 0,
             "continentalness": 0.2,
             "erosion": 0.7,
             "weirdness": 0,

@@ -10,12 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
-import java.util.Random;
-
 public class AdditiveGroundBlobFeature extends Feature<VerticalBlobConfiguration> {
-    public AdditiveGroundBlobFeature(Codec<VerticalBlobConfiguration> pContext) {
-        super(pContext);
-    }
+    public AdditiveGroundBlobFeature(Codec<VerticalBlobConfiguration> pContext) {super(pContext);}
 
     public boolean place(FeaturePlaceContext<VerticalBlobConfiguration> pContext) {
         WorldGenLevel worldgenlevel = pContext.level();
