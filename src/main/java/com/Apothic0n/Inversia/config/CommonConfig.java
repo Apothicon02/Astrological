@@ -5,7 +5,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class CommonConfig {
     public static ForgeConfigSpec.BooleanValue teleporting;
     public static void registerCommonConfig(ForgeConfigSpec.Builder COMMON_BUILDER) {
-        COMMON_BUILDER.comment("General settings for Ecospherical Expansion").push("common");
+        COMMON_BUILDER.comment("General settings for Inversia").push("common");
 
         teleporting = COMMON_BUILDER
                 .comment("Enable custom methods of entering / leaving this dimension. Default: true")
