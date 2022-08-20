@@ -3,6 +3,7 @@ package com.Apothic0n.Inversia.core.objects;
 import com.Apothic0n.Inversia.Inversia;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -41,11 +42,11 @@ public final class InversiaBlocks {
                     .lightLevel(brightness -> {return 11;})));
 
     public static void fixBlockRenderLayers() {
-        ItemBlockRenderTypes.setRenderLayer(BLAZING_LICHEN.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(VOID_VINES.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(VOID_VINES_PLANT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(AMETHYST_VINES.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(AMETHYST_VINES_PLANT.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(GLOWING_AMETHYST.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(BLAZING_LICHEN.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(VOID_VINES.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(VOID_VINES_PLANT.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(AMETHYST_VINES.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(AMETHYST_VINES_PLANT.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(GLOWING_AMETHYST.get(), RenderType.cutout());
     }
 }
