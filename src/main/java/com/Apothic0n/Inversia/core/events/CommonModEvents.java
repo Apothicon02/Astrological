@@ -7,10 +7,14 @@ import com.Apothic0n.Inversia.world.dimension.InversiaDimensions;
 import com.Apothic0n.Inversia.world.dimension.InversiaITeleporter;
 import com.Apothic0n.Inversia.world.dimension.InversiaTeleporter;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -25,36 +29,50 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.common.util.ITeleporter;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 
 @Mod.EventBusSubscriber(modid = Inversia.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CommonModEvents {
-
+    static final ResourceKey depthsKey = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("ecod", "the_depths"));
     @SubscribeEvent
     public static void chorusTeleport(EntityTeleportEvent.ChorusFruit event) {
         LivingEntity Player = event.getEntityLiving();
-        if (!Player.level.isClientSide()) { //Only do this from the server.
+        if (!Player.level.isClientSide()) {
             MinecraftServer server = Player.getServer();
-            if (server != null && CommonConfig.teleporting.get()) { //Do something only if the teleportation config is set to true.
+            if (server != null) {
                 ServerLevel overWorld = server.getLevel(Level.OVERWORLD);
                 ServerLevel inversiaDim = server.getLevel(InversiaDimensions.InversiaDim);
+                ServerLevel theDepths = server.getLevel(depthsKey);
                 BlockState standingOn = Player.level.getBlockState(Player.blockPosition().below());
                 BlockState standingUnder = Player.level.getBlockState(Player.blockPosition().above(2));
                 if (standingUnder != null || standingOn != null) {
-                    BlockState bedrock = Blocks.BEDROCK.defaultBlockState();
-                    if (Player.level.dimension() == Level.OVERWORLD && standingOn == bedrock) {
-                        Player.changeDimension(inversiaDim, new InversiaTeleporter(Player.blockPosition(), false));
-                    } else if (Player.level.dimension() == InversiaDimensions.InversiaDim && standingUnder == bedrock) {
-                        Player.changeDimension(overWorld, new InversiaTeleporter(Player.blockPosition(), true));
+                    if (ModList.get().isLoaded("ecod") && theDepths != null) {
+                        BlockState bedrock = Blocks.BEDROCK.defaultBlockState();
+                        if (Player.level.dimension() == InversiaDimensions.InversiaDim && standingUnder == bedrock) {
+                            Player.changeDimension(theDepths, new InversiaTeleporter(Player.blockPosition(), true));
+                        } else if(Player.level.dimension().location().getNamespace() == "ecod" && standingOn == bedrock) {
+                            Player.changeDimension(inversiaDim, new InversiaTeleporter(Player.blockPosition(), true));
+                        }
+                    } else {
+                        BlockState bedrock = Blocks.BEDROCK.defaultBlockState();
+                        if (Player.level.dimension() == Level.OVERWORLD && standingOn == bedrock) {
+                            Player.changeDimension(inversiaDim, new InversiaTeleporter(Player.blockPosition(), false));
+                        } else if (Player.level.dimension() == InversiaDimensions.InversiaDim && standingUnder == bedrock) {
+                            Player.changeDimension(overWorld, new InversiaTeleporter(Player.blockPosition(), true));
+                        }
                     }
                 }
             }
