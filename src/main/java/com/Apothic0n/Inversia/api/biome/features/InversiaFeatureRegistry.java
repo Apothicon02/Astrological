@@ -44,6 +44,9 @@ public abstract class InversiaFeatureRegistry {
     public static final RegistryObject<Feature<SpiralConfiguration>> SPIRAL = FEATURES.register("spiral", () ->
             new SpiralFeature(SpiralConfiguration.CODEC));
 
+    public static final RegistryObject<Feature<SpiralTreeConfiguration>> SPIRAL_TREE = FEATURES.register("spiral_tree", () ->
+            new SpiralTreeFeature(SpiralTreeConfiguration.CODEC));
+
     public static final RegistryObject<Feature<LichenConfiguration>> LICHEN = FEATURES.register("lichen", () ->
             new LichenFeature(LichenConfiguration.CODEC));
 

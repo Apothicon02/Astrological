@@ -16,7 +16,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '0.1.4'
+version = '0.1.5'
 group = 'com.Apothic0n.Inversia' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'inversia'
 
@@ -147,11 +147,11 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.3'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.1'
     // compile against the JEI API but do not include it at runtime
-    compileOnly fg.deobf("mezz.jei:jei-${'1.18.2'}:${'9.4.1.117'}:api")
+    compileOnly fg.deobf("mezz.jei:jei-${'1.18.2'}:${'9.7.1.255'}:api")
     // at runtime, use the full JEI jar
-    runtimeOnly fg.deobf("mezz.jei:jei-${'1.18.2'}:${'9.4.1.117'}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${'1.18.2'}:${'9.7.1.255'}")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
