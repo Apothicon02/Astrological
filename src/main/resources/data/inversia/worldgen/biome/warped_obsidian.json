@@ -128,10 +128,12 @@
       "inversia:obsidian_ground_pillar"
     ],
     [
+      "inversia:shroomlight_cube",
       "inversia:warped_spiral",
       "inversia:warped_spiral_tree"
     ],
     [
+      "inversia:lush_cave_vines",
       "inversia:water_fall"
     ]
   ]
