@@ -9,12 +9,6 @@
         "Name": "minecraft:gravel"
       },
       {
-        "Name": "minecraft:warped_wart_block"
-      },
-      {
-        "Name": "minecraft:prismarine"
-      },
-      {
         "Name": "minecraft:nether_wart_block"
       },
       {
@@ -24,28 +18,22 @@
     "doGradient": false,
     "materials": [
       {
-        "Name": "minecraft:shroomlight"
+        "Name": "minecraft:blackstone"
       }
     ],
     "cubeWidth": {
       "type": "minecraft:uniform",
       "value": {
-        "min_inclusive": 1,
-        "max_inclusive": 2
+        "min_inclusive": 3,
+        "max_inclusive": 5
       }
     },
     "cubeHeight": {
-      "type": "minecraft:weighted_list",
-      "distribution": [
-        {
-          "weight": 56,
-          "data": 1
-        },
-        {
-          "weight": 44,
-          "data": 2
-        }
-      ]
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 3,
+        "max_inclusive": 6
+      }
     },
     "onCeiling": true
   }

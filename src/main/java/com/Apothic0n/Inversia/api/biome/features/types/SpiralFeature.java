@@ -88,7 +88,7 @@ public class SpiralFeature extends Feature<SpiralConfiguration> {
                         } else {
                             b = 5;
                             int randomNumber4 = (int)(Math.random()*(8));
-                            if (randomNumber4 >= 7 && Blocks.WARPED_WART_BLOCK.equals(leafMaterial)) {
+                            if (randomNumber4 >= 7 && Blocks.WARPED_WART_BLOCK.equals(leafMaterial) || randomNumber4 >= 7 && Blocks.NETHER_WART_BLOCK.equals(leafMaterial)) {
                                 worldgenlevel.setBlock(blockpos1.below(b), Blocks.SHROOMLIGHT.defaultBlockState(), 2);
                             }
                         }

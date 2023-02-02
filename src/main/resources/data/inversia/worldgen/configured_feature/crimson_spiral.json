@@ -1,0 +1,38 @@
+{
+  "type": "inversia:spiral",
+  "config": {
+    "validBlocks": [
+      "minecraft:obsidian",
+      "minecraft:deepslate",
+      "minecraft:nether_wart_block",
+      "minecraft:soul_soil"
+    ],
+    "stemMaterial": {
+      "Name": "minecraft:crimson_hyphae"
+    },
+    "leafMaterial": {
+      "Name": "minecraft:nether_wart_block"
+    },
+    "blobMass": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 28,
+        "max_inclusive": 72
+      }
+    },
+    "blobWidth": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 6,
+        "max_inclusive": 9
+      }
+    },
+    "blobHeight": {
+      "type": "minecraft:uniform",
+      "value": {
+        "min_inclusive": 1,
+        "max_inclusive": 3
+      }
+    }
+  }
+}

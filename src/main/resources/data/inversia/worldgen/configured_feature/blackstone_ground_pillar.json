@@ -1,0 +1,22 @@
+{
+  "type": "inversia:cube",
+  "config": {
+    "validSurfaces": [
+      {
+        "Name": "minecraft:deepslate"
+      },
+      {
+        "Name": "minecraft:gravel"
+      }
+    ],
+    "doGradient": false,
+    "materials": [
+      {
+        "Name": "minecraft:blackstone"
+      }
+    ],
+    "cubeWidth": 1,
+    "cubeHeight": 32,
+    "onCeiling": false
+  }
+}

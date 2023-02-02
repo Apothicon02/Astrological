@@ -2,8 +2,9 @@
   "biome.inversia.molten_seeps": "Molten Seeps",
   "biome.inversia.obsidian_spirals": "Obsidian Spirals",
   "biome.inversia.geodeial_caverns": "Geodeial Caverns",
-  "biome.inversia.glacial_caverns": "Glacial Caverns",
-  "biome.inversia.warped_obsidian": "Warped Obsidian",
+  "biome.inversia.glacial_delta": "Glacial Delta",
+  "biome.inversia.warped_delta": "Warped Delta",
+  "biome.inversia.crimson_delta": "Crimson Delta",
 
   "block.minecraft.bedrock.under": "You feel a strange urge to consume chorus",
   "block.minecraft.bedrock.above": "Perhaps you could return the way you entered",

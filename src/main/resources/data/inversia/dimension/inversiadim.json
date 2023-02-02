@@ -197,7 +197,32 @@
                 "if_true": {
                   "type": "minecraft:biome",
                   "biome_is": [
-                    "inversia:warped_obsidian"
+                    "inversia:crimson_delta"
+                  ]
+                },
+                "then_run": {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:stone_depth",
+                    "offset": 0,
+                    "surface_type": "ceiling",
+                    "add_surface_depth": true,
+                    "secondary_depth_range": 0
+                  },
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:soul_soil"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:biome",
+                  "biome_is": [
+                    "inversia:warped_delta"
                   ]
                 },
                 "then_run": {
@@ -222,7 +247,7 @@
                 "if_true": {
                   "type": "minecraft:biome",
                   "biome_is": [
-                    "inversia:glacial_caverns"
+                    "inversia:glacial_delta"
                   ]
                 },
                 "then_run": {
@@ -247,7 +272,7 @@
                 "if_true": {
                   "type": "minecraft:biome",
                   "biome_is": [
-                    "inversia:glacial_caverns"
+                    "inversia:glacial_delta"
                   ]
                 },
                 "then_run": {
@@ -359,11 +384,23 @@
           }
         },
         {
-          "biome": "inversia:warped_obsidian",
+          "biome": "inversia:warped_delta",
           "parameters": {
             "temperature": 0.1,
             "humidity": 0.0,
             "continentalness": 0.2,
+            "erosion": 0.7,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "inversia:crimson_delta",
+          "parameters": {
+            "temperature": 0.15,
+            "humidity": 0.0,
+            "continentalness": 0.25,
             "erosion": 0.7,
             "weirdness": 0,
             "depth": 0,
@@ -383,7 +420,7 @@
           }
         },
         {
-          "biome": "inversia:glacial_caverns",
+          "biome": "inversia:glacial_delta",
           "parameters": {
             "temperature": -0.5,
             "humidity": 1,
