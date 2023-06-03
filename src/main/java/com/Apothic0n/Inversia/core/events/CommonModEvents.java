@@ -6,7 +6,6 @@ import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.Apothic0n.Inversia.world.dimension.InversiaDimensions;
 import com.Apothic0n.Inversia.world.dimension.InversiaITeleporter;
 import com.Apothic0n.Inversia.world.dimension.InversiaTeleporter;
-import com.google.common.base.MoreObjects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -15,7 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -26,25 +24,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.common.util.ITeleporter;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.NoteBlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
-import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 
@@ -71,14 +60,14 @@ public class CommonModEvents {
                         } else if(Player.level.dimension().location().getNamespace() == "ecod" && standingOn == bedrock) {
                             Player.dismountTo(Player.getX(), Player.getY(), Player.getZ());
                             Player.changeDimension(inversiaDim, new InversiaTeleporter(Player.blockPosition(), true));
-                            Player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 600), Player);
+                            Player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 1800), Player);
                         }
                     } else {
                         BlockState bedrock = Blocks.BEDROCK.defaultBlockState();
                         if (Player.level.dimension() == Level.OVERWORLD && standingOn == bedrock) {
                             Player.dismountTo(Player.getX(), Player.getY(), Player.getZ());
                             Player.changeDimension(inversiaDim, new InversiaTeleporter(Player.blockPosition(), false));
-                            Player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 600), Player);
+                            Player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 1800), Player);
                         } else if (Player.level.dimension() == InversiaDimensions.InversiaDim && standingUnder == bedrock) {
                             Player.dismountTo(Player.getX(), Player.getY(), Player.getZ());
                             Player.changeDimension(overWorld, new InversiaTeleporter(Player.blockPosition(), true));
