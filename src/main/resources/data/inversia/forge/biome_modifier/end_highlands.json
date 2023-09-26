@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:end_highlands",
+  "features": "inversia:extra_chorus_plant",
+  "step": "vegetal_decoration"
+}

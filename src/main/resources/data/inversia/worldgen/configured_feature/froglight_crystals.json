@@ -1,0 +1,37 @@
+{
+  "type": "inversia:crystal",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 2,
+          "data": {
+            "Name": "minecraft:ochre_froglight",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "minecraft:verdant_froglight",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        {
+          "weight": 5,
+          "data": {
+            "Name": "minecraft:pearlescent_froglight",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

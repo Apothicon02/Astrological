@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:small_end_islands",
+  "features": "inversia:extra_chorus_plant",
+  "step": "vegetal_decoration"
+}
