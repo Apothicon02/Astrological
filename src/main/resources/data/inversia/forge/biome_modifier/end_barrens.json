@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "minecraft:end_barrens",
-  "features": "inversia:froglight_crystals",
+  "features": ["inversia:froglight_crystals", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts"],
   "step": "vegetal_decoration"
 }

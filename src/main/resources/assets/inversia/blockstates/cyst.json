@@ -1,0 +1,99 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/cyst"
+      },
+      {
+        "model": "inversia:block/dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_dry_cyst"
+      },
+      {
+        "model": "inversia:block/double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
+      }
+    ]
+  }
+}

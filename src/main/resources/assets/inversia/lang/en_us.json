@@ -1,3 +1,6 @@
 {
-  "block.inversia.sleep": "Sleep"
+  "block.inversia.sleep": "Sleep",
+  "block.inversia.tumor": "Tumor",
+  "block.inversia.cyst": "Cyst",
+  "block.inversia.crying_duct": "Crying Duct"
 }

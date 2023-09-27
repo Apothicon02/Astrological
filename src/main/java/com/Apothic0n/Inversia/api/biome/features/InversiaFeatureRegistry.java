@@ -3,8 +3,11 @@ package com.Apothic0n.Inversia.api.biome.features;
 import com.Apothic0n.Inversia.Inversia;
 import com.Apothic0n.Inversia.api.biome.features.configurations.AnvilRockConfiguration;
 import com.Apothic0n.Inversia.api.biome.features.types.AnvilRockFeature;
+import com.Apothic0n.Inversia.api.biome.features.types.CryingDuctFeature;
 import com.Apothic0n.Inversia.api.biome.features.types.CrystalFeature;
+import com.Apothic0n.Inversia.api.biome.features.types.TumorFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -19,6 +22,12 @@ public abstract class InversiaFeatureRegistry {
 
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> CRYSTAL_FEATURE = FEATURES.register("crystal", () ->
             new CrystalFeature(SimpleBlockConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<PointedDripstoneConfiguration>> TUMOR_FEATURE = FEATURES.register("tumor", () ->
+            new TumorFeature(PointedDripstoneConfiguration.CODEC));
+
+    public static final RegistryObject<Feature<PointedDripstoneConfiguration>> CRYING_DUCT_FEATURE = FEATURES.register("crying_duct", () ->
+            new CryingDuctFeature(PointedDripstoneConfiguration.CODEC));
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }

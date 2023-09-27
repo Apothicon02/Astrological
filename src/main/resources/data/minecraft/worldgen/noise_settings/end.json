@@ -293,22 +293,6 @@
               }
             },
             {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 3,
-                "surface_type": "ceiling",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
-              },
-              "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "inversia:sleep"
-                }
-              }
-            },
-            {
               "type": "minecraft:block",
               "result_state": {
                 "Name": "minecraft:crying_obsidian"
@@ -357,22 +341,6 @@
                 "type": "minecraft:block",
                 "result_state": {
                   "Name": "minecraft:air"
-                }
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 3,
-                "surface_type": "ceiling",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
-              },
-              "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "inversia:sleep"
                 }
               }
             },

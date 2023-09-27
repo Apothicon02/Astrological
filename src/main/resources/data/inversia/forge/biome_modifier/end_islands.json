@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "minecraft:small_end_islands",
-  "features": "inversia:extra_chorus_plant",
+  "features": ["inversia:extra_chorus_plant", "inversia:tumors", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts"],
   "step": "vegetal_decoration"
 }

@@ -15,4 +15,14 @@ public final class InversiaItems extends Items {
 
     public static final RegistryObject<Item> SLEEP = ITEMS.register("sleep", () ->
             new BlockItem(InversiaBlocks.SLEEP.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> TUMOR = ITEMS.register("tumor", () ->
+            new BlockItem(InversiaBlocks.TUMOR.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CYST = ITEMS.register("cyst", () ->
+            new BlockItem(InversiaBlocks.CYST.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> CRYING_DUCT = ITEMS.register("crying_duct", () ->
+            new BlockItem(InversiaBlocks.CRYING_DUCT.get(), new Item.Properties()));
+
 }
