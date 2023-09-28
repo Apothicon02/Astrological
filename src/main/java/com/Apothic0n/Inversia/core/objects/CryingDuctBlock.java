@@ -184,6 +184,12 @@ public class CryingDuctBlock extends Block implements Fallable, SimpleWaterlogge
                                 Block.pushEntitiesUp((optional.get()).sourceState, blockstate1, p_221861_, (optional.get()).pos);
                                 p_221861_.gameEvent(GameEvent.BLOCK_CHANGE, (optional.get()).pos, GameEvent.Context.of(blockstate1));
                                 p_221861_.levelEvent(1504, blockpos, 0);
+                            } else if ((optional.get()).sourceState.is(Blocks.OBSIDIAN) && fluid == Fluids.WATER) {
+                                BlockState blockstate1 = Blocks.CRYING_OBSIDIAN.defaultBlockState();
+                                p_221861_.setBlockAndUpdate((optional.get()).pos, blockstate1);
+                                Block.pushEntitiesUp((optional.get()).sourceState, blockstate1, p_221861_, (optional.get()).pos);
+                                p_221861_.gameEvent(GameEvent.BLOCK_CHANGE, (optional.get()).pos, GameEvent.Context.of(blockstate1));
+                                p_221861_.levelEvent(1504, blockpos, 0);
                             } else {
                                 BlockPos blockpos1 = findFillableCauldronBelowStalactiteTip(p_221861_, blockpos, fluid);
                                 if (blockpos1 != null) {

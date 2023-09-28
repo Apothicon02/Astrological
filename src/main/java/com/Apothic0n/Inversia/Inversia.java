@@ -3,6 +3,7 @@ package com.Apothic0n.Inversia;
 import com.Apothic0n.Inversia.api.biome.features.InversiaFeatureRegistry;
 import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.Apothic0n.Inversia.core.objects.InversiaItems;
+import com.Apothic0n.Inversia.core.objects.SleepFireBlock;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;

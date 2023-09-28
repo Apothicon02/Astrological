@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:the_end",
+  "features": ["inversia:sleep_vent", "inversia:extra_chorus_plant", "inversia:froglight_crystals", "inversia:tumors", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts", "inversia:floor_tall_crying_ducts", "inversia:patch_sleep_fire"],
+  "step": "vegetal_decoration"
+}

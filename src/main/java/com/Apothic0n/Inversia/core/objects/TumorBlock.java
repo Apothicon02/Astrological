@@ -179,8 +179,8 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
                     if (!(p_221863_ >= f)) {
                         BlockPos blockpos = findTip(p_221860_, p_221861_, p_221862_, 11, false);
                         if (blockpos != null) {
-                            if ((optional.get()).sourceState.is(Blocks.MUD) && fluid == Fluids.WATER) {
-                                BlockState blockstate1 = Blocks.CLAY.defaultBlockState();
+                            if ((optional.get()).sourceState.is(Blocks.END_STONE)) {
+                                BlockState blockstate1 = InversiaBlocks.CYST.get().defaultBlockState();
                                 p_221861_.setBlockAndUpdate((optional.get()).pos, blockstate1);
                                 Block.pushEntitiesUp((optional.get()).sourceState, blockstate1, p_221861_, (optional.get()).pos);
                                 p_221861_.gameEvent(GameEvent.BLOCK_CHANGE, (optional.get()).pos, GameEvent.Context.of(blockstate1));

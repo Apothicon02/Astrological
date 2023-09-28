@@ -2,7 +2,9 @@ package com.Apothic0n.Inversia.core.events;
 
 import com.Apothic0n.Inversia.Inversia;
 import com.Apothic0n.Inversia.api.MaskingSource;
+import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.Apothic0n.Inversia.core.objects.InversiaItems;
+import com.Apothic0n.Inversia.core.objects.SleepFireBlock;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -31,10 +33,12 @@ public class ModEvents {
     @SubscribeEvent
     public static void addItemsToTabs(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
+            SleepFireBlock.bootStrap();
             event.accept(InversiaItems.SLEEP.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.TUMOR.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.CYST.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.CRYING_DUCT.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.SLEEP_VENT.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 
@@ -77,6 +81,7 @@ public class ModEvents {
                         return -328966;
                     }
                 },
-                Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL);
+                Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL,
+                InversiaBlocks.SLEEP_VENT.get());
     }
 }

@@ -25,4 +25,6 @@ public final class InversiaItems extends Items {
     public static final RegistryObject<Item> CRYING_DUCT = ITEMS.register("crying_duct", () ->
             new BlockItem(InversiaBlocks.CRYING_DUCT.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> SLEEP_VENT = ITEMS.register("sleep_vent", () ->
+            new BlockItem(InversiaBlocks.SLEEP_VENT.get(), new Item.Properties()));
 }
