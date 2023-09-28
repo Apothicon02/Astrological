@@ -16,14 +16,11 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import javax.annotation.Nullable;
 
-import static net.minecraft.client.renderer.blockentity.TheEndPortalRenderer.END_SKY_LOCATION;
-
 @Mixin(value = LevelRenderer.class, priority = 69420)
 public class LevelRendererMixin {
 
     @Shadow @Nullable private ClientLevel level;
     @Shadow @Final private static ResourceLocation END_SKY_LOCATION;
-
     private static ResourceLocation END_SUN_LOCATION = new ResourceLocation("inversia", "textures/environment/end_sun.png");
 
     private static ResourceLocation SATURN_PHASES_LOCATION = new ResourceLocation("inversia", "textures/environment/saturn_phases.png");
@@ -36,6 +33,7 @@ public class LevelRendererMixin {
     private void renderEndSky(PoseStack p_109781_) {
         RenderSystem.enableBlend();
         RenderSystem.depthMask(false);
+        float time = this.level.getDayTime();
         RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
         RenderSystem.setShaderTexture(0, END_SKY_LOCATION);
         Tesselator tesselator = Tesselator.getInstance();
@@ -61,7 +59,6 @@ public class LevelRendererMixin {
             if (i == 5) {
                 p_109781_.mulPose(Axis.ZP.rotationDegrees(-90.0F));
             }
-
             Matrix4f matrix4f = p_109781_.last().pose();
             bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
             bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(40, 40, 40, 255).endVertex();
@@ -72,7 +69,6 @@ public class LevelRendererMixin {
             p_109781_.popPose();
         }
         Matrix4f matrix4f1 = p_109781_.last().pose();
-        float time = this.level.getDayTime();
         float f12 = 30.0F;
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, END_SUN_LOCATION);
