@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "minecraft:end_barrens",
-  "features": ["inversia:sleep_vent", "inversia:froglight_crystals", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts", "inversia:floor_tall_crying_ducts", "inversia:patch_sleep_fire"],
+  "features": ["inversia:insomnia_vent", "inversia:selenite_crystals", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts", "inversia:floor_tall_crying_ducts", "inversia:patch_sleep_fire"],
   "step": "vegetal_decoration"
 }

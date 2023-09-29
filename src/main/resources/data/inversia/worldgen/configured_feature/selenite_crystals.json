@@ -7,7 +7,7 @@
         {
           "weight": 2,
           "data": {
-            "Name": "minecraft:ochre_froglight",
+            "Name": "inversia:ochre_selenite",
             "Properties": {
               "axis": "y"
             }
@@ -16,7 +16,7 @@
         {
           "weight": 3,
           "data": {
-            "Name": "minecraft:verdant_froglight",
+            "Name": "inversia:verdant_selenite",
             "Properties": {
               "axis": "y"
             }
@@ -25,7 +25,7 @@
         {
           "weight": 5,
           "data": {
-            "Name": "minecraft:pearlescent_froglight",
+            "Name": "inversia:pearlescent_selenite",
             "Properties": {
               "axis": "y"
             }

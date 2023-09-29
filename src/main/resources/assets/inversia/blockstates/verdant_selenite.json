@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "inversia:block/verdant_selenite",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "inversia:block/verdant_selenite"
+    },
+    "axis=z": {
+      "model": "inversia:block/verdant_selenite",
+      "x": 90
+    }
+  }
+}

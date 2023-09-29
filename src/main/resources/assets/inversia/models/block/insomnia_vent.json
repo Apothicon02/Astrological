@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "down": "inversia:block/sleep_vent",
+    "down": "inversia:block/insomnia_vent",
     "east": "minecraft:block/end_stone",
     "north": "minecraft:block/end_stone",
     "particle": "minecraft:block/end_stone",
     "south": "minecraft:block/end_stone",
-    "up": "inversia:block/sleep_vent",
+    "up": "inversia:block/insomnia_vent",
     "west": "minecraft:block/end_stone"
   },
   "elements": [

@@ -51,7 +51,7 @@ public abstract class InversiaBaseFireBlock extends Block {
 
     public void animateTick(BlockState p_220763_, Level p_220764_, BlockPos p_220765_, RandomSource p_220766_) {
         if (p_220766_.nextInt(24) == 0) {
-            p_220764_.playLocalSound((double)p_220765_.getX() + 0.5D, (double)p_220765_.getY() + 0.5D, (double)p_220765_.getZ() + 0.5D, SoundEvents.GLOW_SQUID_AMBIENT, SoundSource.BLOCKS, 1.0F + p_220766_.nextFloat(), p_220766_.nextFloat() * 0.7F + 0.3F, false);
+            p_220764_.playLocalSound((double)p_220765_.getX() + 0.5D, (double)p_220765_.getY() + 0.5D, (double)p_220765_.getZ() + 0.5D, SoundEvents.GLOW_SQUID_AMBIENT, SoundSource.BLOCKS, 0.4F + p_220766_.nextFloat(), p_220766_.nextFloat() * 0.7F + 0.3F, false);
         }
 
         BlockPos blockpos = p_220765_.below();

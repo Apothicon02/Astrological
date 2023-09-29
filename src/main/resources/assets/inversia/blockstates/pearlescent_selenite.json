@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "inversia:block/pearlescent_selenite",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "inversia:block/pearlescent_selenite"
+    },
+    "axis=z": {
+      "model": "inversia:block/pearlescent_selenite",
+      "x": 90
+    }
+  }
+}

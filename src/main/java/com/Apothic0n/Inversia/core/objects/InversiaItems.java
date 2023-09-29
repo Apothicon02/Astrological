@@ -25,6 +25,15 @@ public final class InversiaItems extends Items {
     public static final RegistryObject<Item> CRYING_DUCT = ITEMS.register("crying_duct", () ->
             new BlockItem(InversiaBlocks.CRYING_DUCT.get(), new Item.Properties()));
 
-    public static final RegistryObject<Item> SLEEP_VENT = ITEMS.register("sleep_vent", () ->
-            new BlockItem(InversiaBlocks.SLEEP_VENT.get(), new Item.Properties()));
+    public static final RegistryObject<Item> INSOMNIA_VENT = ITEMS.register("insomnia_vent", () ->
+            new BlockItem(InversiaBlocks.INSOMNIA_VENT.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> OCHRE_SELENITE = ITEMS.register("ochre_selenite", () ->
+            new BlockItem(InversiaBlocks.OCHRE_SELENITE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> VERDANT_SELENITE = ITEMS.register("verdant_selenite", () ->
+            new BlockItem(InversiaBlocks.VERDANT_SELENITE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> PEARLESCENT_SELENITE = ITEMS.register("pearlescent_selenite", () ->
+            new BlockItem(InversiaBlocks.PEARLESCENT_SELENITE.get(), new Item.Properties()));
 }

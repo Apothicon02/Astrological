@@ -3,6 +3,9 @@
   "block.inversia.tumor": "Tumor",
   "block.inversia.cyst": "Cyst",
   "block.inversia.crying_duct": "Crying Duct",
-  "block.inversia.sleep_vent": "Sleep Vent",
-  "block.inversia.sleep_fire": "Sleep Fire"
+  "block.inversia.insomnia_vent": "Insomnia Vent",
+  "block.inversia.sleep_fire": "Sleep Fire",
+  "block.inversia.ochre_selenite": "Ochre Selenite",
+  "block.inversia.verdant_selenite": "Verdant Selenite",
+  "block.inversia.pearlescent_selenite": "Pearlescent Selenite"
 }

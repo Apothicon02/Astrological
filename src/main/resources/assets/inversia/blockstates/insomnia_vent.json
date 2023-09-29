@@ -2,7 +2,7 @@
   "variants": {
     "": [
       {
-        "model": "inversia:block/sleep_vent"
+        "model": "inversia:block/insomnia_vent"
       }
     ]
   }

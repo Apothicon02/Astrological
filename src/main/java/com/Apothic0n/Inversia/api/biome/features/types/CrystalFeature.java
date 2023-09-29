@@ -55,7 +55,11 @@ public class CrystalFeature extends Feature<SimpleBlockConfiguration> {
             List.of(Blocks.GRANITE, Blocks.DRIPSTONE_BLOCK, Blocks.WATER),
             List.of(Blocks.BASALT, Blocks.SMOOTH_BASALT, Blocks.BLACKSTONE, Blocks.GILDED_BLACKSTONE, Blocks.LAVA),
             List.of(Blocks.DARK_PRISMARINE, Blocks.PRISMARINE, Blocks.PRISMARINE_BRICKS, Blocks.SEA_LANTERN, Blocks.WATER),
-            List.of(Blocks.WARPED_NYLIUM, Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.LAVA));
+            List.of(Blocks.WARPED_NYLIUM, Blocks.CRIMSON_NYLIUM, Blocks.NETHERRACK, Blocks.LAVA),
+            List.of(Blocks.OCHRE_FROGLIGHT, Blocks.VERDANT_FROGLIGHT, Blocks.PEARLESCENT_FROGLIGHT),
+            List.of(Blocks.OCHRE_FROGLIGHT),
+            List.of(Blocks.VERDANT_FROGLIGHT),
+            List.of(Blocks.PEARLESCENT_FROGLIGHT));
 
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> pContext) {
         WorldGenLevel worldGenLevel = pContext.level();
@@ -93,7 +97,7 @@ public class CrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(3)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(4)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(5)));
-            positions.addAll(generateLargeCircle(worldGenLevel, blockPos.above(6)));
+            positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(6)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(7)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(8)));
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(9)));
