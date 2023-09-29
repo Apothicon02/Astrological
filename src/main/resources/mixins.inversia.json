@@ -7,10 +7,11 @@
     "defaultRequire": 1
   },
   "mixins": [
-    "RenderTypeMixin",
-    "LevelRendererMixin"
+    "DimensionTypeMixin",
+    "RenderTypeMixin"
   ],
   "client": [
+    "DimensionSpecialEffectsMixin"
   ],
   "server": [
   ]

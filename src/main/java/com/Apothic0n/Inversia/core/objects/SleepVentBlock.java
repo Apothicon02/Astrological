@@ -16,7 +16,7 @@ public class SleepVentBlock extends Block {
 
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         int randomNumber = (int)(Math.random()*(69)+1);
-        if (randomNumber < 2) {
+        if (randomNumber < 2 && !level.getBlockState(blockPos.above()).isSolid()) {
             for(int j = 0; j < 1080; ++j) {
                 double d3 = (blockPos.getX() + (Math.random() * (500) - 250)*0.001);
                 double d8 = (blockPos.getY() + randomSource.nextDouble() * 0.069);
