@@ -7,5 +7,6 @@
   "block.inversia.sleep_fire": "Sleep Fire",
   "block.inversia.ochre_selenite": "Ochre Selenite",
   "block.inversia.verdant_selenite": "Verdant Selenite",
-  "block.inversia.pearlescent_selenite": "Pearlescent Selenite"
+  "block.inversia.pearlescent_selenite": "Pearlescent Selenite",
+  "effect.inversia.endfected": "Endfected"
 }
