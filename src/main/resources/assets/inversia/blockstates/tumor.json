@@ -1,64 +1,99 @@
 {
   "variants": {
-    "thickness=base,vertical_direction=down": {
-      "model": "inversia:block/tumor_base"
-    },
-    "thickness=base,vertical_direction=up": {
-      "model": "inversia:block/tumor_base",
-      "x": 180
-    },
-    "thickness=frustum,vertical_direction=down": {
-      "model": "inversia:block/tumor_frustum"
-    },
-    "thickness=frustum,vertical_direction=up": {
-      "model": "inversia:block/tumor_frustum",
-      "x": 180
-    },
-    "thickness=middle,vertical_direction=down": [
+    "": [
       {
-        "model": "inversia:block/tumor_middle"
+        "model": "inversia:block/completely_dry_cyst"
       },
       {
-        "model": "inversia:block/alternate_tumor_middle"
+        "model": "inversia:block/completely_dry_cyst"
       },
       {
-        "model": "inversia:block/second_alternate_tumor_middle"
+        "model": "inversia:block/completely_dry_cyst"
       },
       {
-        "model": "inversia:block/third_alternate_tumor_middle"
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/completely_dry_cyst"
+      },
+      {
+        "model": "inversia:block/cyst"
+      },
+      {
+        "model": "inversia:block/dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_dry_cyst"
+      },
+      {
+        "model": "inversia:block/double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_double_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/triple_dry_cyst"
+      },
+      {
+        "model": "inversia:block/alternate_triple_dry_cyst"
       }
-    ],
-    "thickness=middle,vertical_direction=up": [
-      {
-        "model": "inversia:block/tumor_middle",
-        "x": 180
-      },
-      {
-        "model": "inversia:block/alternate_tumor_middle",
-        "x": 180
-      },
-      {
-        "model": "inversia:block/second_alternate_tumor_middle",
-        "x": 180
-      },
-      {
-        "model": "inversia:block/third_alternate_tumor_middle",
-        "x": 180
-      }
-    ],
-    "thickness=tip,vertical_direction=down": {
-      "model": "inversia:block/tumor_tip"
-    },
-    "thickness=tip,vertical_direction=up": {
-      "model": "inversia:block/tumor_tip",
-      "x": 180
-    },
-    "thickness=tip_merge,vertical_direction=down": {
-      "model": "inversia:block/tumor_tip_merge"
-    },
-    "thickness=tip_merge,vertical_direction=up": {
-      "model": "inversia:block/tumor_tip_merge",
-      "x": 180
-    }
+    ]
   }
 }

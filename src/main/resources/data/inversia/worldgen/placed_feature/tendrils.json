@@ -1,5 +1,5 @@
 {
-  "feature": "inversia:cysts",
+  "feature": "inversia:tendrils",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
@@ -53,7 +53,7 @@
           0,
           0
         ],
-        "blocks": "minecraft:end_stone"
+        "blocks": "inversia:tumor"
       },
       "allowed_search_condition": {
         "type": "minecraft:matching_blocks",

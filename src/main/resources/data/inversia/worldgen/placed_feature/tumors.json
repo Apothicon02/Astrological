@@ -53,7 +53,7 @@
           0,
           0
         ],
-        "blocks": "inversia:cyst"
+        "blocks": "minecraft:end_stone"
       },
       "allowed_search_condition": {
         "type": "minecraft:matching_blocks",

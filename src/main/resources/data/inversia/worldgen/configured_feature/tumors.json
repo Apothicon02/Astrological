@@ -1,84 +1,17 @@
 {
-  "type": "minecraft:simple_random_selector",
+  "type": "minecraft:ore",
   "config": {
-    "features": [
+    "size": 64,
+    "discard_chance_on_air_exposure": 0,
+    "targets": [
       {
-        "feature": {
-          "type": "inversia:tumor",
-          "config": {
-            "chance_of_taller_dripstone": 0.3,
-            "chance_of_directional_spread": 0.7,
-            "chance_of_spread_radius2": 0.5,
-            "chance_of_spread_radius3": 0.5
-          }
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:end_stone"
         },
-        "placement": [
-          {
-            "type": "minecraft:environment_scan",
-            "direction_of_search": "down",
-            "max_steps": 12,
-            "target_condition": {
-              "type": "minecraft:matching_blocks",
-              "offset": [
-                0,
-                -1,
-                0
-              ],
-              "blocks": "inversia:cyst"
-            },
-            "allowed_search_condition": {
-              "type": "minecraft:matching_blocks",
-              "offset": [
-                0,
-                0,
-                0
-              ],
-              "blocks": [
-                "minecraft:water",
-                "minecraft:air"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "feature": {
-          "type": "inversia:tumor",
-          "config": {
-            "chance_of_taller_dripstone": 0.8,
-            "chance_of_directional_spread": 0.7,
-            "chance_of_spread_radius2": 0.5,
-            "chance_of_spread_radius3": 0.5
-          }
-        },
-        "placement": [
-          {
-            "type": "minecraft:environment_scan",
-            "direction_of_search": "up",
-            "max_steps": 12,
-            "target_condition": {
-              "type": "minecraft:matching_blocks",
-              "offset": [
-                0,
-                1,
-                0
-              ],
-              "blocks": "inversia:cyst"
-            },
-            "allowed_search_condition": {
-              "type": "minecraft:matching_blocks",
-              "offset": [
-                0,
-                0,
-                0
-              ],
-              "blocks": [
-                "minecraft:water",
-                "minecraft:air"
-              ]
-            }
-          }
-        ]
+        "state": {
+          "Name": "inversia:tumor"
+        }
       }
     ]
   }

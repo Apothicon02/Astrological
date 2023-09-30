@@ -40,7 +40,7 @@ import java.util.Optional;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBlock {
+public class TendrilsBlock extends Block implements Fallable, SimpleWaterloggedBlock {
     public static final DirectionProperty TIP_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
     public static final EnumProperty<DripstoneThickness> THICKNESS = BlockStateProperties.DRIPSTONE_THICKNESS;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -71,7 +71,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     private static final float MAX_HORIZONTAL_OFFSET = 0.125F;
     private static final VoxelShape REQUIRED_SPACE_TO_DRIP_THROUGH_NON_SOLID_BLOCK = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D);
 
-    public TumorBlock(BlockBehaviour.Properties p_154025_) {
+    public TendrilsBlock(BlockBehaviour.Properties p_154025_) {
         super(p_154025_);
         this.registerDefaultState(this.stateDefinition.any().setValue(TIP_DIRECTION, Direction.UP).setValue(THICKNESS, DripstoneThickness.TIP).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
@@ -162,7 +162,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     public static void maybeTransferFluid(BlockState p_221860_, ServerLevel p_221861_, BlockPos p_221862_, float p_221863_) {
         if (!(p_221863_ > 0.17578125F) || !(p_221863_ > 0.05859375F)) {
             if (isStalactiteStartPos(p_221860_, p_221861_, p_221862_)) {
-                Optional<TumorBlock.FluidInfo> optional = getFluidAboveStalactite(p_221861_, p_221862_, p_221860_);
+                Optional<TendrilsBlock.FluidInfo> optional = getFluidAboveStalactite(p_221861_, p_221862_, p_221860_);
                 if (!optional.isEmpty()) {
                     Fluid fluid = (optional.get()).fluid;
                     float f;
@@ -180,7 +180,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
                         BlockPos blockpos = findTip(p_221860_, p_221861_, p_221862_, 11, false);
                         if (blockpos != null) {
                             if ((optional.get()).sourceState.is(Blocks.END_STONE)) {
-                                BlockState blockstate1 = InversiaBlocks.CYST.get().defaultBlockState();
+                                BlockState blockstate1 = InversiaBlocks.TUMOR.get().defaultBlockState();
                                 p_221861_.setBlockAndUpdate((optional.get()).pos, blockstate1);
                                 Block.pushEntitiesUp((optional.get()).sourceState, blockstate1, p_221861_, (optional.get()).pos);
                                 p_221861_.gameEvent(GameEvent.BLOCK_CHANGE, (optional.get()).pos, GameEvent.Context.of(blockstate1));
@@ -343,7 +343,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     }
 
     private static void createDripstone(LevelAccessor p_154088_, BlockPos p_154089_, Direction p_154090_, DripstoneThickness p_154091_) {
-        BlockState blockstate = InversiaBlocks.TUMOR.get().defaultBlockState().setValue(TIP_DIRECTION, p_154090_).setValue(THICKNESS, p_154091_).setValue(WATERLOGGED, Boolean.valueOf(p_154088_.getFluidState(p_154089_).getType() == Fluids.WATER));
+        BlockState blockstate = InversiaBlocks.TENDRILS.get().defaultBlockState().setValue(TIP_DIRECTION, p_154090_).setValue(THICKNESS, p_154091_).setValue(WATERLOGGED, Boolean.valueOf(p_154088_.getFluidState(p_154089_).getType() == Fluids.WATER));
         p_154088_.setBlock(p_154089_, blockstate, 3);
     }
 
@@ -386,7 +386,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
         } else {
             Direction direction = p_154131_.getValue(TIP_DIRECTION);
             BiPredicate<BlockPos, BlockState> bipredicate = (p_202023_, p_202024_) -> {
-                return p_202024_.is(InversiaBlocks.TUMOR.get()) && p_202024_.getValue(TIP_DIRECTION) == direction;
+                return p_202024_.is(InversiaBlocks.TENDRILS.get()) && p_202024_.getValue(TIP_DIRECTION) == direction;
             };
             return findBlockVertical(p_154132_, p_154133_, direction.getAxisDirection(), bipredicate, (p_154168_) -> {
                 return isTip(p_154168_, p_154135_);
@@ -446,10 +446,10 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     private static Optional<BlockPos> findRootBlock(Level p_154067_, BlockPos p_154068_, BlockState p_154069_, int p_154070_) {
         Direction direction = p_154069_.getValue(TIP_DIRECTION);
         BiPredicate<BlockPos, BlockState> bipredicate = (p_202015_, p_202016_) -> {
-            return p_202016_.is(InversiaBlocks.TUMOR.get()) && p_202016_.getValue(TIP_DIRECTION) == direction;
+            return p_202016_.is(InversiaBlocks.TENDRILS.get()) && p_202016_.getValue(TIP_DIRECTION) == direction;
         };
         return findBlockVertical(p_154067_, p_154068_, direction.getOpposite().getAxisDirection(), bipredicate, (p_154245_) -> {
-            return !p_154245_.is(InversiaBlocks.TUMOR.get());
+            return !p_154245_.is(InversiaBlocks.TENDRILS.get());
         }, p_154070_);
     }
 
@@ -460,7 +460,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     }
 
     private static boolean isTip(BlockState p_154154_, boolean p_154155_) {
-        if (!p_154154_.is(InversiaBlocks.TUMOR.get())) {
+        if (!p_154154_.is(InversiaBlocks.TENDRILS.get())) {
             return false;
         } else {
             DripstoneThickness dripstonethickness = p_154154_.getValue(THICKNESS);
@@ -481,7 +481,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     }
 
     private static boolean isStalactiteStartPos(BlockState p_154204_, LevelReader p_154205_, BlockPos p_154206_) {
-        return isStalactite(p_154204_) && !p_154205_.getBlockState(p_154206_.above()).is(InversiaBlocks.TUMOR.get());
+        return isStalactite(p_154204_) && !p_154205_.getBlockState(p_154206_.above()).is(InversiaBlocks.TENDRILS.get());
     }
 
     public boolean isPathfindable(BlockState p_154112_, BlockGetter p_154113_, BlockPos p_154114_, PathComputationType p_154115_) {
@@ -489,7 +489,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     }
 
     private static boolean isPointedDripstoneWithDirection(BlockState p_154208_, Direction p_154209_) {
-        return p_154208_.is(InversiaBlocks.TUMOR.get()) && p_154208_.getValue(TIP_DIRECTION) == p_154209_;
+        return p_154208_.is(InversiaBlocks.TENDRILS.get()) && p_154208_.getValue(TIP_DIRECTION) == p_154209_;
     }
 
     @Nullable
@@ -508,16 +508,16 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
         BiPredicate<BlockPos, BlockState> bipredicate = (p_202030_, p_202031_) -> {
             return canDripThrough(p_154056_, p_202030_, p_202031_);
         };
-        return findBlockVertical(p_154056_, p_154057_, Direction.UP.getAxisDirection(), bipredicate, TumorBlock::canDrip, 11).orElse((BlockPos)null);
+        return findBlockVertical(p_154056_, p_154057_, Direction.UP.getAxisDirection(), bipredicate, TendrilsBlock::canDrip, 11).orElse((BlockPos)null);
     }
 
     public static Fluid getCauldronFillFluidType(ServerLevel p_221850_, BlockPos p_221851_) {
         return getFluidAboveStalactite(p_221850_, p_221851_, p_221850_.getBlockState(p_221851_)).map((p_221858_) -> {
             return p_221858_.fluid;
-        }).filter(TumorBlock::canFillCauldron).orElse(Fluids.EMPTY);
+        }).filter(TendrilsBlock::canFillCauldron).orElse(Fluids.EMPTY);
     }
 
-    private static Optional<TumorBlock.FluidInfo> getFluidAboveStalactite(Level p_154182_, BlockPos p_154183_, BlockState p_154184_) {
+    private static Optional<TendrilsBlock.FluidInfo> getFluidAboveStalactite(Level p_154182_, BlockPos p_154183_, BlockState p_154184_) {
         return !isStalactite(p_154184_) ? Optional.empty() : findRootBlock(p_154182_, p_154183_, p_154184_, 11).map((p_221876_) -> {
             BlockPos blockpos = p_221876_.above();
             BlockState blockstate = p_154182_.getBlockState(blockpos);
@@ -528,7 +528,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
                 fluid = p_154182_.getFluidState(blockpos).getType();
             }
 
-            return new TumorBlock.FluidInfo(blockpos, fluid, blockstate);
+            return new TendrilsBlock.FluidInfo(blockpos, fluid, blockstate);
         });
     }
 
@@ -537,7 +537,7 @@ public class TumorBlock extends Block implements Fallable, SimpleWaterloggedBloc
     }
 
     private static boolean canGrow(BlockState p_154141_, BlockState p_154142_) {
-        return p_154141_.is(InversiaBlocks.CYST.get()) && p_154142_.is(Blocks.WATER) && p_154142_.getFluidState().isSource();
+        return p_154141_.is(InversiaBlocks.TUMOR.get()) && p_154142_.is(Blocks.WATER) && p_154142_.getFluidState().isSource();
     }
 
     private static Fluid getDripFluid(Level p_154053_, Fluid p_154054_) {

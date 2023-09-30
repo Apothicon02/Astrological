@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "minecraft:end_midlands",
-  "features": ["inversia:selenite_crystals", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts", "inversia:floor_tall_crying_ducts", "inversia:patch_sleep_fire"],
+  "features": ["inversia:selenite_crystals", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts", "inversia:floor_tall_crying_ducts", "inversia:patch_cryo_fire"],
   "step": "vegetal_decoration"
 }

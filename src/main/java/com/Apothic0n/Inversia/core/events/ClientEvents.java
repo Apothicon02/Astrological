@@ -2,6 +2,7 @@ package com.Apothic0n.Inversia.core.events;
 
 import com.Apothic0n.Inversia.Inversia;
 import com.Apothic0n.Inversia.api.InversiaMath;
+import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
@@ -10,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,19 +33,21 @@ public class ClientEvents {
             if (time > 24000) {
                 time = (float) (time - (Math.floor(time/24000)*24000));
             }
-            if ((time >= 22700 && time <= 23750) || (time >= 12500 && time <= 13000)) {
-                float finalTime = time;
-                level.players().forEach(player -> {
-                    if (player.level().equals(level)) {
-                        level.playSound(player, player.blockPosition(), SoundEvents.BEACON_AMBIENT, SoundSource.WEATHER, 0.3F, 1.69F);
-                        if (finalTime == 22700 || finalTime == 12450) {
-                            level.playSound(player, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.AMBIENT, 2.0F, 1.69F);
-                        } else if (finalTime == 23750 || finalTime == 13000) {
-                            level.playSound(player, player.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.AMBIENT, 2.0F, 1.69F);
-                        }
+            float finalTime = time;
+            Block sleep = InversiaBlocks.SLEEP.get();
+            level.players().forEach(player -> {
+                if ((finalTime >= 22700 && finalTime <= 23750) || (finalTime >= 12500 && finalTime <= 13000)) {
+                    level.playSound(player, player.blockPosition(), SoundEvents.BEACON_AMBIENT, SoundSource.WEATHER, 0.3F, 1.69F);
+                    if (finalTime == 22700 || finalTime == 12500) {
+                        level.playSound(player, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.AMBIENT, 2.0F, 1.69F);
+                    } else if (finalTime == 23750 || finalTime == 13000) {
+                        level.playSound(player, player.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.AMBIENT, 2.0F, 1.69F);
                     }
-                });
-            }
+                }
+                if ((player.getBlockStateOn().is(sleep) || level.getBlockState(player.blockPosition()).is(sleep) || level.getBlockState(player.blockPosition().above()).is(sleep)) && (Math.random()*(40)+1) < 2) {
+                    level.playSound(player, player.blockPosition(), SoundEvents.WOOL_STEP, SoundSource.PLAYERS, 1F, 1.69F);
+                }
+            });
             Tesselator tesselator = Tesselator.getInstance();
             BufferBuilder bufferbuilder = tesselator.getBuilder();
             PoseStack poseStack = event.getPoseStack();

@@ -25,7 +25,7 @@ public class BlocksMixin {
             require = 1
     )
     private static BlockBehaviour.Properties setObsidianSound(BlockBehaviour.Properties properties) {
-        return properties.sound(SoundType.AMETHYST);
+        return properties.sound(InversiaSoundTypes.GLASSY_OBSIDIAN);
     }
 
     @ModifyExpressionValue(

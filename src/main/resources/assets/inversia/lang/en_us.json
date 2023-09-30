@@ -1,12 +1,17 @@
 {
   "block.inversia.sleep": "Sleep",
+  "block.inversia.tendrils": "Tendrils",
   "block.inversia.tumor": "Tumor",
-  "block.inversia.cyst": "Cyst",
   "block.inversia.crying_duct": "Crying Duct",
   "block.inversia.insomnia_vent": "Insomnia Vent",
-  "block.inversia.sleep_fire": "Sleep Fire",
+  "block.inversia.cryo_fire": "Cryo Fire",
   "block.inversia.ochre_selenite": "Ochre Selenite",
   "block.inversia.verdant_selenite": "Verdant Selenite",
   "block.inversia.pearlescent_selenite": "Pearlescent Selenite",
+
+  "item.inversia.ochre_selenite": "Instantaneous",
+  "item.inversia.verdant_selenite": "Traversal",
+  "item.inversia.pearlescent_selenite": "Frictionless",
+
   "effect.inversia.endfected": "Endfected"
 }

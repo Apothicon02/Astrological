@@ -42,7 +42,7 @@ public abstract class InversiaBaseFireBlock extends Block {
     public static BlockState getState(BlockGetter p_49246_, BlockPos p_49247_) {
         BlockPos blockpos = p_49247_.below();
         BlockState blockstate = p_49246_.getBlockState(blockpos);
-        return blockstate.equals(InversiaBlocks.SLEEP) ? InversiaBlocks.SLEEP_FIRE.get().defaultBlockState() : ((SleepFireBlock)InversiaBlocks.SLEEP_FIRE.get()).getStateForPlacement(p_49246_, p_49247_);
+        return blockstate.equals(InversiaBlocks.SLEEP) ? InversiaBlocks.CRYO_FIRE.get().defaultBlockState() : ((CryoFireBlock)InversiaBlocks.CRYO_FIRE.get()).getStateForPlacement(p_49246_, p_49247_);
     }
 
     public VoxelShape getShape(BlockState p_49274_, BlockGetter p_49275_, BlockPos p_49276_, CollisionContext p_49277_) {

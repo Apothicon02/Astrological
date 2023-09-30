@@ -2,7 +2,6 @@ package com.Apothic0n.Inversia.core.objects;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
@@ -12,7 +11,7 @@ import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 
 import java.util.function.Consumer;
 
-public class TumorUtils {
+public class TendrilsUtils {
     public static double getDripstoneHeight(double p_159624_, double p_159625_, double p_159626_, double p_159627_) {
         if (p_159624_ < p_159627_) {
             p_159624_ = p_159627_;
@@ -78,8 +77,8 @@ public class TumorUtils {
         if (isDripstoneBase(p_190848_.getBlockState(p_190849_.relative(p_190850_.getOpposite())))) {
             BlockPos.MutableBlockPos blockpos$mutableblockpos = p_190849_.mutable();
             buildBaseToTipColumn(p_190850_, p_190851_, p_190852_, (p_277326_) -> {
-                if (p_277326_.is(InversiaBlocks.TUMOR.get())) {
-                    p_277326_ = p_277326_.setValue(TumorBlock.WATERLOGGED, Boolean.valueOf(p_190848_.isWaterAt(blockpos$mutableblockpos)));
+                if (p_277326_.is(InversiaBlocks.TENDRILS.get())) {
+                    p_277326_ = p_277326_.setValue(TendrilsBlock.WATERLOGGED, Boolean.valueOf(p_190848_.isWaterAt(blockpos$mutableblockpos)));
                 }
 
                 p_190848_.setBlock(blockpos$mutableblockpos, p_277326_, 2);
@@ -90,8 +89,8 @@ public class TumorUtils {
 
     public static boolean placeDripstoneBlockIfPossible(LevelAccessor p_190854_, BlockPos p_190855_) {
         BlockState blockstate = p_190854_.getBlockState(p_190855_);
-        if (blockstate.is(InversiaBlocks.CYST.get())) {
-            p_190854_.setBlock(p_190855_, InversiaBlocks.CYST.get().defaultBlockState(), 2);
+        if (blockstate.is(InversiaBlocks.TUMOR.get())) {
+            p_190854_.setBlock(p_190855_, InversiaBlocks.TUMOR.get().defaultBlockState(), 2);
             return true;
         } else {
             return false;
@@ -99,7 +98,7 @@ public class TumorUtils {
     }
 
     public static BlockState createPointedDripstone(Direction p_159657_, DripstoneThickness p_159658_) {
-        return InversiaBlocks.TUMOR.get().defaultBlockState().setValue(TumorBlock.TIP_DIRECTION, p_159657_).setValue(TumorBlock.THICKNESS, p_159658_);
+        return InversiaBlocks.TENDRILS.get().defaultBlockState().setValue(TendrilsBlock.TIP_DIRECTION, p_159657_).setValue(TendrilsBlock.THICKNESS, p_159658_);
     }
 
     public static boolean isDripstoneBaseOrLava(BlockState p_159650_) {
@@ -107,7 +106,7 @@ public class TumorUtils {
     }
 
     public static boolean isDripstoneBase(BlockState p_159663_) {
-        return p_159663_.is(InversiaBlocks.CYST.get());
+        return p_159663_.is(InversiaBlocks.TUMOR.get());
     }
 
     public static boolean isEmptyOrWater(BlockState p_159665_) {

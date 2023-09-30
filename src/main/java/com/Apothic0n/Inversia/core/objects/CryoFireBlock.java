@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class SleepFireBlock extends InversiaBaseFireBlock {
+public class CryoFireBlock extends InversiaBaseFireBlock {
     public static final int MAX_AGE = 15;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
     public static final BooleanProperty NORTH = PipeBlock.NORTH;
@@ -54,12 +54,12 @@ public class SleepFireBlock extends InversiaBaseFireBlock {
     private final Object2IntMap<Block> igniteOdds = new Object2IntOpenHashMap<>();
     private final Object2IntMap<Block> burnOdds = new Object2IntOpenHashMap<>();
 
-    public SleepFireBlock(BlockBehaviour.Properties p_53425_) {
+    public CryoFireBlock(BlockBehaviour.Properties p_53425_) {
         super(p_53425_, 1.0F);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)).setValue(NORTH, Boolean.valueOf(false)).setValue(EAST, Boolean.valueOf(false)).setValue(SOUTH, Boolean.valueOf(false)).setValue(WEST, Boolean.valueOf(false)).setValue(UP, Boolean.valueOf(false)));
         this.shapesCache = ImmutableMap.copyOf(this.stateDefinition.getPossibleStates().stream().filter((p_53497_) -> {
             return p_53497_.getValue(AGE) == 0;
-        }).collect(Collectors.toMap(Function.identity(), SleepFireBlock::calculateShape)));
+        }).collect(Collectors.toMap(Function.identity(), CryoFireBlock::calculateShape)));
     }
 
     private static VoxelShape calculateShape(BlockState p_53491_) {
@@ -234,7 +234,7 @@ public class SleepFireBlock extends InversiaBaseFireBlock {
 
     private BlockState getStateWithAge(LevelAccessor p_53438_, BlockPos p_53439_, int p_53440_) {
         BlockState blockstate = getState(p_53438_, p_53439_);
-        return blockstate.is(InversiaBlocks.SLEEP_FIRE.get()) ? blockstate.setValue(AGE, Integer.valueOf(p_53440_)) : blockstate;
+        return blockstate.is(InversiaBlocks.CRYO_FIRE.get()) ? blockstate.setValue(AGE, Integer.valueOf(p_53440_)) : blockstate;
     }
 
     private boolean isValidFireLocation(BlockGetter p_53486_, BlockPos p_53487_) {
@@ -307,7 +307,7 @@ public class SleepFireBlock extends InversiaBaseFireBlock {
     }
 
     public static void bootStrap() {
-        SleepFireBlock fireblock = (SleepFireBlock)InversiaBlocks.SLEEP_FIRE.get();
+        CryoFireBlock fireblock = (CryoFireBlock)InversiaBlocks.CRYO_FIRE.get();
         fireblock.setFlammable(InversiaBlocks.SLEEP.get(), 5, 20);
     }
 }

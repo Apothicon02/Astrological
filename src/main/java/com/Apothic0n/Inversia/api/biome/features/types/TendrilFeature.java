@@ -1,6 +1,6 @@
 package com.Apothic0n.Inversia.api.biome.features.types;
 
-import com.Apothic0n.Inversia.core.objects.TumorUtils;
+import com.Apothic0n.Inversia.core.objects.TendrilsUtils;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,8 +12,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.PointedDripston
 
 import java.util.Optional;
 
-public class TumorFeature extends Feature<PointedDripstoneConfiguration> {
-    public TumorFeature(Codec<PointedDripstoneConfiguration> pContext) {
+public class TendrilFeature extends Feature<PointedDripstoneConfiguration> {
+    public TendrilFeature(Codec<PointedDripstoneConfiguration> pContext) {
         super(pContext);
     }
 
@@ -30,14 +30,14 @@ public class TumorFeature extends Feature<PointedDripstoneConfiguration> {
             createPatchOfDripstoneBlocks(levelaccessor, randomsource, blockpos1, pointeddripstoneconfiguration);
             int i = (int) (pointeddripstoneconfiguration.chanceOfTallerDripstone*10);
             int randomNumber = (int)(Math.random()*(i)+1);
-            TumorUtils.growPointedDripstone(levelaccessor, blockpos, optional.get(), randomNumber, false);
+            TendrilsUtils.growPointedDripstone(levelaccessor, blockpos, optional.get(), randomNumber, false);
             return true;
         }
     }
 
     private static Optional<Direction> getTipDirection(LevelAccessor p_225199_, BlockPos p_225200_, RandomSource p_225201_) {
-        boolean flag = TumorUtils.isDripstoneBase(p_225199_.getBlockState(p_225200_.above()));
-        boolean flag1 = TumorUtils.isDripstoneBase(p_225199_.getBlockState(p_225200_.below()));
+        boolean flag = TendrilsUtils.isDripstoneBase(p_225199_.getBlockState(p_225200_.above()));
+        boolean flag1 = TendrilsUtils.isDripstoneBase(p_225199_.getBlockState(p_225200_.below()));
         if (flag && flag1) {
             return Optional.of(p_225201_.nextBoolean() ? Direction.DOWN : Direction.UP);
         } else if (flag) {
@@ -48,18 +48,18 @@ public class TumorFeature extends Feature<PointedDripstoneConfiguration> {
     }
 
     private static void createPatchOfDripstoneBlocks(LevelAccessor p_225194_, RandomSource p_225195_, BlockPos p_225196_, PointedDripstoneConfiguration p_225197_) {
-        TumorUtils.placeDripstoneBlockIfPossible(p_225194_, p_225196_);
+        TendrilsUtils.placeDripstoneBlockIfPossible(p_225194_, p_225196_);
 
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             if (!(p_225195_.nextFloat() > p_225197_.chanceOfDirectionalSpread)) {
                 BlockPos blockpos = p_225196_.relative(direction);
-                TumorUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos);
+                TendrilsUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos);
                 if (!(p_225195_.nextFloat() > p_225197_.chanceOfSpreadRadius2)) {
                     BlockPos blockpos1 = blockpos.relative(Direction.getRandom(p_225195_));
-                    TumorUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos1);
+                    TendrilsUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos1);
                     if (!(p_225195_.nextFloat() > p_225197_.chanceOfSpreadRadius3)) {
                         BlockPos blockpos2 = blockpos1.relative(Direction.getRandom(p_225195_));
-                        TumorUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos2);
+                        TendrilsUtils.placeDripstoneBlockIfPossible(p_225194_, blockpos2);
                     }
                 }
             }

@@ -1,5 +1,5 @@
 {
-  "feature": "inversia:patch_sleep_fire",
+  "feature": "inversia:patch_cryo_fire",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
