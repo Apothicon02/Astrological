@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "inversia:block/purpurite"
+      },
+      {
+        "model": "inversia:block/purpurite"
+      },
+      {
+        "model": "inversia:block/purpurite"
+      },
+      {
+        "model": "inversia:block/purpurite"
+      },
+      {
+        "model": "inversia:block/purpurite"
+      },
+      {
+        "model": "inversia:block/purpurite"
+      },
+      {
+        "model": "inversia:block/purpurite"
+      },
+      {
+        "model": "inversia:block/purpurite_secondary"
+      },
+      {
+        "model": "inversia:block/purpurite_secondary"
+      },
+      {
+        "model": "inversia:block/purpurite_teriary"
+      }
+    ]
+  }
+}

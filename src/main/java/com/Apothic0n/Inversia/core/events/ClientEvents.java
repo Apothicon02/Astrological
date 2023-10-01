@@ -24,7 +24,7 @@ public class ClientEvents {
     private static ResourceLocation SATURN_PHASES_LOCATION = new ResourceLocation("inversia", "textures/environment/saturn_phases.png");
 
     @SubscribeEvent
-    public static void addPlanetaryBodiesInEnd(RenderLevelStageEvent event) {
+    public static void renderLevelStageEvent(RenderLevelStageEvent event) {
         Level level = Minecraft.getInstance().level;
         if (level != null && level.dimension().equals(Level.END) && event.getStage().equals(RenderLevelStageEvent.Stage.AFTER_SKY)) {
             RenderSystem.enableBlend();

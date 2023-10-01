@@ -8,6 +8,9 @@
   },
   "mixins": [
     "BlocksMixin",
+    "ChorusFlowerBlockMixin",
+    "ChorusPlantBlockMixin",
+    "ChorusPlantFeatureMixin",
     "DimensionTypeMixin",
     "RenderTypeMixin"
   ],

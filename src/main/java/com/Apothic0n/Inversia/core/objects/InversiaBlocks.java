@@ -44,14 +44,21 @@ public final class InversiaBlocks {
 
     public static final RegistryObject<Block> PEARLESCENT_SELENITE = BLOCKS.register("pearlescent_selenite", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).friction(1.1F).instrument(NoteBlockInstrument.HAT).lightLevel((p_152607_) -> {return 15;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE)));
+
+    public static final RegistryObject<Block> PURPURITE = BLOCKS.register("purpurite", () ->
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).forceSolidOff().strength(0.4F).sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> TRIPHYLITE = BLOCKS.register("triphylite", () ->
+            new TriphyliteBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F).sound(InversiaSoundTypes.TRIPHYLITE).requiresCorrectToolForDrops()));
+
     public static void fixBlockRenderLayers() {
         CryoFireBlock.bootStrap();
         ItemBlockRenderTypes.setRenderLayer(SLEEP.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(TENDRILS.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(OCHRE_SELENITE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(VERDANT_SELENITE.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(PEARLESCENT_SELENITE.get(), RenderType.translucent());
 
+        ItemBlockRenderTypes.setRenderLayer(TENDRILS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CRYING_DUCT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CRYO_FIRE.get(), RenderType.cutout());
     }

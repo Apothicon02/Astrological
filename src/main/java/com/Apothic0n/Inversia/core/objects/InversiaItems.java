@@ -37,4 +37,10 @@ public final class InversiaItems extends Items {
 
     public static final RegistryObject<Item> PEARLESCENT_SELENITE = ITEMS.register("pearlescent_selenite", () ->
             new PearlescentSeleniteBlockItem(InversiaBlocks.PEARLESCENT_SELENITE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> PURPURITE = ITEMS.register("purpurite", () ->
+            new BlockItem(InversiaBlocks.PURPURITE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> TRIPHYLITE = ITEMS.register("triphylite", () ->
+            new BlockItem(InversiaBlocks.TRIPHYLITE.get(), new Item.Properties()));
 }
