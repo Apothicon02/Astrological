@@ -1,0 +1,95 @@
+{
+  "feature": "inversia:jade_crystals",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 220,
+          "max_inclusive": 250
+        }
+      }
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 1,
+            "data": 1
+          },
+          {
+            "weight": 1,
+            "data": 4
+          },
+          {
+            "weight": 1,
+            "data": 7
+          },
+          {
+            "weight": 1,
+            "data": 10
+          },
+          {
+            "weight": 1,
+            "data": 13
+          }
+        ]
+      },
+      "y_spread": 0
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 5,
+            "data": {
+              "type": "minecraft:uniform",
+              "min_inclusive": {
+                "absolute": 58
+              },
+              "max_inclusive": {
+                "absolute": 72
+              }
+            }
+          },
+          {
+            "weight": 5,
+            "data": {
+              "type": "minecraft:uniform",
+              "min_inclusive": {
+                "absolute": -186
+              },
+              "max_inclusive": {
+                "absolute": -58
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:environment_scan",
+      "direction_of_search": "down",
+      "max_steps": 22,
+      "target_condition": {
+        "type": "minecraft:matching_blocks",
+        "offset": [
+          0,
+          0,
+          0
+        ],
+        "blocks": [
+          "inversia:jade"
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

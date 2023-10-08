@@ -1,6 +1,7 @@
 {
   "type": "forge:add_features",
   "biomes": "minecraft:the_end",
-  "features": ["inversia:insomnia_vent", "inversia:extra_chorus_plant", "inversia:selenite_crystals", "inversia:tendrils", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts", "inversia:floor_tall_crying_ducts", "inversia:patch_cryo_fire"],
+  "features": ["inversia:insomnia_vent", "inversia:extra_chorus_plant", "inversia:selenite_crystals", "inversia:tendrils", "inversia:ceiling_crying_ducts", "inversia:floor_crying_ducts",
+    "inversia:floor_tall_crying_ducts", "inversia:patch_cryo_fire", "inversia:purpurite_chorus_plant", "inversia:extra_purpurite_chorus_plant"],
   "step": "vegetal_decoration"
 }

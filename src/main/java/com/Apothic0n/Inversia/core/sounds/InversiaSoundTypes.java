@@ -21,6 +21,8 @@ public class InversiaSoundTypes {
 
     public static final SoundType TRIPHYLITE = new SoundType(1.0F, 0.33F, SoundEvents.AMETHYST_BLOCK_BREAK, SoundEvents.AMETHYST_BLOCK_STEP, SoundEvents.AMETHYST_BLOCK_PLACE, SoundEvents.AMETHYST_BLOCK_HIT, SoundEvents.AMETHYST_BLOCK_FALL);
 
+    public static final SoundType JADE = new SoundType(2.0F, 2.04F, SoundEvents.AMETHYST_BLOCK_BREAK, SoundEvents.AMETHYST_BLOCK_STEP, SoundEvents.AMETHYST_BLOCK_PLACE, SoundEvents.AMETHYST_BLOCK_HIT, SoundEvents.AMETHYST_BLOCK_FALL);
+
     public final float volume;
     public final float pitch;
     private final SoundEvent breakSound;

@@ -49,7 +49,13 @@ public final class InversiaBlocks {
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).forceSolidOff().strength(0.4F).sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> TRIPHYLITE = BLOCKS.register("triphylite", () ->
-            new TriphyliteBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F).sound(InversiaSoundTypes.TRIPHYLITE).requiresCorrectToolForDrops()));
+            new TriphyliteBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(1.5F).sound(InversiaSoundTypes.TRIPHYLITE).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> JADE = BLOCKS.register("jade", () ->
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(1.5F).sound(InversiaSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> LIGHT_JADE = BLOCKS.register("light_jade", () ->
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(1.5F).sound(InversiaSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
 
     public static void fixBlockRenderLayers() {
         CryoFireBlock.bootStrap();

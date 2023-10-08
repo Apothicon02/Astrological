@@ -43,4 +43,10 @@ public final class InversiaItems extends Items {
 
     public static final RegistryObject<Item> TRIPHYLITE = ITEMS.register("triphylite", () ->
             new BlockItem(InversiaBlocks.TRIPHYLITE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> JADE = ITEMS.register("jade", () ->
+            new BlockItem(InversiaBlocks.JADE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> LIGHT_JADE = ITEMS.register("light_jade", () ->
+            new BlockItem(InversiaBlocks.LIGHT_JADE.get(), new Item.Properties()));
 }

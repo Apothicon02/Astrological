@@ -7,7 +7,7 @@
         "type": "minecraft:uniform",
         "value": {
           "min_inclusive": 20,
-          "max_inclusive": 25
+          "max_inclusive": 30
         }
       }
     },
@@ -19,7 +19,7 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": -176
+          "absolute": -172
         },
         "max_inclusive": {
           "absolute": -96
@@ -38,7 +38,6 @@
           0
         ],
         "blocks": [
-          "minecraft:end_stone",
           "inversia:purpurite"
         ]
       },

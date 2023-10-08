@@ -21,6 +21,9 @@ import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.awt.*;
+
 @Mod.EventBusSubscriber(modid = Inversia.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEvents {
 
@@ -42,11 +45,13 @@ public class ModEvents {
             event.accept(InversiaItems.PEARLESCENT_SELENITE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.PURPURITE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.TRIPHYLITE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.JADE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.LIGHT_JADE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 
-    private static final PerlinSimplexNoise SATURATION_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(2345L)), ImmutableList.of(0));
-    private static final PerlinSimplexNoise BRIGHTNESS_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(0));
+    public static final PerlinSimplexNoise SATURATION_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(2345L)), ImmutableList.of(0));
+    public static final PerlinSimplexNoise BRIGHTNESS_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(0));
     @SubscribeEvent
     public static void onBlockColors(RegisterColorHandlersEvent.Block event) {
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
@@ -106,6 +111,7 @@ public class ModEvents {
                         return -328966;
                     }
                 },
-                InversiaBlocks.OCHRE_SELENITE.get(), InversiaBlocks.VERDANT_SELENITE.get(), InversiaBlocks.PEARLESCENT_SELENITE.get());
+                InversiaBlocks.OCHRE_SELENITE.get(), InversiaBlocks.VERDANT_SELENITE.get(), InversiaBlocks.PEARLESCENT_SELENITE.get(),
+                InversiaBlocks.JADE.get());
     }
 }

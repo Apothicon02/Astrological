@@ -38,7 +38,7 @@ public class CommonEvents {
     public static void playerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
         Level level = player.level();
-        if (!level.isClientSide && !player.isSpectator()) {
+        if (!level.isClientSide && !player.isSpectator() && !player.touchingUnloadedChunk()) {
             boolean overVoid = false;
             boolean inSleep = true;
             BlockPos blockPos = player.blockPosition();
