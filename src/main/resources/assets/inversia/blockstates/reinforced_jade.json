@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "inversia:block/reinforced_jade",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "inversia:block/reinforced_jade"
+    },
+    "axis=z": {
+      "model": "inversia:block/reinforced_jade",
+      "x": 90
+    }
+  }
+}

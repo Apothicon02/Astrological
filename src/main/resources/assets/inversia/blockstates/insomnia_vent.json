@@ -3,6 +3,18 @@
     "": [
       {
         "model": "inversia:block/insomnia_vent"
+      },
+      {
+        "model": "inversia:block/insomnia_vent",
+        "y": 90
+      },
+      {
+        "model": "inversia:block/insomnia_vent",
+        "y": 180
+      },
+      {
+        "model": "inversia:block/insomnia_vent",
+        "y": 270
       }
     ]
   }

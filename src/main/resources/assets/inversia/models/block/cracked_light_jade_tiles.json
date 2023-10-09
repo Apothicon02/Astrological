@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "inversia:block/cracked_light_jade_tiles"
+  }
+}

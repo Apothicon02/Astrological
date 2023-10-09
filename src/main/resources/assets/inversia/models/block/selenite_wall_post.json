@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "inversia:block/prismatic_selenite"
+  },
+  "elements": [
+    {   "from": [ 4, 0, 4 ],
+      "to": [ 12, 16, 12 ],
+      "faces": {
+        "down":  { "texture": "#wall", "tintindex": 0, "cullface": "down" },
+        "up":    { "texture": "#wall", "tintindex": 0, "cullface": "up" },
+        "north": { "texture": "#wall", "tintindex": 0 },
+        "south": { "texture": "#wall", "tintindex": 0 },
+        "west":  { "texture": "#wall", "tintindex": 0 },
+        "east":  { "texture": "#wall", "tintindex": 0 }
+      },
+      "__comment": "Center post"
+    }
+  ]
+}

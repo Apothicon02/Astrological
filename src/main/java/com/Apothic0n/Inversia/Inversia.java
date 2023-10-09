@@ -2,6 +2,7 @@ package com.Apothic0n.Inversia;
 
 import com.Apothic0n.Inversia.api.effect.InversiaMobEffects;
 import com.Apothic0n.Inversia.api.biome.features.InversiaFeatureRegistry;
+import com.Apothic0n.Inversia.core.objects.InversiaBlockEntities;
 import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.Apothic0n.Inversia.core.objects.InversiaItems;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,6 +19,7 @@ public class Inversia {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
         InversiaBlocks.BLOCKS.register(eventBus);
+        InversiaBlockEntities.BLOCK_ENTITIES.register(eventBus);
         InversiaItems.ITEMS.register(eventBus);
         InversiaFeatureRegistry.FEATURES.register(eventBus);
         InversiaMobEffects.MOB_EFFECTS.register(eventBus);

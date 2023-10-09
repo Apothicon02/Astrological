@@ -7,10 +7,12 @@ import com.Apothic0n.Inversia.core.objects.InversiaItems;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
@@ -22,8 +24,6 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.awt.*;
-
 @Mod.EventBusSubscriber(modid = Inversia.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEvents {
 
@@ -34,7 +34,8 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void addItemsToTabs(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey().equals(CreativeModeTabs.NATURAL_BLOCKS)) {
+        ResourceKey<CreativeModeTab> tab = event.getTabKey();
+        if (tab.equals(CreativeModeTabs.NATURAL_BLOCKS)) {
             event.accept(InversiaItems.SLEEP.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.TUMOR.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.CYST.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -47,6 +48,16 @@ public class ModEvents {
             event.accept(InversiaItems.TRIPHYLITE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.JADE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.LIGHT_JADE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        } else if (tab.equals(CreativeModeTabs.BUILDING_BLOCKS)) {
+            event.accept(InversiaItems.PRISMATIC_SELENITE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.SELENITE_WALL.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.REINFORCED_JADE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.JADE_BRICKS.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.POLISHED_JADE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.MARBLED_JADE_SLAB.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.LIGHT_JADE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.CRACKED_LIGHT_JADE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(InversiaItems.PURPURITE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 
@@ -77,20 +88,19 @@ public class ModEvents {
                         }
                         double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.1, z * 0.1, false) * 0.33, -0.03, 0.03)+1.1;
                         double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.025, z * 0.025, false) * 0.3, -0.33, 0.33);
-                        float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255)/255;
-                        float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255)/255;
-                        float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255)/255;
+                        float red = (float) FastColor.ABGR32.red(color)/255;
+                        float green = (float) FastColor.ABGR32.green(color)/255;
+                        float blue = (float) FastColor.ABGR32.blue(color)/255;
                         float gray = (float) ((red + green + blue) / (3 + brighten));
                         return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
-                                (int) (Mth.clamp(((red + (gray - red)) * saturate) + temperature, 0, 1) * 255),
+                                (int) (Mth.clamp(((blue + (gray - blue)) * saturate) + temperature, 0, 1) * 255),
                                 (int) (Mth.clamp(((green + (gray - green)) * saturate) + temperature, 0, 1) * 255),
-                                (int) (Mth.clamp(((blue + (gray - blue)) * saturate) - temperature, 0, 1) * 255));
+                                (int) (Mth.clamp(((red + (gray - red)) * saturate) - temperature, 0, 1) * 255));
                     } else {
                         return -328966;
                     }
                 },
-                Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL,
-                InversiaBlocks.INSOMNIA_VENT.get());
+                Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL);
 
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
                     if (blockPos != null && Minecraft.getInstance().level != null) {
@@ -99,19 +109,39 @@ public class ModEvents {
                         int color = -328966;
                         double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.1, z * 0.1, false) * 0.33, -0.03, 0.03)+1.1;
                         double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.025, z * 0.025, false) * 0.3, -0.33, 0.33);
-                        float red = (float) Mth.clamp(FastColor.ABGR32.red(color), 1, 255)/255;
-                        float green = (float) Mth.clamp(FastColor.ABGR32.green(color), 1, 255)/255;
-                        float blue = (float) Mth.clamp(FastColor.ABGR32.blue(color), 1, 255)/255;
+                        float red = (float) FastColor.ABGR32.red(color)/255;
+                        float green = (float) FastColor.ABGR32.green(color)/255;
+                        float blue = (float) FastColor.ABGR32.blue(color)/255;
                         float gray = (float) ((red + green + blue) / (3 + brighten));
                         return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
-                                (int) (Mth.clamp(((red + (gray - red)) * saturate), 0, 1) * 255),
+                                (int) (Mth.clamp(((blue + (gray - blue)) * saturate), 0, 1) * 255),
                                 (int) (Mth.clamp(((green + (gray - green)) * saturate), 0, 1) * 255),
-                                (int) (Mth.clamp(((blue + (gray - blue)) * saturate), 0, 1) * 255));
+                                (int) (Mth.clamp(((red + (gray - red)) * saturate), 0, 1) * 255));
                     } else {
                         return -328966;
                     }
                 },
                 InversiaBlocks.OCHRE_SELENITE.get(), InversiaBlocks.VERDANT_SELENITE.get(), InversiaBlocks.PEARLESCENT_SELENITE.get(),
                 InversiaBlocks.JADE.get());
+
+        event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
+                    Level level = Minecraft.getInstance().level;
+                    if (level != null) {
+                        int color = -19457; //night
+                        float time = level.getDayTime();
+                        if (time > 24000) {
+                            time = (float) (time - (Math.floor(time / 24000) * 24000));
+                        }
+                        if ((time >= 22000 || time <= 500) || (time >= 12000 && time <= 13500)) { //dawn & dusk
+                            color = -3670093;
+                        } else if (time <= 12000) { //day
+                            color = -9549;
+                        }
+                        return color;
+                    } else {
+                        return -328966;
+                    }
+                },
+                InversiaBlocks.PRISMATIC_SELENITE.get(), InversiaBlocks.SELENITE_WALL.get());
     }
 }

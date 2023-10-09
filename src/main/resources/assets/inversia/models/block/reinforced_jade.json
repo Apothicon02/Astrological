@@ -1,9 +1,8 @@
 {
-  "parent": "minecraft:block/cube",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "particle": "inversia:block/insomnia_vent_end",
-    "end": "inversia:block/insomnia_vent_end",
-    "side": "inversia:block/insomnia_vent_side"
+    "end": "inversia:block/reinforced_jade_end",
+    "side": "inversia:block/reinforced_jade_side"
   },
   "elements": [
     {

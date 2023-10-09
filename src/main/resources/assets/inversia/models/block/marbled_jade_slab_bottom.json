@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "inversia:block/marbled_jade_slab_bottom",
+    "side": "inversia:block/marbled_jade_slab_side",
+    "top": "inversia:block/marbled_jade_slab_top"
+  }
+}
