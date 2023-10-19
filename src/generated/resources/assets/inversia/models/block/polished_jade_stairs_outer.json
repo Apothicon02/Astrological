@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "inversia:block/polished_jade",
+    "side": "inversia:block/polished_jade",
+    "top": "inversia:block/polished_jade"
+  }
+}

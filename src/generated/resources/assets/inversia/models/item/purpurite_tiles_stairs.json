@@ -1,0 +1,4 @@
+{
+  "parent": "inversia:block/purpurite_tiles_stairs",
+  "render_type": "minecraft:solid"
+}

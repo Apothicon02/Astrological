@@ -12,7 +12,9 @@ import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
@@ -23,6 +25,10 @@ import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
+import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = Inversia.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEvents {
@@ -58,6 +64,13 @@ public class ModEvents {
             event.accept(InversiaItems.LIGHT_JADE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.CRACKED_LIGHT_JADE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(InversiaItems.PURPURITE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            List<List<RegistryObject<Item>>> buildingBlockItems = List.of(InversiaItems.wallItems, InversiaItems.stairItems, InversiaItems.slabItems);
+            for (int i = 0; i < buildingBlockItems.size(); i++) {
+                List<RegistryObject<Item>> blockItemTypeList = buildingBlockItems.get(i);
+                for (int o = 0; o < blockItemTypeList.size(); o++) {
+                    event.accept(blockItemTypeList.get(o).get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                }
+            }
         }
     }
 

@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -15,6 +14,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.function.ToIntFunction;
 
 import static com.Apothic0n.Inversia.core.objects.PrismaticBlockEntity.PRISMATIC_POWER;
@@ -68,6 +70,7 @@ public final class InversiaBlocks {
             new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(InversiaSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> PURPURITE_TILES = BLOCKS.register("purpurite_tiles", () ->
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(0.4F).sound(SoundType.WOOD).requiresCorrectToolForDrops()));
+
     private static ToIntFunction<BlockState> prismaticEmission(int max) {
         return (blockState) -> {
             int power = blockState.getValue(PRISMATIC_POWER);
@@ -91,5 +94,46 @@ public final class InversiaBlocks {
         ItemBlockRenderTypes.setRenderLayer(TENDRILS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CRYING_DUCT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(CRYO_FIRE.get(), RenderType.cutout());
+    }
+
+    public static List<RegistryObject<Block>> blocksWithStairsSlabsAndWalls = List.of(
+            PURPURITE, PURPURITE_TILES,
+            TRIPHYLITE,
+            JADE, JADE_BRICKS, POLISHED_JADE, REINFORCED_JADE,
+            LIGHT_JADE, LIGHT_JADE_TILES, CRACKED_LIGHT_JADE_TILES
+    );
+
+    public static final List<Map<RegistryObject<Block>, RegistryObject<Block>>> wallBlocks = new ArrayList<>(List.of());
+    public static final List<Map<RegistryObject<Block>, RegistryObject<Block>>> stairBlocks = new ArrayList<>(List.of());
+    public static final List<Map<RegistryObject<Block>, RegistryObject<Block>>> slabBlocks = new ArrayList<>(List.of());
+
+    public static void generateStairsSlabsWalls() {
+        for (int i = 0; i < blocksWithStairsSlabsAndWalls.size(); i++) {
+            RegistryObject<Block> baseBlock = blocksWithStairsSlabsAndWalls.get(i);
+            wallBlocks.add(createWallBlocks(baseBlock));
+            stairBlocks.add(createStairBlocks(baseBlock));
+            slabBlocks.add(createSlabBlocks(baseBlock));
+        }
+    }
+
+    public static Map<RegistryObject<Block>, RegistryObject<Block>> createWallBlocks(RegistryObject<Block> baseBlock) {
+        return Map.of(
+                baseBlock, BLOCKS.register(baseBlock.getId().toString().substring(9) + "_wall", () ->
+                        new WallBlock(BlockBehaviour.Properties.copy(baseBlock.get())))
+        );
+    }
+
+    public static Map<RegistryObject<Block>, RegistryObject<Block>> createStairBlocks(RegistryObject<Block> baseBlock) {
+        return Map.of(
+                baseBlock, BLOCKS.register(baseBlock.getId().toString().substring(9) + "_stairs", () ->
+                        new StairBlock(baseBlock.get().defaultBlockState(), BlockBehaviour.Properties.copy(baseBlock.get())))
+        );
+    }
+
+    public static Map<RegistryObject<Block>, RegistryObject<Block>> createSlabBlocks(RegistryObject<Block> baseBlock) {
+        return Map.of(
+                baseBlock, BLOCKS.register(baseBlock.getId().toString().substring(9) + "_slab", () ->
+                        new SlabBlock(BlockBehaviour.Properties.copy(baseBlock.get())))
+        );
     }
 }

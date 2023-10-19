@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "inversia:block/reinforced_jade_slab"
+    },
+    "type=double": {
+      "model": "inversia:block/reinforced_jade"
+    },
+    "type=top": {
+      "model": "inversia:block/reinforced_jade_slab_top"
+    }
+  }
+}

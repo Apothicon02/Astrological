@@ -5,9 +5,17 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static com.Apothic0n.Inversia.core.objects.InversiaBlocks.blocksWithStairsSlabsAndWalls;
 
 public final class InversiaItems extends Items {
     private InversiaItems() {}
@@ -56,4 +64,47 @@ public final class InversiaItems extends Items {
             new BlockItem(InversiaBlocks.CRACKED_LIGHT_JADE_TILES.get(), new Item.Properties()));
     public static final RegistryObject<Item> PURPURITE_TILES = ITEMS.register("purpurite_tiles", () ->
             new BlockItem(InversiaBlocks.PURPURITE_TILES.get(), new Item.Properties()));
+
+    public static final List<RegistryObject<Item>> wallItems = new ArrayList<>(List.of());
+    public static final List<RegistryObject<Item>> stairItems = new ArrayList<>(List.of());
+    public static final List<RegistryObject<Item>> slabItems = new ArrayList<>(List.of());
+
+    public static void generateStairsSlabsWalls() {
+        for (int i = 0; i < blocksWithStairsSlabsAndWalls.size(); i++) {
+            RegistryObject<Block> baseBlock = blocksWithStairsSlabsAndWalls.get(i);
+            wallItems.add(createWallItems(baseBlock));
+            stairItems.add(createStairItems(baseBlock));
+            slabItems.add(createSlabItems(baseBlock));
+        }
+    }
+
+    public static RegistryObject<Item> createWallItems(RegistryObject<Block> baseBlock) {
+        RegistryObject<Block> block = getBlock(baseBlock, InversiaBlocks.wallBlocks);
+        return ITEMS.register(block.getId().toString().substring(9), () ->
+                        new BlockItem(block.get(), new Item.Properties())
+        );
+    }
+
+    public static RegistryObject<Item> createStairItems(RegistryObject<Block> baseBlock) {
+        RegistryObject<Block> block = getBlock(baseBlock, InversiaBlocks.stairBlocks);
+        return ITEMS.register(block.getId().toString().substring(9), () ->
+                        new BlockItem(block.get(), new Item.Properties())
+        );
+    }
+
+    public static RegistryObject<Item> createSlabItems(RegistryObject<Block> baseBlock) {
+        RegistryObject<Block> block = getBlock(baseBlock, InversiaBlocks.slabBlocks);
+        return ITEMS.register(block.getId().toString().substring(9), () ->
+                        new BlockItem(block.get(), new Item.Properties())
+        );
+    }
+
+    public static RegistryObject<Block> getBlock(RegistryObject<Block> block, List<Map<RegistryObject<Block>, RegistryObject<Block>>> blockList) {
+        for (int i = 0; i < blockList.size(); i++) {
+            if (blockList.get(i).containsKey(block)) {
+                return blockList.get(i).get(block);
+            }
+        }
+        return InversiaBlocks.PRISMATIC_SELENITE; //this means it messed up
+    }
 }

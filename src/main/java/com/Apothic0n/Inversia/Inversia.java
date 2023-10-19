@@ -20,7 +20,9 @@ public class Inversia {
 
         InversiaBlocks.BLOCKS.register(eventBus);
         InversiaBlockEntities.BLOCK_ENTITIES.register(eventBus);
+        InversiaBlocks.generateStairsSlabsWalls();
         InversiaItems.ITEMS.register(eventBus);
+        InversiaItems.generateStairsSlabsWalls();
         InversiaFeatureRegistry.FEATURES.register(eventBus);
         InversiaMobEffects.MOB_EFFECTS.register(eventBus);
     }

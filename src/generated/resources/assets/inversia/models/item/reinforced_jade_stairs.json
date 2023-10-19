@@ -1,0 +1,4 @@
+{
+  "parent": "inversia:block/reinforced_jade_stairs",
+  "render_type": "minecraft:solid"
+}

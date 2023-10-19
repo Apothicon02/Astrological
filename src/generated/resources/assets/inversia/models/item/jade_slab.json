@@ -1,0 +1,4 @@
+{
+  "parent": "inversia:block/jade_slab",
+  "render_type": "minecraft:solid"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "inversia:block/triphylite",
+    "side": "inversia:block/triphylite",
+    "top": "inversia:block/triphylite"
+  }
+}
