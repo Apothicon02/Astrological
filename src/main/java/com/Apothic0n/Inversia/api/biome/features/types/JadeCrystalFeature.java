@@ -33,7 +33,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
         RandomSource random = pContext.random();
         BlockState material = pContext.config().toPlace().getState(random, blockPos);
         List<BlockPos> positions = new ArrayList<>(List.of());
-        int randomNumber = (int)(Math.random()*(3)+1);
+        int randomNumber = (int)(random.nextFloat()*(3)+1);
         if (randomNumber < 2) {
             positions.add(checkBlockPos(worldGenLevel, blockPos));
             positions.add(checkBlockPos(worldGenLevel, blockPos.above()));
@@ -42,7 +42,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(4)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(5)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(6)));
-            blockPos = blockPos.south((int)(Math.random()*(3)-1)).west((int)(Math.random()*(3)-1));
+            blockPos = blockPos.south((int)(random.nextFloat()*(3)-1)).west((int)(random.nextFloat()*(3)-1));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(7)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(8)));
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(9)));
@@ -57,7 +57,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(4)));
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(5)));
             positions.addAll(generateMediumCircle(worldGenLevel, blockPos.above(6)));
-            blockPos = blockPos.south((int)(Math.random()*(3)-1)).west((int)(Math.random()*(3)-1));
+            blockPos = blockPos.south((int)(random.nextFloat()*(3)-1)).west((int)(random.nextFloat()*(3)-1));
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(7)));
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(8)));
             positions.addAll(generateSmallCircle(worldGenLevel, blockPos.above(9)));
@@ -66,14 +66,14 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.add(checkBlockPos(worldGenLevel, blockPos.above(12)));
         }
 
-        int randomNumber2 = (int)(Math.random()*(3)+1);
+        int randomNumber2 = (int)(random.nextFloat()*(3)+1);
         if (randomNumber2 < 2) {
             int northFactor = 4;
             int eastFactor = 4;
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 northFactor = northFactor*-1;
             }
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 eastFactor = eastFactor*-1;
             }
             BlockPos newBlockPos = blockPos.north(northFactor).east(eastFactor).above(3);
@@ -84,7 +84,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(4)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(5)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(6)));
-            newBlockPos = newBlockPos.south((int)(Math.random()*(3)-1)).west((int)(Math.random()*(3)-1));
+            newBlockPos = newBlockPos.south((int)(random.nextFloat()*(3)-1)).west((int)(random.nextFloat()*(3)-1));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(7)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(8)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(9)));
@@ -94,10 +94,10 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
         } else {
             int northFactor = 4;
             int eastFactor = 4;
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 northFactor = northFactor*-1;
             }
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 eastFactor = eastFactor*-1;
             }
             BlockPos newBlockPos = blockPos.north(northFactor).east(eastFactor).above(3);
@@ -108,7 +108,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(4)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(5)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(6)));
-            newBlockPos = newBlockPos.south((int)(Math.random()*(3)-1)).west((int)(Math.random()*(3)-1));
+            newBlockPos = newBlockPos.south((int)(random.nextFloat()*(3)-1)).west((int)(random.nextFloat()*(3)-1));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(7)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(8)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(9)));
@@ -117,14 +117,14 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.add(checkBlockPos(worldGenLevel, newBlockPos.above(12)));
         }
 
-        int randomNumber3 = (int)(Math.random()*(3)+1);
+        int randomNumber3 = (int)(random.nextFloat()*(3)+1);
         if (randomNumber3 < 2) {
             int northFactor = 4;
             int eastFactor = 4;
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 northFactor = northFactor*-1;
             }
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 eastFactor = eastFactor*-1;
             }
             BlockPos newBlockPos = blockPos.north(northFactor).east(eastFactor).above(3);
@@ -135,7 +135,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(4)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(5)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(6)));
-            newBlockPos = newBlockPos.south((int)(Math.random()*(3)-1)).west((int)(Math.random()*(3)-1));
+            newBlockPos = newBlockPos.south((int)(random.nextFloat()*(3)-1)).west((int)(random.nextFloat()*(3)-1));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(7)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(8)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(9)));
@@ -145,10 +145,10 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
         } else {
             int northFactor = 4;
             int eastFactor = 4;
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 northFactor = northFactor*-1;
             }
-            if ((int)(Math.random()*(2)+1) < 2) {
+            if ((int)(random.nextFloat()*(2)+1) < 2) {
                 eastFactor = eastFactor*-1;
             }
             BlockPos newBlockPos = blockPos.north(northFactor).east(eastFactor).above(3);
@@ -159,7 +159,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(4)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(5)));
             positions.addAll(generateMediumCircle(worldGenLevel, newBlockPos.above(6)));
-            newBlockPos = newBlockPos.south((int)(Math.random()*(3)-1)).west((int)(Math.random()*(3)-1));
+            newBlockPos = newBlockPos.south((int)(random.nextFloat()*(3)-1)).west((int)(random.nextFloat()*(3)-1));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(7)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(8)));
             positions.addAll(generateSmallCircle(worldGenLevel, newBlockPos.above(9)));
@@ -168,7 +168,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.add(checkBlockPos(worldGenLevel, newBlockPos.above(12)));
         }
 
-        List<Block> insideMaterial = lootBlocks.get((int)(Math.random()*(lootBlocks.size())));
+        List<Block> insideMaterial = lootBlocks.get((int)(random.nextFloat()*(lootBlocks.size())));
 
         List<BlockPos> validPositions = new ArrayList<>(List.of());
         for (int i = 0; i < positions.size(); i++) {
@@ -183,7 +183,7 @@ public class JadeCrystalFeature extends Feature<SimpleBlockConfiguration> {
             BlockPos pos = validPositions.get(i);
             if (pos.getX() - blockPos.getX() < 1 && pos.getY() - (blockPos.getY()+6) < 1 && pos.getZ() - blockPos.getZ() < 1 &&
                     pos.getX() - blockPos.getX() > -1 && pos.getY() - (blockPos.getY()+6) > -1 && pos.getZ() - blockPos.getZ() > -1) {
-                block = insideMaterial.get((int)(Math.random()*(insideMaterial.size()))).defaultBlockState();
+                block = insideMaterial.get((int)(random.nextFloat()*(insideMaterial.size()))).defaultBlockState();
             }
             worldGenLevel.setBlock(pos, block, UPDATE_ALL);
         }

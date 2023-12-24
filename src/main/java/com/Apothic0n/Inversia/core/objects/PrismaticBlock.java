@@ -15,6 +15,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
@@ -48,6 +50,7 @@ public class PrismaticBlock extends Block implements EntityBlock {
         return InversiaBlockEntities.PRISMATIC_SELENITE.get().create(blockPos, blockState);
     }
 
+    @OnlyIn(Dist.CLIENT)
     public float getFriction() {
         Level level = Minecraft.getInstance().level;
         float newFriction = this.friction; //night

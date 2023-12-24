@@ -11,11 +11,11 @@
     "ChorusFlowerBlockMixin",
     "ChorusPlantBlockMixin",
     "ChorusPlantFeatureMixin",
-    "DimensionTypeMixin",
     "RenderTypeMixin"
   ],
   "client": [
-    "DimensionSpecialEffectsMixin"
+    "DimensionSpecialEffectsMixin",
+    "LightTextureMixin"
   ],
   "server": [
   ]

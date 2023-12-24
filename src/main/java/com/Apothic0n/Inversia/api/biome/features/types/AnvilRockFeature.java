@@ -26,7 +26,7 @@ public class AnvilRockFeature extends Feature<AnvilRockConfiguration> {
         if (worldgenlevel.isEmptyBlock(blockpos.below())) {
             return false;
         } else {
-            int randomNumber = (int)(Math.random()*(4));
+            int randomNumber = (int)(random.nextFloat()*(4));
             for (int s = 0; s <= stretch; ++s) {
                 for (int h = 0; h < height; ++h) {
                     BlockPos pos = blockpos;

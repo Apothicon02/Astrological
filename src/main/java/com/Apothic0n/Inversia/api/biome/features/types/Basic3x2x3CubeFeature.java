@@ -1,22 +1,25 @@
 package com.Apothic0n.Inversia.api.biome.features.types;
 
 import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.LegacyRandomSource;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-
-import static com.Apothic0n.Inversia.core.events.ModEvents.BRIGHTNESS_NOISE;
-import static com.Apothic0n.Inversia.core.events.ModEvents.SATURATION_NOISE;
+import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
 
 public class Basic3x2x3CubeFeature extends Feature<SimpleBlockConfiguration> {
     public Basic3x2x3CubeFeature(Codec<SimpleBlockConfiguration> pContext) {
         super(pContext);
     }
+    public static final PerlinSimplexNoise SATURATION_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(2345L)), ImmutableList.of(0));
+    public static final PerlinSimplexNoise BRIGHTNESS_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(0));
 
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> pContext) {
         WorldGenLevel worldGenLevel = pContext.level();
@@ -28,15 +31,15 @@ public class Basic3x2x3CubeFeature extends Feature<SimpleBlockConfiguration> {
             return false;
         } else {
             generateCube(worldGenLevel, blockPos, material);
-            if ((int)(Math.random()*(3)+1) < 2) {
+            if ((int)(random.nextFloat()*(3)+1) < 2) {
                 generateCube(worldGenLevel, blockPos.above(2), material);
-                if ((int)(Math.random()*(3)+1) < 2) {
+                if ((int)(random.nextFloat()*(3)+1) < 2) {
                     generateCube(worldGenLevel, blockPos.above(4), material);
-                    if ((int)(Math.random()*(3)+1) < 2) {
+                    if ((int)(random.nextFloat()*(3)+1) < 2) {
                         generateCube(worldGenLevel, blockPos.above(6), material);
-                        if ((int)(Math.random()*(4)+1) < 2) {
+                        if ((int)(random.nextFloat()*(4)+1) < 2) {
                             generateCube(worldGenLevel, blockPos.above(8), material);
-                            if ((int)(Math.random()*(4)+1) < 2) {
+                            if ((int)(random.nextFloat()*(4)+1) < 2) {
                                 generateCube(worldGenLevel, blockPos.above(10), material);
                             }
                         }

@@ -20,16 +20,16 @@ public class CryingDuctFeature extends Feature<PointedDripstoneConfiguration> {
     public boolean place(FeaturePlaceContext<PointedDripstoneConfiguration> pContext) {
         LevelAccessor levelaccessor = pContext.level();
         BlockPos blockpos = pContext.origin();
-        RandomSource randomsource = pContext.random();
+        RandomSource random = pContext.random();
         PointedDripstoneConfiguration pointeddripstoneconfiguration = pContext.config();
-        Optional<Direction> optional = getTipDirection(levelaccessor, blockpos, randomsource);
+        Optional<Direction> optional = getTipDirection(levelaccessor, blockpos, random);
         if (optional.isEmpty()) {
             return false;
         } else {
             BlockPos blockpos1 = blockpos.relative(optional.get().getOpposite());
-            createPatchOfDripstoneBlocks(levelaccessor, randomsource, blockpos1, pointeddripstoneconfiguration);
+            createPatchOfDripstoneBlocks(levelaccessor, random, blockpos1, pointeddripstoneconfiguration);
             int i = (int) (pointeddripstoneconfiguration.chanceOfTallerDripstone*10);
-            int randomNumber = (int)(Math.random()*(i)+1);
+            int randomNumber = (int)(random.nextFloat()*(i)+1);
             CryingDuctUtils.growPointedDripstone(levelaccessor, blockpos, optional.get(), randomNumber, false);
             return true;
         }

@@ -79,7 +79,7 @@ public class CrystalFeature extends Feature<SimpleBlockConfiguration> {
         positions.add(checkBlockPos(worldGenLevel, blockPos.above(7)));
         positions.add(checkBlockPos(worldGenLevel, blockPos.above(8)));
 
-        int randomNumber = (int)(Math.random()*(3)+1);
+        int randomNumber = (int)(random.nextFloat()*(3)+1);
         if (randomNumber < 2) { //33% chance to generate big crystal above small one
             blockPos = blockPos.above(15);
             origin = blockPos.above(6);
@@ -106,7 +106,7 @@ public class CrystalFeature extends Feature<SimpleBlockConfiguration> {
             positions.add(checkBlockPos(worldGenLevel, blockPos.above(12)));
         }
 
-        List<Block> insideMaterial = lootBlocks.get((int)(Math.random()*(lootBlocks.size())));
+        List<Block> insideMaterial = lootBlocks.get((int)(random.nextFloat()*(lootBlocks.size())));
 
         List<BlockPos> validPositions = new ArrayList<>(List.of());
         for (int i = 0; i < positions.size(); i++) {
@@ -121,7 +121,7 @@ public class CrystalFeature extends Feature<SimpleBlockConfiguration> {
             BlockPos pos = validPositions.get(i);
             if (pos.getX() - origin.getX() < 2 && pos.getY() - origin.getY() < 2 && pos.getZ() - origin.getZ() < 2 &&
                     pos.getX() - origin.getX() > -2 && pos.getY() - origin.getY() > -2 && pos.getZ() - origin.getZ() > -2) {
-                block = insideMaterial.get((int)(Math.random()*(insideMaterial.size()))).defaultBlockState();
+                block = insideMaterial.get((int)(random.nextFloat()*(insideMaterial.size()))).defaultBlockState();
             }
             worldGenLevel.setBlock(pos, block, UPDATE_ALL);
         }
