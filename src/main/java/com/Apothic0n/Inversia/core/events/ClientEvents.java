@@ -23,6 +23,8 @@ public class ClientEvents {
     private static ResourceLocation END_SUN_LOCATION = new ResourceLocation("inversia", "textures/environment/end_sun.png");
     private static ResourceLocation SATURN_PHASES_LOCATION = new ResourceLocation("inversia", "textures/environment/saturn_phases.png");
 
+    private static int sleepSoundDelay = 19;
+
     @SubscribeEvent
     public static void renderLevelStageEvent(RenderLevelStageEvent event) {
         Level level = Minecraft.getInstance().level;
@@ -44,9 +46,12 @@ public class ClientEvents {
                         level.playSound(player, player.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.AMBIENT, 2.0F, 1.69F);
                     }
                 }
-                if ((player.getBlockStateOn().is(sleep) || level.getBlockState(player.blockPosition()).is(sleep) || level.getBlockState(player.blockPosition().above()).is(sleep)) && (Math.random()*(40)+1) < 2) {
-                    level.playSound(player, player.blockPosition(), SoundEvents.WOOL_STEP, SoundSource.PLAYERS, 1F, 1.69F);
+                double speed = Math.max(player.getDeltaMovement().x(), player.getDeltaMovement().z())+player.getDeltaMovement().y();
+                if ((level.getBlockState(player.blockPosition().below()).is(sleep) || level.getBlockState(player.blockPosition()).is(sleep) || level.getBlockState(player.blockPosition().above()).is(sleep)) && !Minecraft.getInstance().isPaused() && sleepSoundDelay < 0) {
+                    sleepSoundDelay = 20;
+                    level.playSound(player, player.blockPosition(), SoundEvents.WOOL_STEP, SoundSource.PLAYERS, Math.max((float) ((speed*4)+0.1), 1), Math.max((float) ((speed*8)+0.1), 1));
                 }
+                sleepSoundDelay = sleepSoundDelay - ((int) (speed*5) + 1);
             });
             Tesselator tesselator = Tesselator.getInstance();
             BufferBuilder bufferbuilder = tesselator.getBuilder();

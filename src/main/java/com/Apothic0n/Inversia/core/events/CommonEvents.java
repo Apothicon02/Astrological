@@ -135,10 +135,9 @@ public class CommonEvents {
 
             Vec3 vec3 = player.position();
             level.gameEvent(GameEvent.TELEPORT, vec3, GameEvent.Context.of(player));
-            net.minecraftforge.event.entity.EntityTeleportEvent.ChorusFruit tpEvent = net.minecraftforge.event.ForgeEventFactory.onChorusFruitTeleport(player, d3, d4, d5);
-            if (player.randomTeleport(tpEvent.getTargetX(), tpEvent.getTargetY(), tpEvent.getTargetZ(), true)) {
+            if (player.randomTeleport(player.getX()+((Math.random()*32)-16), player.getY()+16, player.getZ()+((Math.random()*32)-16), true)) {
                 SoundEvent soundevent = SoundEvents.CHORUS_FRUIT_TELEPORT;
-                level.playSound((Player)null, d0, d1, d2, soundevent, SoundSource.PLAYERS, 1.0F, 0.75F);
+                level.playSound(null, d0, d1, d2, soundevent, SoundSource.PLAYERS, 1.0F, 0.75F);
                 player.playSound(soundevent, 1.0F, 0.75F);
                 break;
             }
