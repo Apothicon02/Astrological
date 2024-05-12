@@ -12,11 +12,12 @@
     "ChorusPlantBlockMixin",
     "ChorusPlantFeatureMixin",
     "EndGatewayFeatureMixin",
+    "LivingEntityMixin",
     "RenderTypeMixin"
   ],
   "client": [
     "DimensionSpecialEffectsMixin",
-    "LightTextureMixin"
+    "DimensionTypeMixin"
   ],
   "server": [
   ]

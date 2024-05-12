@@ -2,25 +2,22 @@ package com.Apothic0n.Inversia.mixin;
 
 import com.Apothic0n.Inversia.api.InversiaMath;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = LightTexture.class, priority = 69420)
-public class LightTextureMixin {
+@Mixin(DimensionType.class)
+public abstract class DimensionTypeMixin {
 
     /**
      * @author Apothicon
-     * @reason Increases ambient lighting when there is not an eclipse.
+     * @reason Remove ambient light at night.
      */
-    @Inject(at = @At("RETURN"), method = "getBrightness", cancellable = true)
-    private static void getBrightness(DimensionType dimensionType, int integer, CallbackInfoReturnable<Float> cir) {
+    @Inject(method = "ambientLight", at = @At("HEAD"), cancellable = true)
+    public void ambientLight(CallbackInfoReturnable<Float> ci) {
         Level level = Minecraft.getInstance().level;
         if (level != null && level.dimension().equals(Level.END)) {
             float ambientLight;
@@ -53,9 +50,7 @@ public class LightTextureMixin {
             } else {
                 ambientLight = 0;
             }
-            float f = (float)integer / 15.0F;
-            float f1 = f / (4.0F - 3.0F * f);
-            cir.setReturnValue(Mth.lerp(ambientLight, f1, 1.0F));
+            ci.setReturnValue(ambientLight-0.33F);
         }
     }
 }

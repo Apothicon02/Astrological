@@ -79,7 +79,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onBlockColors(RegisterColorHandlersEvent.Block event) {
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
-                    if (blockPos != null && Minecraft.getInstance().level != null) {
+                    if (blockPos != null && Minecraft.getInstance().level != null && Minecraft.getInstance().level.dimension() == Level.END) {
                         int x = blockPos.getX();
                         int z = blockPos.getZ();
                         int color = -328966;

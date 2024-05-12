@@ -12,15 +12,6 @@ public class DimensionSpecialEffectsMixin {
      * @reason Removes hardcoded ambient lighting from the end.
      */
     @Overwrite
-    public boolean forceBrightLightmap() {
-        return false;
-    }
-
-    /**
-     * @author Apothicon
-     * @reason Removes hardcoded ambient lighting from the end.
-     */
-    @Overwrite
     public boolean constantAmbientLight() {
         return false;
     }
