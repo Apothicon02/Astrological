@@ -4,6 +4,7 @@ import com.Apothic0n.Inversia.Inversia;
 import com.Apothic0n.Inversia.api.biome.features.configurations.AnvilRockConfiguration;
 import com.Apothic0n.Inversia.api.biome.features.types.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -14,6 +15,8 @@ import net.minecraftforge.registries.RegistryObject;
 public abstract class InversiaFeatureRegistry {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Inversia.MODID);
 
+    public static final RegistryObject<Feature<GeodeConfiguration>> ASTEROID_FEATURE = FEATURES.register("asteroid", () ->
+            new AsteroidFeature(GeodeConfiguration.CODEC));
     public static final RegistryObject<Feature<AnvilRockConfiguration>> ANVIL_ROCK_FEATURE = FEATURES.register("anvil_rock", () ->
             new AnvilRockFeature(AnvilRockConfiguration.CODEC));
 

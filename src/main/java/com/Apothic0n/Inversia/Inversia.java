@@ -1,5 +1,6 @@
 package com.Apothic0n.Inversia;
 
+import com.Apothic0n.Inversia.api.InversiaDensityFunctions;
 import com.Apothic0n.Inversia.api.effect.InversiaMobEffects;
 import com.Apothic0n.Inversia.api.biome.features.InversiaFeatureRegistry;
 import com.Apothic0n.Inversia.core.objects.InversiaBlockEntities;
@@ -18,6 +19,7 @@ public class Inversia {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
+        InversiaDensityFunctions.register(eventBus);
         InversiaBlocks.BLOCKS.register(eventBus);
         InversiaBlockEntities.BLOCK_ENTITIES.register(eventBus);
         InversiaBlocks.generateStairsSlabsWalls();
