@@ -143,33 +143,6 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:biome",
-          "biome_is": [
-            "minecraft:the_end"
-          ]
-        },
-        "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:y_above",
-            "anchor": {
-              "absolute": 0
-            },
-            "surface_depth_multiplier": 0,
-            "add_stone_depth": false
-          },
-          "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "inversia:tumor"
-            }
-          }
-        }
-      },
-
-      {
-        "type": "minecraft:condition",
-        "if_true": {
             "type": "minecraft:y_above",
             "anchor": {
               "absolute": 32

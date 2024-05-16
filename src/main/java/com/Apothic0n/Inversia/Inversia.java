@@ -6,9 +6,12 @@ import com.Apothic0n.Inversia.api.biome.features.InversiaFeatureRegistry;
 import com.Apothic0n.Inversia.core.objects.InversiaBlockEntities;
 import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import com.Apothic0n.Inversia.core.objects.InversiaItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(Inversia.MODID)
@@ -17,7 +20,8 @@ public class Inversia {
 
     public Inversia() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        eventBus.addListener(this::clientSetup);
+        eventBus.addListener(this::commonSetup);
 
         InversiaDensityFunctions.register(eventBus);
         InversiaBlocks.BLOCKS.register(eventBus);
@@ -31,5 +35,9 @@ public class Inversia {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         InversiaBlocks.fixBlockRenderLayers();
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        ServerLevel.END_SPAWN_POINT = new BlockPos(2500, 0, 0);
     }
 }
