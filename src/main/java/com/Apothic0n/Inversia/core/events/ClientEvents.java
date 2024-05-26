@@ -24,6 +24,7 @@ public class ClientEvents {
     private static ResourceLocation SATURN_PHASES_LOCATION = new ResourceLocation("inversia", "textures/environment/saturn_phases.png");
 
     private static int sleepSoundDelay = 19;
+    private static int soundDelay = 40;
 
     @SubscribeEvent
     public static void renderLevelStageEvent(RenderLevelStageEvent event) {
@@ -37,8 +38,10 @@ public class ClientEvents {
             }
             float finalTime = time;
             Block sleep = InversiaBlocks.SLEEP.get();
+            soundDelay -= 1;
             level.players().forEach(player -> {
-                if ((finalTime >= 22700 && finalTime <= 23750) || (finalTime >= 12500 && finalTime <= 13000)) {
+                if (soundDelay <= 0 &&((finalTime >= 22700 && finalTime <= 23750) || (finalTime >= 12500 && finalTime <= 13000))) {
+                    soundDelay = 40;
                     level.playSound(player, player.blockPosition(), SoundEvents.BEACON_AMBIENT, SoundSource.WEATHER, 0.3F, 1.69F);
                     if (finalTime == 22700 || finalTime == 12500) {
                         level.playSound(player, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.AMBIENT, 2.0F, 1.69F);
@@ -61,10 +64,10 @@ public class ClientEvents {
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0, END_SUN_LOCATION);
             bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-            bufferbuilder.vertex(matrix4f1, -f12, -110.0F, f12).uv(0.0F, 0.0F).endVertex();
-            bufferbuilder.vertex(matrix4f1, f12, -110.0F, f12).uv(1.0F, 0.0F).endVertex();
-            bufferbuilder.vertex(matrix4f1, f12, -110.0F, -f12).uv(1.0F, 1.0F).endVertex();
-            bufferbuilder.vertex(matrix4f1, -f12, -110.0F, -f12).uv(0.0F, 1.0F).endVertex();
+            bufferbuilder.vertex(matrix4f1, -f12, 110.0F, -f12).uv(0.0F, 0.0F).endVertex();
+            bufferbuilder.vertex(matrix4f1, f12, 110.0F, -f12).uv(1.0F, 0.0F).endVertex();
+            bufferbuilder.vertex(matrix4f1, f12, 110.0F, f12).uv(1.0F, 1.0F).endVertex();
+            bufferbuilder.vertex(matrix4f1, -f12, 110.0F, f12).uv(0.0F, 1.0F).endVertex();
             BufferUploader.drawWithShader(bufferbuilder.end());
             if (time >= 22000 || time <= 500) {
                 f12 = 20.0F;
@@ -102,10 +105,10 @@ public class ClientEvents {
                     o16 = InversiaMath.invLerp(extraTime, 16f, max, min);
                 }
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-                bufferbuilder.vertex(matrix4f1, -f12 + o12, -100.0F, f12 + o12).uv(f15, f16).endVertex();
-                bufferbuilder.vertex(matrix4f1, f12 + o8, -100.0F, f12 + o8).uv(f13, f16).endVertex();
-                bufferbuilder.vertex(matrix4f1, f12 + o4, -100.0F, -f12 + o12).uv(f13, f14).endVertex();
-                bufferbuilder.vertex(matrix4f1, -f12 + o8, -100.0F, -f12 + o16).uv(f15, f14).endVertex();
+                bufferbuilder.vertex(matrix4f1, -f12 + o8, 100.0F, -f12 + o16).uv(f15, f16).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12 + o4, 100.0F, -f12 + o12).uv(f13, f16).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12 + o8, 100.0F, f12 + o8).uv(f13, f14).endVertex();
+                bufferbuilder.vertex(matrix4f1, -f12 + o12, 100.0F, f12 + o12).uv(f15, f14).endVertex();
                 BufferUploader.drawWithShader(bufferbuilder.end());
             } else if (time >= 12000 && time <= 13500) {
                 f12 = 20.0F;
@@ -140,10 +143,10 @@ public class ClientEvents {
                     o16 = InversiaMath.invLerp(extraTime, 16f, max, min);
                 }
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-                bufferbuilder.vertex(matrix4f1, -f12 - o12, -100.0F, f12 - o12).uv(f15, f16).endVertex();
-                bufferbuilder.vertex(matrix4f1, f12 - o8, -100.0F, f12 - o8).uv(f13, f16).endVertex();
-                bufferbuilder.vertex(matrix4f1, f12 - o4, -100.0F, -f12 - o12).uv(f13, f14).endVertex();
-                bufferbuilder.vertex(matrix4f1, -f12 - o8, -100.0F, -f12 - o16).uv(f15, f14).endVertex();
+                bufferbuilder.vertex(matrix4f1, -f12 - o8, 100.0F, -f12 - o16).uv(f15, f16).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12 - o4, 100.0F, -f12 - o12).uv(f13, f16).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12 - o8, 100.0F, f12 - o8).uv(f13, f14).endVertex();
+                bufferbuilder.vertex(matrix4f1, -f12 - o12, 100.0F, f12 - o12).uv(f15, f14).endVertex();
                 BufferUploader.drawWithShader(bufferbuilder.end());
             } else {
                 f12 = 20.0F;
@@ -157,10 +160,10 @@ public class ClientEvents {
                 float f15 = (float) (l + 1) / 4.0F;
                 float f16 = (float) (i1 + 1) / 2.0F;
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-                bufferbuilder.vertex(matrix4f1, -f12, -100.0F, f12).uv(f15, f16).endVertex();
-                bufferbuilder.vertex(matrix4f1, f12, -100.0F, f12).uv(f13, f16).endVertex();
-                bufferbuilder.vertex(matrix4f1, f12, -100.0F, -f12).uv(f13, f14).endVertex();
-                bufferbuilder.vertex(matrix4f1, -f12, -100.0F, -f12).uv(f15, f14).endVertex();
+                bufferbuilder.vertex(matrix4f1, -f12, 100.0F, -f12).uv(f15, f16).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12, 100.0F, -f12).uv(f13, f16).endVertex();
+                bufferbuilder.vertex(matrix4f1, f12, 100.0F, f12).uv(f13, f14).endVertex();
+                bufferbuilder.vertex(matrix4f1, -f12, 100.0F, f12).uv(f15, f14).endVertex();
                 BufferUploader.drawWithShader(bufferbuilder.end());
             }
 

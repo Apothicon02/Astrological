@@ -2,7 +2,6 @@ package com.Apothic0n.Inversia.core.events;
 
 import com.Apothic0n.Inversia.Inversia;
 import com.Apothic0n.Inversia.api.effect.InversiaMobEffects;
-import com.Apothic0n.Inversia.api.effect.types.InversiaMobEffect;
 import com.Apothic0n.Inversia.core.objects.InversiaBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -12,7 +11,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -29,6 +27,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
+import java.util.Objects;
 
 import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
@@ -77,27 +76,23 @@ public class CommonEvents {
                 float time = level.getDayTime();
                 time = (float) (time - (Math.floor(time / 24000) * 24000));
                 if ((time >= 22750 && time <= 23750) || (time >= 12500 && time <= 13000)) {
-                    if (level.getHeight(Heightmap.Types.WORLD_SURFACE, blockPos.getX(), blockPos.getZ()) <= level.getMinBuildHeight()) {
-                        overVoid = true;
-                    } else {
-                        int playerY = player.blockPosition().getY();
-                        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(player.blockPosition().getX(), playerY, player.blockPosition().getZ());
-                        int minHeight = level.getMinBuildHeight();
-                        boolean overVoidYet = true;
-                        for (int y = playerY; y > minHeight; y--) {
-                            if (!level.getBlockState(mutableBlockPos.setY(y)).isAir()) {
-                                overVoidYet = false;
-                                break;
-                            }
+                    int playerY = player.blockPosition().getY();
+                    BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(player.blockPosition().getX(), playerY, player.blockPosition().getZ());
+                    int maxHeight = level.getMaxBuildHeight();
+                    boolean overVoidYet = true;
+                    for (int y = playerY; y < maxHeight; y++) {
+                        if (!level.getBlockState(mutableBlockPos.setY(y)).isAir()) {
+                            overVoidYet = false;
+                            break;
                         }
-                        overVoid = overVoidYet;
                     }
+                    overVoid = overVoidYet;
                 }
             }
             if (overVoid) {
                 player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 5));
                 if (player.isPassenger()) {
-                    player.getVehicle().addDeltaMovement(new Vec3(0, 0.2, 0));
+                    Objects.requireNonNull(player.getVehicle()).addDeltaMovement(new Vec3(0, 0.2, 0));
                 }
             } else if (!inSleep) {
                 List<Boat> boats = level.getEntitiesOfClass(Boat.class, new AABB(blockPos.below(), blockPos));

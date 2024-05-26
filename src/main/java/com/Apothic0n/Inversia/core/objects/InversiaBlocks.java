@@ -27,29 +27,29 @@ public final class InversiaBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Inversia.MODID);
 
     public static final RegistryObject<Block> SLEEP = BLOCKS.register("sleep", () ->
-            new MangroveRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASS).strength(0.7F).randomTicks().sound(SoundType.WOOL).noOcclusion().noCollission()));
+            new MangroveRootsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASS).strength(0.4F).randomTicks().sound(SoundType.WOOL).noOcclusion().noCollission()));
     public static final RegistryObject<Block> TENDRILS = BLOCKS.register("tendrils", () ->
-            new TendrilsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLUE).forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).noOcclusion().noCollission().sound(SoundType.MUD).randomTicks().strength(1.5F, 3.0F).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+            new TendrilsBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLUE).forceSolidOn().instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().noOcclusion().noCollission().sound(SoundType.MUD).randomTicks().strength(0.66F, 1.5F).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> TUMOR = BLOCKS.register("tumor", () ->
-            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.MUD).strength(1.5F, 3.0F)));
+            new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GREEN).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.MUD).strength(0.66F, 1.5F)));
     public static final RegistryObject<Block> CRYING_DUCT = BLOCKS.register("crying_duct", () ->
-            new CryingDuctBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).forceSolidOn().instrument(NoteBlockInstrument.HAT).noOcclusion().sound(InversiaSoundTypes.GLASSY_OBSIDIAN).randomTicks().strength(1.5F, 3.0F).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
+            new CryingDuctBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).forceSolidOn().instrument(NoteBlockInstrument.HAT).requiresCorrectToolForDrops().noOcclusion().sound(InversiaSoundTypes.GLASSY_OBSIDIAN).randomTicks().strength(1.5F, 3.0F).dynamicShape().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> INSOMNIA_VENT = BLOCKS.register("insomnia_vent", () ->
-            new InsomniaVentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).randomTicks().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(1.5F, 3.0F)));
+            new InsomniaVentBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).randomTicks().instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(1.5F, 3.0F)));
     public static final RegistryObject<Block> CRYO_FIRE = BLOCKS.register("cryo_fire", () ->
-            new CryoFireBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {return 7;}).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)));
+            new CryoFireBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).replaceable().noCollission().instabreak().lightLevel((p_152607_) -> {return 7;}).requiresCorrectToolForDrops().sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> OCHRE_SELENITE = BLOCKS.register("ochre_selenite", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).friction(0.2F).instrument(NoteBlockInstrument.HAT).lightLevel((p_152607_) -> {return 15;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE).noOcclusion()));
+            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).friction(0.989F).instrument(NoteBlockInstrument.HAT).lightLevel((p_152607_) -> {return 15;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE).noOcclusion()));
     public static final RegistryObject<Block> VERDANT_SELENITE = BLOCKS.register("verdant_selenite", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GLOW_LICHEN).friction(1.15F).instrument(NoteBlockInstrument.HAT).lightLevel((p_152607_) -> {return 15;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE).noOcclusion()));
+            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GLOW_LICHEN).friction(0.989F).instrument(NoteBlockInstrument.HAT).lightLevel((p_152607_) -> {return 15;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE).noOcclusion()));
     public static final RegistryObject<Block> PEARLESCENT_SELENITE = BLOCKS.register("pearlescent_selenite", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).friction(1.1F).instrument(NoteBlockInstrument.HAT).lightLevel((p_152607_) -> {return 15;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE).noOcclusion()));
+            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).friction(0.989F).instrument(NoteBlockInstrument.HAT).lightLevel((p_152607_) -> {return 15;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE).noOcclusion()));
     public static final RegistryObject<Block> PURPURITE = BLOCKS.register("purpurite", () ->
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(0.4F).sound(SoundType.WOOD).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SELENITE_WALL = BLOCKS.register("selenite_wall", () ->
-            new PrismaticWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).friction(1.1F).instrument(NoteBlockInstrument.HAT).lightLevel(prismaticEmission(15)).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE)));
+            new PrismaticWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).friction(0.989F).instrument(NoteBlockInstrument.HAT).lightLevel(prismaticEmission(15)).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE)));
     public static final RegistryObject<Block> PRISMATIC_SELENITE = BLOCKS.register("prismatic_selenite", () ->
-            new PrismaticBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).friction(1.1F).instrument(NoteBlockInstrument.HAT).lightLevel(prismaticEmission(15)).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE)));
+            new PrismaticBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW).friction(0.989F).instrument(NoteBlockInstrument.HAT).lightLevel(prismaticEmission(15)).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(InversiaSoundTypes.SELENITE)));
     public static final RegistryObject<Block> TRIPHYLITE = BLOCKS.register("triphylite", () ->
             new TriphyliteBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(1.5F).sound(InversiaSoundTypes.TRIPHYLITE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> JADE = BLOCKS.register("jade", () ->
