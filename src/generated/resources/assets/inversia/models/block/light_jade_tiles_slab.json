@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "render_type": "minecraft:solid",
-  "textures": {
-    "bottom": "inversia:block/light_jade_tiles",
-    "side": "inversia:block/light_jade_tiles",
-    "top": "inversia:block/light_jade_tiles"
-  }
-}

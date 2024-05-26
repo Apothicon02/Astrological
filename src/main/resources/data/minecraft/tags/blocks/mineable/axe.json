@@ -1,12 +1,12 @@
 {
   "values": [
-    "inversia:purpurite",
-    "inversia:purpurite_stairs",
-    "inversia:purpurite_slab",
-    "inversia:purpurite_wall",
-    "inversia:purpurite_tiles",
-    "inversia:purpurite_tiles_stairs",
-    "inversia:purpurite_tiles_slab",
-    "inversia:purpurite_tiles_wall"
+    "astrological:purpurite",
+    "astrological:purpurite_stairs",
+    "astrological:purpurite_slab",
+    "astrological:purpurite_wall",
+    "astrological:purpurite_tiles",
+    "astrological:purpurite_tiles_stairs",
+    "astrological:purpurite_tiles_slab",
+    "astrological:purpurite_tiles_wall"
   ]
 }

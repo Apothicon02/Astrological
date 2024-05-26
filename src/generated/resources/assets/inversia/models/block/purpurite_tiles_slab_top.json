@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "render_type": "minecraft:solid",
-  "textures": {
-    "bottom": "inversia:block/purpurite_tiles",
-    "side": "inversia:block/purpurite_tiles",
-    "top": "inversia:block/purpurite_tiles"
-  }
-}

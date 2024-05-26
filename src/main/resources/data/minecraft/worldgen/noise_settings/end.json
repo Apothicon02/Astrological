@@ -79,7 +79,7 @@
       }
     },
     "final_density": {
-      "type": "inversia:lower_islands",
+      "type": "astrological:lower_islands",
       "hollow": true,
       "input": {
         "type": "minecraft:squeeze",
@@ -172,7 +172,7 @@
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:noise_threshold",
-          "noise": "inversia:alternate_surface",
+          "noise": "astrological:alternate_surface",
           "min_threshold": 0.056,
           "max_threshold": 0.072
         },
@@ -191,7 +191,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:sleep"
+                  "Name": "astrological:sleep"
                 }
               }
             },
@@ -207,7 +207,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:sleep"
+                  "Name": "astrological:sleep"
                 }
               }
             },
@@ -224,7 +224,7 @@
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:noise_threshold",
-          "noise": "inversia:alternate_surface",
+          "noise": "astrological:alternate_surface",
           "min_threshold": 0.050,
           "max_threshold": 0.078
         },
@@ -243,7 +243,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:purpurite"
+                  "Name": "astrological:purpurite"
                 }
               }
             },
@@ -259,7 +259,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:purpurite"
+                  "Name": "astrological:purpurite"
                 }
               }
             },
@@ -274,7 +274,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:triphylite"
+                  "Name": "astrological:triphylite"
                 }
               }
             }
@@ -293,14 +293,14 @@
           "type": "minecraft:condition",
           "if_true": {
             "type": "minecraft:noise_threshold",
-            "noise": "inversia:secondary_surface",
+            "noise": "astrological:secondary_surface",
             "min_threshold": -0.3,
             "max_threshold": 0.3
           },
           "then_run": {
             "type": "minecraft:block",
             "result_state": {
-              "Name": "inversia:jade"
+              "Name": "astrological:jade"
             }
           }
         }
@@ -309,7 +309,7 @@
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:noise_threshold",
-          "noise": "inversia:secondary_surface",
+          "noise": "astrological:secondary_surface",
           "min_threshold": -0.7,
           "max_threshold": 0.7
         },
@@ -361,7 +361,7 @@
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:noise_threshold",
-          "noise": "inversia:tertiary_surface",
+          "noise": "astrological:tertiary_surface",
           "min_threshold": -0.7,
           "max_threshold": 0.7
         },
@@ -428,7 +428,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:purpurite"
+                  "Name": "astrological:purpurite"
                 }
               }
             },
@@ -444,7 +444,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:purpurite"
+                  "Name": "astrological:purpurite"
                 }
               }
             },
@@ -460,7 +460,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:triphylite"
+                  "Name": "astrological:triphylite"
                 }
               }
             },
@@ -476,7 +476,7 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:purpurite"
+                  "Name": "astrological:purpurite"
                 }
               }
             },
@@ -492,14 +492,14 @@
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "inversia:triphylite"
+                  "Name": "astrological:triphylite"
                 }
               }
             },
             {
               "type": "minecraft:block",
               "result_state": {
-                "Name": "inversia:triphylite"
+                "Name": "astrological:triphylite"
               }
             }
           ]

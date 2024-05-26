@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "astrological:block/insomnia_vent"
+      },
+      {
+        "model": "astrological:block/insomnia_vent",
+        "y": 90
+      },
+      {
+        "model": "astrological:block/insomnia_vent",
+        "y": 180
+      },
+      {
+        "model": "astrological:block/insomnia_vent",
+        "y": 270
+      }
+    ]
+  }
+}

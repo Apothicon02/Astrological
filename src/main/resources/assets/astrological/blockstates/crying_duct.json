@@ -1,0 +1,39 @@
+{
+  "variants": {
+    "thickness=base,vertical_direction=down": {
+      "model": "astrological:block/crying_duct_down_base"
+    },
+    "thickness=base,vertical_direction=up": {
+      "model": "astrological:block/crying_duct_base",
+      "x": 180
+    },
+    "thickness=frustum,vertical_direction=down": {
+      "model": "astrological:block/crying_duct_down_frustum"
+    },
+    "thickness=frustum,vertical_direction=up": {
+      "model": "astrological:block/crying_duct_frustum",
+      "x": 180
+    },
+    "thickness=middle,vertical_direction=down": {
+      "model": "astrological:block/crying_duct_down_middle"
+    },
+    "thickness=middle,vertical_direction=up": {
+      "model": "astrological:block/crying_duct_middle",
+      "x": 180
+    },
+    "thickness=tip,vertical_direction=down": {
+      "model": "astrological:block/crying_duct_down_tip"
+    },
+    "thickness=tip,vertical_direction=up": {
+      "model": "astrological:block/crying_duct_tip",
+      "x": 180
+    },
+    "thickness=tip_merge,vertical_direction=down": {
+      "model": "astrological:block/crying_duct_down_tip_merge"
+    },
+    "thickness=tip_merge,vertical_direction=up": {
+      "model": "astrological:block/crying_duct_tip_merge",
+      "x": 180
+    }
+  }
+}

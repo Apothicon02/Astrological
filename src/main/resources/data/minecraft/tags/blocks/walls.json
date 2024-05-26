@@ -1,15 +1,15 @@
 {
   "values": [
-    "inversia:selenite_wall",
-    "inversia:purpurite_wall",
-    "inversia:purpurite_tiles_wall",
-    "inversia:triphylite_wall",
-    "inversia:jade_wall",
-    "inversia:jade_bricks_wall",
-    "inversia:polished_jade_wall",
-    "inversia:reinforced_jade_wall",
-    "inversia:light_jade_wall",
-    "inversia:light_jade_tiles_wall",
-    "inversia:cracked_light_jade_tiles_wall"
+    "astrological:selenite_wall",
+    "astrological:purpurite_wall",
+    "astrological:purpurite_tiles_wall",
+    "astrological:triphylite_wall",
+    "astrological:jade_wall",
+    "astrological:jade_bricks_wall",
+    "astrological:polished_jade_wall",
+    "astrological:reinforced_jade_wall",
+    "astrological:light_jade_wall",
+    "astrological:light_jade_tiles_wall",
+    "astrological:cracked_light_jade_tiles_wall"
   ]
 }

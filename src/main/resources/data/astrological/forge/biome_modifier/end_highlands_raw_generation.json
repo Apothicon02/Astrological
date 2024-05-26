@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:end_highlands",
+  "features": ["astrological:endstone_anvil_rocks", "astrological:tumors"],
+  "step": "raw_generation"
+}

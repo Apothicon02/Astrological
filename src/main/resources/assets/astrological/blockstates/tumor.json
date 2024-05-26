@@ -1,0 +1,99 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/completely_dry_cyst"
+      },
+      {
+        "model": "astrological:block/cyst"
+      },
+      {
+        "model": "astrological:block/dry_cyst"
+      },
+      {
+        "model": "astrological:block/alternate_dry_cyst"
+      },
+      {
+        "model": "astrological:block/double_dry_cyst"
+      },
+      {
+        "model": "astrological:block/alternate_double_dry_cyst"
+      },
+      {
+        "model": "astrological:block/double_dry_cyst"
+      },
+      {
+        "model": "astrological:block/alternate_double_dry_cyst"
+      },
+      {
+        "model": "astrological:block/triple_dry_cyst"
+      },
+      {
+        "model": "astrological:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "astrological:block/triple_dry_cyst"
+      },
+      {
+        "model": "astrological:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "astrological:block/triple_dry_cyst"
+      },
+      {
+        "model": "astrological:block/alternate_triple_dry_cyst"
+      },
+      {
+        "model": "astrological:block/triple_dry_cyst"
+      },
+      {
+        "model": "astrological:block/alternate_triple_dry_cyst"
+      }
+    ]
+  }
+}

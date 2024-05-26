@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "astrological:block/purpurite_tiles",
+    "side": "astrological:block/purpurite_tiles",
+    "top": "astrological:block/purpurite_tiles"
+  }
+}

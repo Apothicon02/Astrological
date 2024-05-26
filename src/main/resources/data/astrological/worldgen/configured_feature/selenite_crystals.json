@@ -1,0 +1,37 @@
+{
+  "type": "astrological:crystal",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 2,
+          "data": {
+            "Name": "astrological:ochre_selenite",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "astrological:verdant_selenite",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        },
+        {
+          "weight": 5,
+          "data": {
+            "Name": "astrological:pearlescent_selenite",
+            "Properties": {
+              "axis": "y"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

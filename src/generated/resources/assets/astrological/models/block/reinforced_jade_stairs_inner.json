@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "astrological:block/reinforced_jade_end",
+    "side": "astrological:block/reinforced_jade_side",
+    "top": "astrological:block/reinforced_jade_end"
+  }
+}

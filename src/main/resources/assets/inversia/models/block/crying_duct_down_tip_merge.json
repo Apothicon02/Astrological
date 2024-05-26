@@ -1,6 +1,0 @@
-{
-  "parent": "inversia:block/tumor",
-  "textures": {
-    "cross": "inversia:block/crying_duct_down_tip_merge"
-  }
-}

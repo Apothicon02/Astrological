@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "astrological:block/ochre_selenite",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "astrological:block/ochre_selenite"
+    },
+    "axis=z": {
+      "model": "astrological:block/ochre_selenite",
+      "x": 90
+    }
+  }
+}

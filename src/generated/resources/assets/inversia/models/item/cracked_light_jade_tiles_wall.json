@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "render_type": "minecraft:solid",
-  "textures": {
-    "wall": "inversia:block/cracked_light_jade_tiles"
-  }
-}

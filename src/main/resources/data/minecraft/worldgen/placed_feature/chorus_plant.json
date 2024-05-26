@@ -39,7 +39,7 @@
         ],
         "blocks": [
           "minecraft:end_stone",
-          "inversia:purpurite"
+          "astrological:purpurite"
         ]
       },
       "allowed_search_condition": {

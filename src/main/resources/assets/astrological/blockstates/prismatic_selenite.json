@@ -1,0 +1,36 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "astrological:block/prismatic_selenite"
+      },
+      "when": {
+        "prismatic_power": "0|1|2|3|4|5|6|7|8"
+      }
+    },
+    {
+      "apply": {
+        "model": "astrological:block/prismatic_selenite_5"
+      },
+      "when": {
+        "prismatic_power": "9|10|11|12|13|14|15|16"
+      }
+    },
+    {
+      "apply": {
+        "model": "astrological:block/prismatic_selenite_9"
+      },
+      "when": {
+        "prismatic_power": "17|18|19|20|21|22|23|24"
+      }
+    },
+    {
+      "apply": {
+        "model": "astrological:block/prismatic_selenite_13"
+      },
+      "when": {
+        "prismatic_power": "25|26|27|28|29|30"
+      }
+    }
+  ]
+}

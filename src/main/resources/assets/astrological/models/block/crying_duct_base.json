@@ -1,0 +1,6 @@
+{
+  "parent": "astrological:block/tumor",
+  "textures": {
+    "cross": "astrological:block/crying_duct_base"
+  }
+}

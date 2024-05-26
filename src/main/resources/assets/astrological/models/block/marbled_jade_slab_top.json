@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "astrological:block/marbled_jade_slab_bottom",
+    "side": "astrological:block/marbled_jade_slab_side",
+    "top": "astrological:block/marbled_jade_slab_top"
+  }
+}

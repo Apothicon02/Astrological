@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "top": "astrological:block/marbled_jade_slab_top",
+    "bottom": "astrological:block/marbled_jade_slab_bottom",
+    "side": "astrological:block/marbled_jade_slab_side"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#bottom", "tintindex": 0, "cullface": "down"},
+        "up":    { "texture": "#top", "tintindex": 0, "cullface": "up"},
+        "north": { "texture": "#side", "tintindex": 0, "cullface": "north"},
+        "south": { "texture": "#side", "tintindex": 0, "cullface": "south"},
+        "west":  { "texture": "#side", "tintindex": 0, "cullface": "west"},
+        "east":  { "texture": "#side", "tintindex": 0, "cullface": "east"}
+      }
+    }
+  ]
+}

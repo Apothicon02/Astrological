@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:end_highlands",
+  "features": ["astrological:extra_chorus_plant", "astrological:tendrils", "astrological:ceiling_crying_ducts", "astrological:floor_crying_ducts", "astrological:patch_cryo_fire"],
+  "step": "vegetal_decoration"
+}

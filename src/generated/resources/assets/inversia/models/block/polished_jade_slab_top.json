@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "render_type": "minecraft:solid",
-  "textures": {
-    "bottom": "inversia:block/polished_jade",
-    "side": "inversia:block/polished_jade",
-    "top": "inversia:block/polished_jade"
-  }
-}

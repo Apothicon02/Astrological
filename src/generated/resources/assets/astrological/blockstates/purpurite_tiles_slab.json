@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "astrological:block/purpurite_tiles_slab"
+    },
+    "type=double": {
+      "model": "astrological:block/purpurite_tiles"
+    },
+    "type=top": {
+      "model": "astrological:block/purpurite_tiles_slab_top"
+    }
+  }
+}

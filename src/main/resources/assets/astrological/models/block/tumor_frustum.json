@@ -1,0 +1,6 @@
+{
+  "parent": "astrological:block/tumor",
+  "textures": {
+    "cross": "astrological:block/tumor_frustum"
+  }
+}

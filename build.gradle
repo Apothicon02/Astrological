@@ -18,8 +18,8 @@ apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
 version = '1.2.0'
-group = 'com.Apothic0n.Inversia' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'inversia'
+group = 'com.Apothic0n.Astrological' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'astrological'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -62,7 +62,7 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
-                inversia {
+                astrological {
                     source sourceSets.main
                 }
             }
@@ -84,7 +84,7 @@ minecraft {
             //property 'forge.logging.console.level', 'debug'
 
             mods {
-                inversia {
+                astrological {
                     source sourceSets.main
                 }
             }
@@ -106,10 +106,10 @@ minecraft {
             //property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'inversia', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'astrological', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                inversia {
+                astrological {
                     source sourceSets.main
                 }
             }
@@ -166,8 +166,8 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     mixin {
         // MixinGradle Settings
-         add sourceSets.main, 'mixins.inversia.refmap.json'
-         config 'mixins.inversia.json'
+         add sourceSets.main, 'mixins.astrological.refmap.json'
+         config 'mixins.astrological.json'
 
          debug.verbose = true
          debug.export = true
@@ -187,7 +187,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "Inversia",
+                "Specification-Title"     : "Astrological",
                 "Specification-Vendor"    : "Apothic0n",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,

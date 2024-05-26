@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "minecraft:end_highlands",
-  "features": ["inversia:endstone_anvil_rocks", "inversia:tumors"],
-  "step": "raw_generation"
-}

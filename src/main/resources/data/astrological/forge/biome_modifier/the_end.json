@@ -1,0 +1,7 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:the_end",
+  "features": ["astrological:insomnia_vent", "astrological:extra_chorus_plant", "astrological:tendrils", "astrological:surface_tendrils", "astrological:ceiling_crying_ducts", "astrological:floor_crying_ducts",
+    "astrological:floor_tall_crying_ducts", "astrological:patch_cryo_fire", "astrological:purpurite_chorus_plant", "astrological:extra_purpurite_chorus_plant"],
+  "step": "vegetal_decoration"
+}

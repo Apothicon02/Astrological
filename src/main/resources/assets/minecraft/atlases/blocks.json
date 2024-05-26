@@ -1,65 +1,65 @@
 {
   "sources": [
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_base",
-      "sprite": "inversia:block/crying_duct_base"
+      "sprite": "astrological:block/crying_duct_base"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_frustum",
-      "sprite": "inversia:block/crying_duct_frustum"
+      "sprite": "astrological:block/crying_duct_frustum"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_middle",
-      "sprite": "inversia:block/crying_duct_middle"
+      "sprite": "astrological:block/crying_duct_middle"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_tip",
-      "sprite": "inversia:block/crying_duct_tip"
+      "sprite": "astrological:block/crying_duct_tip"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_tip_merge",
-      "sprite": "inversia:block/crying_duct_tip_merge"
+      "sprite": "astrological:block/crying_duct_tip_merge"
     },
 
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/crying_obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_base",
-      "sprite": "inversia:block/crying_duct_down_base"
+      "sprite": "astrological:block/crying_duct_down_base"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/crying_obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_frustum",
-      "sprite": "inversia:block/crying_duct_down_frustum"
+      "sprite": "astrological:block/crying_duct_down_frustum"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/crying_obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_middle",
-      "sprite": "inversia:block/crying_duct_down_middle"
+      "sprite": "astrological:block/crying_duct_down_middle"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/crying_obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_tip",
-      "sprite": "inversia:block/crying_duct_down_tip"
+      "sprite": "astrological:block/crying_duct_down_tip"
     },
     {
-      "type": "inversia:mask",
+      "type": "astrological:mask",
       "source": "minecraft:block/crying_obsidian",
       "mask": "minecraft:block/pointed_dripstone_down_tip_merge",
-      "sprite": "inversia:block/crying_duct_down_tip_merge"
+      "sprite": "astrological:block/crying_duct_down_tip_merge"
     }
   ]
 }

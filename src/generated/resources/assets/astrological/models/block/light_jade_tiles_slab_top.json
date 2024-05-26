@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "astrological:block/light_jade_tiles",
+    "side": "astrological:block/light_jade_tiles",
+    "top": "astrological:block/light_jade_tiles"
+  }
+}

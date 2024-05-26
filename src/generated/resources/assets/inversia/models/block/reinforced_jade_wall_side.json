@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_side",
-  "render_type": "minecraft:solid",
-  "textures": {
-    "wall": "inversia:block/reinforced_jade_side"
-  }
-}

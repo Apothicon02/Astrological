@@ -1,0 +1,54 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "astrological:block/purpurite"
+      },
+      {
+        "model": "astrological:block/purpurite_secondary"
+      },
+      {
+        "model": "astrological:block/purpurite_secondary"
+      },
+      {
+        "model": "astrological:block/purpurite_teriary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      },
+      {
+        "model": "astrological:block/purpurite_quaternary"
+      }
+    ]
+  }
+}

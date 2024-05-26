@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "render_type": "minecraft:solid",
-  "textures": {
-    "bottom": "inversia:block/jade_bricks",
-    "side": "inversia:block/jade_bricks",
-    "top": "inversia:block/jade_bricks"
-  }
-}

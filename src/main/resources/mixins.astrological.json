@@ -1,0 +1,24 @@
+{
+  "compatibilityLevel": "JAVA_17",
+  "package": "com.Apothic0n.Astrological.mixin",
+  "refmap": "mixins.astrological.refmap.json",
+  "required": true,
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "BlocksMixin",
+    "ChorusFlowerBlockMixin",
+    "ChorusPlantBlockMixin",
+    "ChorusPlantFeatureMixin",
+    "EndGatewayFeatureMixin",
+    "LivingEntityMixin",
+    "RenderTypeMixin"
+  ],
+  "client": [
+    "DimensionSpecialEffectsMixin",
+    "DimensionTypeMixin"
+  ],
+  "server": [
+  ]
+}

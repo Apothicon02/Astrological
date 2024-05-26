@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "astrological:block/alternate_double_dry_cyst"
+  }
+}

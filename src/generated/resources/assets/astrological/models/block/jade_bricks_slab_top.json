@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "astrological:block/jade_bricks",
+    "side": "astrological:block/jade_bricks",
+    "top": "astrological:block/jade_bricks"
+  }
+}

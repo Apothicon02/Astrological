@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "astrological:block/polished_jade",
+    "side": "astrological:block/polished_jade",
+    "top": "astrological:block/polished_jade"
+  }
+}

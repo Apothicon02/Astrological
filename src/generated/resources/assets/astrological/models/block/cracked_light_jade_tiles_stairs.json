@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/stairs",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "bottom": "astrological:block/cracked_light_jade_tiles",
+    "side": "astrological:block/cracked_light_jade_tiles",
+    "top": "astrological:block/cracked_light_jade_tiles"
+  }
+}

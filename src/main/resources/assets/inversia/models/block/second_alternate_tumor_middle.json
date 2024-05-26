@@ -1,6 +1,0 @@
-{
-  "parent": "inversia:block/tumor",
-  "textures": {
-    "cross": "inversia:block/second_alternate_tumor_middle"
-  }
-}

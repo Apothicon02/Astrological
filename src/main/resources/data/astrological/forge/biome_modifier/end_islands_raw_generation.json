@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:small_end_islands",
+  "features": "astrological:jade_crystals",
+  "step": "raw_generation"
+}

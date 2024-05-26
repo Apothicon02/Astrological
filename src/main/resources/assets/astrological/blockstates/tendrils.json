@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "thickness=base,vertical_direction=down": {
+      "model": "astrological:block/tumor_base"
+    },
+    "thickness=base,vertical_direction=up": {
+      "model": "astrological:block/tumor_base",
+      "x": 180
+    },
+    "thickness=frustum,vertical_direction=down": {
+      "model": "astrological:block/tumor_frustum"
+    },
+    "thickness=frustum,vertical_direction=up": {
+      "model": "astrological:block/tumor_frustum",
+      "x": 180
+    },
+    "thickness=middle,vertical_direction=down": [
+      {
+        "model": "astrological:block/tumor_middle"
+      },
+      {
+        "model": "astrological:block/alternate_tumor_middle"
+      },
+      {
+        "model": "astrological:block/second_alternate_tumor_middle"
+      },
+      {
+        "model": "astrological:block/third_alternate_tumor_middle"
+      }
+    ],
+    "thickness=middle,vertical_direction=up": [
+      {
+        "model": "astrological:block/tumor_middle",
+        "x": 180
+      },
+      {
+        "model": "astrological:block/alternate_tumor_middle",
+        "x": 180
+      },
+      {
+        "model": "astrological:block/second_alternate_tumor_middle",
+        "x": 180
+      },
+      {
+        "model": "astrological:block/third_alternate_tumor_middle",
+        "x": 180
+      }
+    ],
+    "thickness=tip,vertical_direction=down": {
+      "model": "astrological:block/tumor_tip"
+    },
+    "thickness=tip,vertical_direction=up": {
+      "model": "astrological:block/tumor_tip",
+      "x": 180
+    },
+    "thickness=tip_merge,vertical_direction=down": {
+      "model": "astrological:block/tumor_tip_merge"
+    },
+    "thickness=tip_merge,vertical_direction=up": {
+      "model": "astrological:block/tumor_tip_merge",
+      "x": 180
+    }
+  }
+}

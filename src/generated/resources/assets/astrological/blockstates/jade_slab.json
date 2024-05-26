@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "astrological:block/jade_slab"
+    },
+    "type=double": {
+      "model": "astrological:block/jade"
+    },
+    "type=top": {
+      "model": "astrological:block/jade_slab_top"
+    }
+  }
+}

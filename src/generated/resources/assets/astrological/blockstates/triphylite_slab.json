@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "astrological:block/triphylite_slab"
+    },
+    "type=double": {
+      "model": "astrological:block/triphylite"
+    },
+    "type=top": {
+      "model": "astrological:block/triphylite_slab_top"
+    }
+  }
+}
