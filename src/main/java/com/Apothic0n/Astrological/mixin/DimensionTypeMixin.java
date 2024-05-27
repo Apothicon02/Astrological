@@ -50,7 +50,7 @@ public abstract class DimensionTypeMixin {
             } else {
                 ambientLight = 0;
             }
-            ci.setReturnValue(ambientLight-0.33F);
+            ci.setReturnValue(ambientLight-0.266F);
         }
     }
 }

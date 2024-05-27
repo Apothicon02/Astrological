@@ -53,21 +53,21 @@ public final class AstrologicalBlocks {
     public static final RegistryObject<Block> TRIPHYLITE = BLOCKS.register("triphylite", () ->
             new TriphyliteBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(1.5F).sound(AstrologicalSoundTypes.TRIPHYLITE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> JADE = BLOCKS.register("jade", () ->
-            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> 1).hasPostProcess((state, getter, pos) -> true).emissiveRendering((state, getter, pos) -> true).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> REINFORCED_JADE = BLOCKS.register("reinforced_jade", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).friction(1.1F).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(AstrologicalSoundTypes.JADE)));
+            new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).friction(1.1F).requiresCorrectToolForDrops().strength(1.25F, 4.2F).sound(AstrologicalSoundTypes.JADE)));
     public static final RegistryObject<Block> JADE_BRICKS = BLOCKS.register("jade_bricks", () ->
-            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> POLISHED_JADE = BLOCKS.register("polished_jade", () ->
-            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> MARBLED_JADE_SLAB = BLOCKS.register("marbled_jade_slab", () ->
-            new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+            new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> LIGHT_JADE = BLOCKS.register("light_jade", () ->
-            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> 1).hasPostProcess((state, getter, pos) -> true).emissiveRendering((state, getter, pos) -> true).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> LIGHT_JADE_TILES = BLOCKS.register("light_jade_tiles", () ->
-            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> CRACKED_LIGHT_JADE_TILES = BLOCKS.register("cracked_light_jade_tiles", () ->
-            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).lightLevel((p_152607_) -> {return 2;}).requiresCorrectToolForDrops()));
+            new JadeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(1.5F).sound(AstrologicalSoundTypes.JADE).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> PURPURITE_TILES = BLOCKS.register("purpurite_tiles", () ->
             new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(0.4F).sound(SoundType.WOOD).requiresCorrectToolForDrops()));
 

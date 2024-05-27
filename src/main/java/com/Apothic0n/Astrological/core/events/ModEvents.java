@@ -14,6 +14,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
@@ -78,42 +79,6 @@ public class ModEvents {
     public static final PerlinSimplexNoise BRIGHTNESS_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(0));
     @SubscribeEvent
     public static void onBlockColors(RegisterColorHandlersEvent.Block event) {
-        event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
-                    if (blockPos != null && Minecraft.getInstance().level != null && Minecraft.getInstance().level.dimension() == Level.END) {
-                        int x = blockPos.getX();
-                        int z = blockPos.getZ();
-                        int color = -328966;
-                        int maxHeight = Minecraft.getInstance().level.getMaxBuildHeight();
-                        int midHeight = maxHeight/2;
-                        int minHeight = Minecraft.getInstance().level.getMinBuildHeight();
-                        int offset = 0;
-                        if (minHeight < 0) {
-                            offset = -(minHeight);
-                            maxHeight = maxHeight + offset;
-                            midHeight = (maxHeight/2);
-                        }
-                        BlockPos offsetPos = blockPos.above(offset);
-                        double temperature = 0;
-                        if (offsetPos.getY() < midHeight) {
-                            temperature = (offsetPos.getY()-midHeight) * 0.005;
-                        } else {
-                            temperature = Mth.clamp(offsetPos.getY()-midHeight * 0.005, -1, 0.05);
-                        }
-                        double saturate = Mth.clamp(SATURATION_NOISE.getValue(x * 0.1, z * 0.1, false) * 0.33, -0.03, 0.03)+1.1;
-                        double brighten = Mth.clamp(BRIGHTNESS_NOISE.getValue(x * 0.025, z * 0.025, false) * 0.3, -0.33, 0.33);
-                        float red = (float) FastColor.ABGR32.red(color)/255;
-                        float green = (float) FastColor.ABGR32.green(color)/255;
-                        float blue = (float) FastColor.ABGR32.blue(color)/255;
-                        float gray = (float) ((red + green + blue) / (3 + brighten));
-                        return FastColor.ABGR32.color(FastColor.ABGR32.alpha(color),
-                                (int) (Mth.clamp(((blue + (gray - blue)) * saturate) + temperature, 0, 1) * 255),
-                                (int) (Mth.clamp(((green + (gray - green)) * saturate) + temperature, 0, 1) * 255),
-                                (int) (Mth.clamp(((red + (gray - red)) * saturate) - temperature, 0, 1) * 255));
-                    } else {
-                        return -328966;
-                    }
-                },
-                Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL);
 
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
                     if (blockPos != null && Minecraft.getInstance().level != null) {
@@ -135,7 +100,8 @@ public class ModEvents {
                     }
                 },
                 AstrologicalBlocks.OCHRE_SELENITE.get(), AstrologicalBlocks.VERDANT_SELENITE.get(), AstrologicalBlocks.PEARLESCENT_SELENITE.get(),
-                AstrologicalBlocks.JADE.get());
+                AstrologicalBlocks.JADE.get(),
+                Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL);
 
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
                     Level level = Minecraft.getInstance().level;
