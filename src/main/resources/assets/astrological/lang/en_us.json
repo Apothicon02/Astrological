@@ -53,9 +53,9 @@
   "block.astrological.cracked_light_jade_tiles_stairs": "Cracked Light Jade Tile Stairs",
   "block.astrological.cracked_light_jade_tiles_slab": "Cracked Light Jade Tile Slab",
 
-  "item.astrological.ochre_selenite": "Instantaneous",
-  "item.astrological.verdant_selenite": "Traversal",
-  "item.astrological.pearlescent_selenite": "Frictionless",
+  "item.astrological.ochre_selenite": "Speeding",
+  "item.astrological.verdant_selenite": "Soaring",
+  "item.astrological.pearlescent_selenite": "Sinking",
 
   "effect.astrological.endfected": "Endfected"
 }

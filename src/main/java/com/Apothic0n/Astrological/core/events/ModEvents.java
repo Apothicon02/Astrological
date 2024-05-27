@@ -79,7 +79,6 @@ public class ModEvents {
     public static final PerlinSimplexNoise BRIGHTNESS_NOISE = new PerlinSimplexNoise(new WorldgenRandom(new LegacyRandomSource(5432L)), ImmutableList.of(0));
     @SubscribeEvent
     public static void onBlockColors(RegisterColorHandlersEvent.Block event) {
-
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
                     if (blockPos != null && Minecraft.getInstance().level != null) {
                         int x = blockPos.getX();
@@ -104,6 +103,28 @@ public class ModEvents {
                 Blocks.END_STONE, Blocks.END_STONE_BRICKS, Blocks.END_STONE_BRICK_STAIRS, Blocks.END_STONE_BRICK_SLAB, Blocks.END_STONE_BRICK_WALL);
 
         event.register((blockState, blockAndTintGetter, blockPos, tint) -> {
+                    Level level = Minecraft.getInstance().level;
+                    if (level != null) {
+                        int color = -19457; //night
+                        float time = level.getDayTime();
+                        if (time > 24000) {
+                            time = (float) (time - (Math.floor(time / 24000) * 24000));
+                        }
+                        if ((time >= 22000 || time <= 500) || (time >= 12000 && time <= 13500)) { //dawn & dusk
+                            color = -3670093;
+                        } else if (time <= 12000) { //day
+                            color = -9549;
+                        }
+                        return color;
+                    } else {
+                        return -328966;
+                    }
+                },
+                AstrologicalBlocks.PRISMATIC_SELENITE.get(), AstrologicalBlocks.SELENITE_WALL.get());
+    }
+    @SubscribeEvent
+    public static void onItemColors(RegisterColorHandlersEvent.Item event) {
+        event.register((blockAndTintGetter, tint) -> {
                     Level level = Minecraft.getInstance().level;
                     if (level != null) {
                         int color = -19457; //night

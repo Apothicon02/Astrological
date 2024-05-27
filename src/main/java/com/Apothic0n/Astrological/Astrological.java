@@ -6,8 +6,11 @@ import com.Apothic0n.Astrological.api.biome.features.AstrologicalFeatureRegistry
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlockEntities;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlocks;
 import com.Apothic0n.Astrological.core.objects.AstrologicalItems;
+import com.google.common.collect.ImmutableList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -39,5 +42,14 @@ public class Astrological {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         ServerLevel.END_SPAWN_POINT = new BlockPos(2500, 0, 0);
+        event.enqueueWork(() -> {
+            addLight(Blocks.CHORUS_FLOWER.getStateDefinition().getPossibleStates(), 9);
+        });
+    }
+
+    private void addLight(ImmutableList<BlockState> blockStates, int light) {
+        for (int i = 0; i < blockStates.size(); i++) {
+            blockStates.get(i).lightEmission = light;
+        }
     }
 }

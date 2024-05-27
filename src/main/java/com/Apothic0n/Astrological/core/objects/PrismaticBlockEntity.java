@@ -25,12 +25,12 @@ public class PrismaticBlockEntity extends BlockEntity {
     public static <T extends BlockEntity> void tick(Level level, BlockPos blockPos, BlockState blockState, T t) {
         if (!level.isClientSide) {
             List<Integer> all = List.of(
-                    power(level, blockPos.below()),
-                    power(level, blockPos.north()),
-                    power(level, blockPos.east()),
-                    power(level, blockPos.south()),
-                    power(level, blockPos.west()),
-                    power(level, blockPos.above())
+                power(level, blockPos.below()),
+                power(level, blockPos.north()),
+                power(level, blockPos.east()),
+                power(level, blockPos.south()),
+                power(level, blockPos.west()),
+                power(level, blockPos.above())
             );
             int maxPower = 0;
             for (int i = 0; i < all.size(); i++) {

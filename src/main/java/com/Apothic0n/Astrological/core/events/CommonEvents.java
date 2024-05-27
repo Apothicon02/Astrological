@@ -38,25 +38,42 @@ public class CommonEvents {
         Player player = event.player;
         Level level = player.level();
         if (!level.isClientSide && !player.isSpectator() && !player.touchingUnloadedChunk()) {
-            boolean overVoid = false;
-            boolean inSleep = true;
+            boolean underVoid = false;
             BlockPos blockPos = player.blockPosition();
+            BlockState standingOn = player.getBlockStateOn();
+            
+            //Sleep
             Block sleep = AstrologicalBlocks.SLEEP.get();
-            if (player.getBlockStateOn().is(sleep) || level.getBlockState(blockPos).is(sleep)) {
-                if (player.isPassenger() && player.getVehicle().getType().equals(EntityType.BOAT)) {
-                    player.getVehicle().setNoGravity(true);
-                    player.getVehicle().addDeltaMovement( new Vec3(0, 0.05, 0));
-                }
+            if (standingOn.is(sleep) || level.getBlockState(blockPos).is(sleep)) {
                 player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 60, 0));
                 player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 2, 0));
-            } else if (player.isPassenger() && player.getVehicle().getType().equals(EntityType.BOAT) && level.getBlockState(blockPos.below()).isAir() && (level.getBlockState(blockPos.below(2)).isAir() || level.getBlockState(blockPos.below(3)).is(sleep) || level.getBlockState(blockPos.below(4)).is(sleep))) {
-                player.getVehicle().addDeltaMovement(new Vec3(0, -0.05, 0));
-            } else {
-                inSleep = false;
             }
             if (level.getBlockState(blockPos.atY((int) player.getEyePosition().y)).is(sleep)) {
                 player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 2, 1));
             }
+            
+            //Selenite
+            if (standingOn.is(AstrologicalBlocks.OCHRE_SELENITE.get())) {
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 120, 31));
+            } else if (standingOn.is(AstrologicalBlocks.VERDANT_SELENITE.get())) {
+                player.addEffect(new MobEffectInstance(MobEffects.JUMP, 5, 9));
+            } else if (standingOn.is(AstrologicalBlocks.PEARLESCENT_SELENITE.get())) {
+                player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 150, 0));
+            } else if (standingOn.is(AstrologicalBlocks.PRISMATIC_SELENITE.get()) || standingOn.is(AstrologicalBlocks.SELENITE_WALL.get())) {
+                float time = level.getDayTime();
+                if (time > 24000) {
+                    time = (float) (time - (Math.floor(time / 24000) * 24000));
+                }
+                if ((time >= 22000 || time <= 500) || (time >= 12000 && time <= 13500)) { //dawn & dusk
+                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 120, 31));
+                } else if (time <= 12000) { //day
+                    player.addEffect(new MobEffectInstance(MobEffects.JUMP, 5, 9));
+                } else { //night
+                    player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 150, 0));
+                }
+            }
+
+            //Tumors & Tendrils            
             List<BlockPos> neighboring = List.of(
                     blockPos.below(), blockPos, blockPos.above(), 
                     blockPos.north(), blockPos.above().north(),
@@ -72,35 +89,6 @@ public class CommonEvents {
                     teleportPlayer(level, player);
                 }
             }
-            if (level.dimension().equals(Level.END)) {
-                float time = level.getDayTime();
-                time = (float) (time - (Math.floor(time / 24000) * 24000));
-                if ((time >= 22750 && time <= 23750) || (time >= 12500 && time <= 13000)) {
-                    int playerY = player.blockPosition().getY();
-                    BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(player.blockPosition().getX(), playerY, player.blockPosition().getZ());
-                    int maxHeight = level.getMaxBuildHeight();
-                    boolean overVoidYet = true;
-                    for (int y = playerY; y < maxHeight; y++) {
-                        if (!level.getBlockState(mutableBlockPos.setY(y)).isAir()) {
-                            overVoidYet = false;
-                            break;
-                        }
-                    }
-                    overVoid = overVoidYet;
-                }
-            }
-            if (overVoid) {
-                player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 5));
-                if (player.isPassenger()) {
-                    Objects.requireNonNull(player.getVehicle()).addDeltaMovement(new Vec3(0, 0.2, 0));
-                }
-            } else if (!inSleep) {
-                List<Boat> boats = level.getEntitiesOfClass(Boat.class, new AABB(blockPos.below(), blockPos));
-                for (int b = 0; b < boats.size(); b++) {
-                    Boat boat = boats.get(b);
-                    boat.setNoGravity(false);
-                }
-            }
             if (player.hasEffect(AstrologicalMobEffects.ENDFECTED.get())) {
                 if (((int)(Math.random()*(240)+1) < 2)  || (player.getEffect(AstrologicalMobEffects.ENDFECTED.get()).endsWithin(3)) && ((int)(Math.random()*(20)+1) < 2)) {
                     teleportPlayer(level, player);
@@ -110,6 +98,31 @@ public class CommonEvents {
                     spreadEndfection(level, player.getOnPos().east(), true);
                     spreadEndfection(level, player.getOnPos().south(), true);
                     spreadEndfection(level, player.getOnPos().west(), true);
+                }
+            }
+
+            //Anti-eclipse
+            if (level.dimension().equals(Level.END)) {
+                float time = level.getDayTime();
+                time = (float) (time - (Math.floor(time / 24000) * 24000));
+                if ((time >= 22750 && time <= 23750) || (time >= 12500 && time <= 13000)) {
+                    int playerY = player.blockPosition().getY();
+                    BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos(player.blockPosition().getX(), playerY, player.blockPosition().getZ());
+                    int maxHeight = level.getMaxBuildHeight();
+                    boolean underVoidYet = true;
+                    for (int y = playerY; y < maxHeight; y++) {
+                        if (!level.getBlockState(mutableBlockPos.setY(y)).isAir()) {
+                            underVoidYet = false;
+                            break;
+                        }
+                    }
+                    underVoid = underVoidYet;
+                }
+            }
+            if (underVoid) {
+                player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 5));
+                if (player.isPassenger()) {
+                    Objects.requireNonNull(player.getVehicle()).addDeltaMovement(new Vec3(0, 0.2, 0));
                 }
             }
         }
