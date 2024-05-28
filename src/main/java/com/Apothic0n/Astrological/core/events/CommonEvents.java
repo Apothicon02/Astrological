@@ -54,7 +54,7 @@ public class CommonEvents {
             
             //Selenite
             if (standingOn.is(AstrologicalBlocks.OCHRE_SELENITE.get())) {
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 120, 31));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 80, 31));
             } else if (standingOn.is(AstrologicalBlocks.VERDANT_SELENITE.get())) {
                 player.addEffect(new MobEffectInstance(MobEffects.JUMP, 5, 9));
             } else if (standingOn.is(AstrologicalBlocks.PEARLESCENT_SELENITE.get())) {
@@ -65,7 +65,7 @@ public class CommonEvents {
                     time = (float) (time - (Math.floor(time / 24000) * 24000));
                 }
                 if ((time >= 22000 || time <= 500) || (time >= 12000 && time <= 13500)) { //dawn & dusk
-                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 120, 31));
+                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 80, 31));
                 } else if (time <= 12000) { //day
                     player.addEffect(new MobEffectInstance(MobEffects.JUMP, 5, 9));
                 } else { //night

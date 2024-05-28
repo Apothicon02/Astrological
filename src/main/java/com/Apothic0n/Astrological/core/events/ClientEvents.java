@@ -5,8 +5,13 @@ import com.Apothic0n.Astrological.api.AstrologicalMath;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlocks;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -18,6 +23,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.joml.Matrix4f;
 
+import static net.minecraft.client.renderer.blockentity.TheEndPortalRenderer.END_PORTAL_LOCATION;
+import static net.minecraft.client.renderer.blockentity.TheEndPortalRenderer.END_SKY_LOCATION;
+
 @Mod.EventBusSubscriber(modid = Astrological.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ClientEvents {
     private static ResourceLocation END_SUN_LOCATION = new ResourceLocation("astrological", "textures/environment/end_sun.png");
@@ -28,10 +36,82 @@ public class ClientEvents {
 
     @SubscribeEvent
     public static void renderLevelStageEvent(RenderLevelStageEvent event) {
-        Level level = Minecraft.getInstance().level;
+        ClientLevel level = Minecraft.getInstance().level;
         if (level != null && level.dimension().equals(Level.END) && event.getStage().equals(RenderLevelStageEvent.Stage.AFTER_SKY)) {
             RenderSystem.enableBlend();
             RenderSystem.depthMask(false);
+            PoseStack poseStack = event.getPoseStack();
+            Matrix4f matrix4f1 = poseStack.last().pose();
+            Tesselator tesselator = Tesselator.getInstance();
+            BufferBuilder bufferbuilder = tesselator.getBuilder();
+
+            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+            RenderSystem.setShaderTexture(0, END_SKY_LOCATION);
+            for(int i = 0; i < 6; ++i) {
+                poseStack.pushPose();
+                if (i == 1) {
+                    poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+                }
+
+                if (i == 2) {
+                    poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+                }
+
+                if (i == 3) {
+                    poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+                }
+
+                if (i == 4) {
+                    poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+                }
+
+                if (i == 5) {
+                    poseStack.mulPose(Axis.ZP.rotationDegrees(-90.0F));
+                }
+
+                Matrix4f matrix4f = poseStack.last().pose();
+                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(40, 40, 40, 255).endVertex();
+                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 4.0F).color(40, 40, 40, 255).endVertex();
+                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(4.0F, 4.0F).color(40, 40, 40, 255).endVertex();
+                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(4.0F, 0.0F).color(40, 40, 40, 255).endVertex();
+                tesselator.end();
+                poseStack.popPose();
+            }
+            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+            RenderSystem.setShaderTexture(0, END_PORTAL_LOCATION);
+            for(int i = 0; i < 6; ++i) {
+                poseStack.pushPose();
+                if (i == 1) {
+                    poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+                }
+
+                if (i == 2) {
+                    poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+                }
+
+                if (i == 3) {
+                    poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+                }
+
+                if (i == 4) {
+                    poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+                }
+
+                if (i == 5) {
+                    poseStack.mulPose(Axis.ZP.rotationDegrees(-90.0F));
+                }
+
+                Matrix4f matrix4f = poseStack.last().pose();
+                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(255, 255, 255, 64).endVertex();
+                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 1).color(255, 255, 255, 64).endVertex();
+                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(1, 1).color(255, 255, 255, 64).endVertex();
+                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(1, 0.0F).color(255, 255, 255, 64).endVertex();
+                tesselator.end();
+                poseStack.popPose();
+            }
+
             float time = level.getDayTime();
             if (time > 24000) {
                 time = (float) (time - (Math.floor(time/24000)*24000));
@@ -56,10 +136,6 @@ public class ClientEvents {
                 }
                 sleepSoundDelay = sleepSoundDelay - ((int) (speed*5) + 1);
             });
-            Tesselator tesselator = Tesselator.getInstance();
-            BufferBuilder bufferbuilder = tesselator.getBuilder();
-            PoseStack poseStack = event.getPoseStack();
-            Matrix4f matrix4f1 = poseStack.last().pose();
             float f12 = 30.0F;
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0, END_SUN_LOCATION);
@@ -123,24 +199,23 @@ public class ClientEvents {
                 float f16 = (float) (i1 + 1) / 2.0F;
                 int min = 12000;
                 int max = 13500;
-                float extraTime = time;
                 int mid = ((max - min) / 2) + min;
                 float o4;
                 float o8;
                 float o12;
                 float o16;
-                if (extraTime < mid) {
+                if (time < mid) {
                     max = mid;
-                    o4 = AstrologicalMath.invLerp(extraTime, 4f, min, max);
-                    o8 = AstrologicalMath.invLerp(extraTime, 8f, min, max);
-                    o12 = AstrologicalMath.invLerp(extraTime, 12f, min, max);
-                    o16 = AstrologicalMath.invLerp(extraTime, 16f, min, max);
+                    o4 = AstrologicalMath.invLerp(time, 4f, min, max);
+                    o8 = AstrologicalMath.invLerp(time, 8f, min, max);
+                    o12 = AstrologicalMath.invLerp(time, 12f, min, max);
+                    o16 = AstrologicalMath.invLerp(time, 16f, min, max);
                 } else {
                     min = mid;
-                    o4 = AstrologicalMath.invLerp(extraTime, 4f, max, min);
-                    o8 = AstrologicalMath.invLerp(extraTime, 8f, max, min);
-                    o12 = AstrologicalMath.invLerp(extraTime, 12f, max, min);
-                    o16 = AstrologicalMath.invLerp(extraTime, 16f, max, min);
+                    o4 = AstrologicalMath.invLerp(time, 4f, max, min);
+                    o8 = AstrologicalMath.invLerp(time, 8f, max, min);
+                    o12 = AstrologicalMath.invLerp(time, 12f, max, min);
+                    o16 = AstrologicalMath.invLerp(time, 16f, max, min);
                 }
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
                 bufferbuilder.vertex(matrix4f1, -f12 - o8, 100.0F, -f12 - o16).uv(f15, f16).endVertex();
@@ -155,8 +230,8 @@ public class ClientEvents {
                 int k = level.getMoonPhase();
                 int l = k % 4;
                 int i1 = k / 4 % 2;
-                float f13 = (float) (l + 0) / 4.0F;
-                float f14 = (float) (i1 + 0) / 2.0F;
+                float f13 = (float) (l) / 4.0F;
+                float f14 = (float) (i1) / 2.0F;
                 float f15 = (float) (l + 1) / 4.0F;
                 float f16 = (float) (i1 + 1) / 2.0F;
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);

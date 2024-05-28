@@ -25,32 +25,32 @@ public abstract class DimensionTypeMixin {
             if (time > 24000) {
                 time = (float) (time - (Math.floor(time / 24000) * 24000));
             }
-            if (time >= 22750 && time <= 23750) {
+            if (time >= 22450 && time <= 23999) {
                 int min = 22750;
                 int max = 23750;
                 int mid = ((max - min) / 2) + min;
                 if (time < mid) {
                     max = mid;
-                    ambientLight = AstrologicalMath.invLerp(time, 0.2f, min, max);
+                    ambientLight = AstrologicalMath.invLerp(time, -0.1f, min, max);
                 } else {
                     min = mid;
-                    ambientLight = AstrologicalMath.invLerp(time, 0.2f, max, min);
+                    ambientLight = AstrologicalMath.invLerp(time, -0.1f, max, min);
                 }
-            } else if (time >= 12500 && time <= 13000) {
+            } else if (time >= 12333 && time <= 13125) {
                 int min = 12500;
                 int max = 13000;
                 int mid = ((max - min) / 2) + min;
                 if (time < mid) {
                     max = mid;
-                    ambientLight = AstrologicalMath.invLerp(time, 0.2f, min, max);
+                    ambientLight = AstrologicalMath.invLerp(time, -0.1f, min, max);
                 } else {
                     min = mid;
-                    ambientLight = AstrologicalMath.invLerp(time, 0.2f, max, min);
+                    ambientLight = AstrologicalMath.invLerp(time, -0.1f, max, min);
                 }
             } else {
                 ambientLight = 0;
             }
-            ci.setReturnValue(ambientLight-0.266F);
+            ci.setReturnValue(ambientLight-0.166F);
         }
     }
 }
