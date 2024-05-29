@@ -8,10 +8,8 @@ import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.FogRenderer;
-import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.blockentity.TheEndPortalRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -46,39 +44,6 @@ public class ClientEvents {
             BufferBuilder bufferbuilder = tesselator.getBuilder();
 
             RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-            RenderSystem.setShaderTexture(0, END_SKY_LOCATION);
-            for(int i = 0; i < 6; ++i) {
-                poseStack.pushPose();
-                if (i == 1) {
-                    poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
-                }
-
-                if (i == 2) {
-                    poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
-                }
-
-                if (i == 3) {
-                    poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-                }
-
-                if (i == 4) {
-                    poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-                }
-
-                if (i == 5) {
-                    poseStack.mulPose(Axis.ZP.rotationDegrees(-90.0F));
-                }
-
-                Matrix4f matrix4f = poseStack.last().pose();
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(40, 40, 40, 255).endVertex();
-                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 4.0F).color(40, 40, 40, 255).endVertex();
-                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(4.0F, 4.0F).color(40, 40, 40, 255).endVertex();
-                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(4.0F, 0.0F).color(40, 40, 40, 255).endVertex();
-                tesselator.end();
-                poseStack.popPose();
-            }
-            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
             RenderSystem.setShaderTexture(0, END_PORTAL_LOCATION);
             for(int i = 0; i < 6; ++i) {
                 poseStack.pushPose();
@@ -104,10 +69,10 @@ public class ClientEvents {
 
                 Matrix4f matrix4f = poseStack.last().pose();
                 bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, -100.0F).uv(0.0F, 0.0F).color(255, 255, 255, 64).endVertex();
-                bufferbuilder.vertex(matrix4f, -100.0F, -100.0F, 100.0F).uv(0.0F, 1).color(255, 255, 255, 64).endVertex();
-                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, 100.0F).uv(1, 1).color(255, 255, 255, 64).endVertex();
-                bufferbuilder.vertex(matrix4f, 100.0F, -100.0F, -100.0F).uv(1, 0.0F).color(255, 255, 255, 64).endVertex();
+                bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, -110.0F).uv(0.0F, 0.0F).color(255, 255, 255, 100).endVertex();
+                bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, 110.0F).uv(0.0F, 1).color(255, 255, 255, 100).endVertex();
+                bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, 110.0F).uv(1, 1).color(255, 255, 255, 100).endVertex();
+                bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, -110.0F).uv(1, 0.0F).color(255, 255, 255, 100).endVertex();
                 tesselator.end();
                 poseStack.popPose();
             }
