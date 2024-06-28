@@ -2,6 +2,7 @@
   "compatibilityLevel": "JAVA_17",
   "package": "com.Apothic0n.Astrological.mixin",
   "refmap": "mixins.astrological.refmap.json",
+  "plugin": "com.Apothic0n.Astrological.api.AstrologicalMixinConfig",
   "required": true,
   "injectors": {
     "defaultRequire": 1
@@ -12,7 +13,6 @@
     "ChorusPlantBlockMixin",
     "ChorusPlantFeatureMixin",
     "EndGatewayFeatureMixin",
-    "LivingEntityMixin",
     "RenderTypeMixin"
   ],
   "client": [

@@ -1,6 +1,7 @@
 package com.Apothic0n.Astrological;
 
 import com.Apothic0n.Astrological.api.AstrologicalDensityFunctions;
+import com.Apothic0n.Astrological.api.AstrologicalJsonReader;
 import com.Apothic0n.Astrological.api.effect.AstrologicalMobEffects;
 import com.Apothic0n.Astrological.api.biome.features.AstrologicalFeatureRegistry;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlockEntities;
@@ -21,11 +22,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class Astrological {
     public static final String MODID = "astrological";
 
-    public Astrological() {
+    public Astrological() throws Exception {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::commonSetup);
 
+        AstrologicalJsonReader.main();
         AstrologicalDensityFunctions.register(eventBus);
         AstrologicalBlocks.BLOCKS.register(eventBus);
         AstrologicalBlockEntities.BLOCK_ENTITIES.register(eventBus);
@@ -41,7 +43,9 @@ public class Astrological {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        ServerLevel.END_SPAWN_POINT = new BlockPos(2500, 0, 0);
+        if (AstrologicalJsonReader.spawnInOuterEnd) {
+            ServerLevel.END_SPAWN_POINT = new BlockPos(2500, 0, 0);
+        }
         event.enqueueWork(() -> {
             addLight(Blocks.CHORUS_FLOWER.getStateDefinition().getPossibleStates(), 9);
         });

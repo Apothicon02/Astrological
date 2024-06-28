@@ -1,6 +1,7 @@
 package com.Apothic0n.Astrological.core.events;
 
 import com.Apothic0n.Astrological.Astrological;
+import com.Apothic0n.Astrological.api.AstrologicalJsonReader;
 import com.Apothic0n.Astrological.api.AstrologicalMath;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlocks;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -42,39 +43,40 @@ public class ClientEvents {
             Matrix4f matrix4f1 = poseStack.last().pose();
             Tesselator tesselator = Tesselator.getInstance();
             BufferBuilder bufferbuilder = tesselator.getBuilder();
+            if (AstrologicalJsonReader.customEndSky) {
+                RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+                RenderSystem.setShaderTexture(0, END_PORTAL_LOCATION);
+                for (int i = 0; i < 6; ++i) {
+                    poseStack.pushPose();
+                    if (i == 1) {
+                        poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+                    }
 
-            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-            RenderSystem.setShaderTexture(0, END_PORTAL_LOCATION);
-            for(int i = 0; i < 6; ++i) {
-                poseStack.pushPose();
-                if (i == 1) {
-                    poseStack.mulPose(Axis.XP.rotationDegrees(90.0F));
+                    if (i == 2) {
+                        poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+                    }
+
+                    if (i == 3) {
+                        poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
+                    }
+
+                    if (i == 4) {
+                        poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
+                    }
+
+                    if (i == 5) {
+                        poseStack.mulPose(Axis.ZP.rotationDegrees(-90.0F));
+                    }
+
+                    Matrix4f matrix4f = poseStack.last().pose();
+                    bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+                    bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, -110.0F).uv(0.0F, 0.0F).color(255, 255, 255, 100).endVertex();
+                    bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, 110.0F).uv(0.0F, 1).color(255, 255, 255, 100).endVertex();
+                    bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, 110.0F).uv(1, 1).color(255, 255, 255, 100).endVertex();
+                    bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, -110.0F).uv(1, 0.0F).color(255, 255, 255, 100).endVertex();
+                    tesselator.end();
+                    poseStack.popPose();
                 }
-
-                if (i == 2) {
-                    poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
-                }
-
-                if (i == 3) {
-                    poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
-                }
-
-                if (i == 4) {
-                    poseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-                }
-
-                if (i == 5) {
-                    poseStack.mulPose(Axis.ZP.rotationDegrees(-90.0F));
-                }
-
-                Matrix4f matrix4f = poseStack.last().pose();
-                bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, -110.0F).uv(0.0F, 0.0F).color(255, 255, 255, 100).endVertex();
-                bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, 110.0F).uv(0.0F, 1).color(255, 255, 255, 100).endVertex();
-                bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, 110.0F).uv(1, 1).color(255, 255, 255, 100).endVertex();
-                bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, -110.0F).uv(1, 0.0F).color(255, 255, 255, 100).endVertex();
-                tesselator.end();
-                poseStack.popPose();
             }
 
             float time = level.getDayTime();
@@ -101,6 +103,7 @@ public class ClientEvents {
                 }
                 sleepSoundDelay = sleepSoundDelay - ((int) (speed*5) + 1);
             });
+
             float f12 = 30.0F;
             RenderSystem.setShader(GameRenderer::getPositionTexShader);
             RenderSystem.setShaderTexture(0, END_SUN_LOCATION);

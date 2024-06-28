@@ -1,6 +1,7 @@
 package com.Apothic0n.Astrological.core.events;
 
 import com.Apothic0n.Astrological.Astrological;
+import com.Apothic0n.Astrological.api.AstrologicalJsonReader;
 import com.Apothic0n.Astrological.api.effect.AstrologicalMobEffects;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlocks;
 import net.minecraft.core.BlockPos;
@@ -119,7 +120,7 @@ public class CommonEvents {
                     underVoid = underVoidYet;
                 }
             }
-            if (underVoid) {
+            if (underVoid && AstrologicalJsonReader.weatherBasedLevitationEffects) {
                 player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 5));
                 if (player.isPassenger()) {
                     Objects.requireNonNull(player.getVehicle()).addDeltaMovement(new Vec3(0, 0.2, 0));

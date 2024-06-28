@@ -1,5 +1,6 @@
 package com.Apothic0n.Astrological.mixin;
 
+import com.Apothic0n.Astrological.api.AstrologicalJsonReader;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.level.Level;
@@ -25,15 +26,17 @@ public class DimensionSpecialEffectsMixin implements IForgeDimensionSpecialEffec
 
     @Override
     public void adjustLightmapColors(ClientLevel level, float partialTicks, float skyDarken, float blockLightRedFlicker, float skyLight, int pixelX, int pixelY, Vector3f colors) {
-        //float light = Math.min(10, pixelX);
-        //IForgeDimensionSpecialEffects.super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors.add(new Vector3f(0.07F*light, -0.07F*light, 0.01F*light)).min(new Vector3f(1, 1, 1)).max(new Vector3f(0.01f, 0.01f, 0.02f)));
-        if (level.dimension().equals(Level.END)) {
-            skyLight = Math.max(1F, skyLight);
-            float blockFactor = 0;
-            if (pixelX <= 4) {
-                blockFactor = 0.25f - (pixelX / 16f);
+        if (AstrologicalJsonReader.customEndLighting) {
+            //float light = Math.min(10, pixelX);
+            //IForgeDimensionSpecialEffects.super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors.add(new Vector3f(0.07F*light, -0.07F*light, 0.01F*light)).min(new Vector3f(1, 1, 1)).max(new Vector3f(0.01f, 0.01f, 0.02f)));
+            if (level.dimension().equals(Level.END)) {
+                skyLight = Math.max(1F, skyLight);
+                float blockFactor = 0;
+                if (pixelX <= 4) {
+                    blockFactor = 0.25f - (pixelX / 16f);
+                }
+                IForgeDimensionSpecialEffects.super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors.add(new Vector3f((-0.016f + (blockFactor / 1.9F)) - (blockFactor / 3), (-0.166f + (blockFactor / 1.2f)) - (blockFactor / 1.7f), -(blockFactor / 3))));
             }
-            IForgeDimensionSpecialEffects.super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors.add(new Vector3f((-0.016f + (blockFactor / 1.9F)) - (blockFactor / 3), (-0.166f + (blockFactor / 1.2f)) - (blockFactor / 1.7f), -(blockFactor / 3))));
         }
     }
 }

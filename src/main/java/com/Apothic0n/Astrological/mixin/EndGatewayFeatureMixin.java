@@ -1,5 +1,6 @@
 package com.Apothic0n.Astrological.mixin;
 
+import com.Apothic0n.Astrological.api.AstrologicalJsonReader;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
@@ -41,7 +42,9 @@ public class EndGatewayFeatureMixin extends Feature<EndGatewayConfiguration> {
                 this.setBlock(worldgenlevel, blockpos2, Blocks.END_GATEWAY.defaultBlockState());
                 makeSquare(worldgenlevel, blockpos2.below(3), Blocks.AIR.defaultBlockState());
                 makeSquare(worldgenlevel, blockpos2.below(4), Blocks.AIR.defaultBlockState());
-                this.setBlock(worldgenlevel, blockpos2.below(4), Blocks.ENDER_CHEST.defaultBlockState());
+                if (AstrologicalJsonReader.endChestGeneratesBeneathGateways) {
+                    this.setBlock(worldgenlevel, blockpos2.below(4), Blocks.ENDER_CHEST.defaultBlockState());
+                }
                 makeSquare(worldgenlevel, blockpos2.below(5), Blocks.OBSIDIAN.defaultBlockState());
                 endgatewayconfiguration.getExit().ifPresent((p_65699_) -> {
                     BlockEntity blockentity = worldgenlevel.getBlockEntity(blockpos2);
