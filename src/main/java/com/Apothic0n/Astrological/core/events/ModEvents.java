@@ -111,9 +111,9 @@ public class ModEvents {
                             time = (float) (time - (Math.floor(time / 24000) * 24000));
                         }
                         if ((time >= 22000 || time <= 500) || (time >= 12000 && time <= 13500)) { //dawn & dusk
-                            color = -3670093;
-                        } else if (time <= 12000) { //day
                             color = -9549;
+                        } else if (time <= 12000) { //day
+                            color = -3670093;
                         }
                         return color;
                     } else {
@@ -133,9 +133,9 @@ public class ModEvents {
                             time = (float) (time - (Math.floor(time / 24000) * 24000));
                         }
                         if ((time >= 22000 || time <= 500) || (time >= 12000 && time <= 13500)) { //dawn & dusk
-                            color = -3670093;
-                        } else if (time <= 12000) { //day
                             color = -9549;
+                        } else if (time <= 12000) { //day
+                            color = -3670093;
                         }
                         return color;
                     } else {
