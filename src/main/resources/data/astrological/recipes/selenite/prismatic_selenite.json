@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "astrological:ochre_selenite"
+    },
+    {
+      "item": "astrological:pearlescent_selenite"
+    },
+    {
+      "item": "astrological:verdant_selenite"
+    }
+  ],
+  "result": {
+    "item": "astrological:prismatic_selenite",
+    "count": 3
+  }
+}

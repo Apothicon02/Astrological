@@ -29,7 +29,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "minecraft:clay_ball",
+              "name": "astrological:purpurite_blob",
               "functions": [
                 {
                   "function": "minecraft:set_count",

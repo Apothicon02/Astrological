@@ -72,6 +72,9 @@ public class ModEvents {
                     event.accept(blockItemTypeList.get(o).get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }
             }
+        } else if (tab.equals(CreativeModeTabs.INGREDIENTS)) {
+            event.accept(AstrologicalItems.PURPURITE_BLOB.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(AstrologicalItems.POPPED_PURPURITE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 

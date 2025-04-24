@@ -63,6 +63,11 @@ public final class AstrologicalItems extends Items {
     public static final RegistryObject<Item> PURPURITE_TILES = ITEMS.register("purpurite_tiles", () ->
             new BlockItem(AstrologicalBlocks.PURPURITE_TILES.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> PURPURITE_BLOB = ITEMS.register("purpurite_blob", () ->
+            new Item(new Item.Properties()));
+    public static final RegistryObject<Item> POPPED_PURPURITE = ITEMS.register("popped_purpurite", () ->
+            new Item(new Item.Properties()));
+
     public static final List<RegistryObject<Item>> wallItems = new ArrayList<>(List.of());
     public static final List<RegistryObject<Item>> stairItems = new ArrayList<>(List.of());
     public static final List<RegistryObject<Item>> slabItems = new ArrayList<>(List.of());
