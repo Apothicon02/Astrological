@@ -28,11 +28,6 @@ import java.util.List;
 @EventBusSubscriber(modid = Astrological.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEvents {
 
-//    @SubscribeEvent
-//    public static void registerMask(RegisterClientReloadListenersEvent event) {
-//        MaskingSource.register();
-//    }
-
     @SubscribeEvent
     public static void addItemsToTabs(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();

@@ -17,7 +17,8 @@
   ],
   "client": [
     "DimensionSpecialEffectsMixin",
-    "DimensionTypeMixin"
+    "DimensionTypeMixin",
+    "LevelRendererMixin"
   ],
   "server": [
   ]

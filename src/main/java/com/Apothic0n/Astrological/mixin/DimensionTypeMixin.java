@@ -33,10 +33,10 @@ public abstract class DimensionTypeMixin {
                     int mid = ((max - min) / 2) + min;
                     if (time < mid) {
                         max = mid;
-                        ambientLight = AstrologicalMath.invLerp(time, -0.1f, min, max);
+                        ambientLight = AstrologicalMath.invLerp(time, 0.1f, min, max);
                     } else {
                         min = mid;
-                        ambientLight = AstrologicalMath.invLerp(time, -0.1f, max, min);
+                        ambientLight = AstrologicalMath.invLerp(time, 0.1f, max, min);
                     }
                 } else if (time >= 12333 && time <= 13125) {
                     int min = 12500;
@@ -44,13 +44,13 @@ public abstract class DimensionTypeMixin {
                     int mid = ((max - min) / 2) + min;
                     if (time < mid) {
                         max = mid;
-                        ambientLight = AstrologicalMath.invLerp(time, -0.1f, min, max);
+                        ambientLight = AstrologicalMath.invLerp(time, 0.1f, min, max);
                     } else {
                         min = mid;
-                        ambientLight = AstrologicalMath.invLerp(time, -0.1f, max, min);
+                        ambientLight = AstrologicalMath.invLerp(time, 0.1f, max, min);
                     }
                 } else {
-                    ambientLight = 0;
+                    ambientLight = -0.1f;
                 }
                 ci.setReturnValue(ambientLight - 0.166F);
             }
