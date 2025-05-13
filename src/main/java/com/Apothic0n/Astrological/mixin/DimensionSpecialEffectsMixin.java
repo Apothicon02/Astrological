@@ -5,7 +5,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraftforge.client.extensions.IForgeDimensionSpecialEffects;
+import net.neoforged.neoforge.client.extensions.IDimensionSpecialEffectsExtension;
 import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import java.awt.*;
 
 @Mixin(value = DimensionSpecialEffects.class, priority = 69420)
-public class DimensionSpecialEffectsMixin implements IForgeDimensionSpecialEffects {
+public class DimensionSpecialEffectsMixin implements IDimensionSpecialEffectsExtension {
 
     /**
      * @author Apothicon
@@ -35,7 +35,7 @@ public class DimensionSpecialEffectsMixin implements IForgeDimensionSpecialEffec
                 if (pixelX <= 4) {
                     blockFactor = 0.25f - (pixelX / 16f);
                 }
-                IForgeDimensionSpecialEffects.super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors.add(new Vector3f((-0.016f + (blockFactor / 1.9F)) - (blockFactor / 3), (-0.166f + (blockFactor / 1.2f)) - (blockFactor / 1.7f), -(blockFactor / 3))));
+                IDimensionSpecialEffectsExtension.super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors.add(new Vector3f((-0.016f + (blockFactor / 1.9F)) - (blockFactor / 3), (-0.166f + (blockFactor / 1.2f)) - (blockFactor / 1.7f), -(blockFactor / 3))));
             }
         }
     }

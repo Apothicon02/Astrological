@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChorusFlowerBlock;
 import net.minecraft.world.level.block.ChorusPlantBlock;
@@ -17,10 +18,11 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+
 @Mixin(value = ChorusFlowerBlock.class, priority = 69420)
 public abstract class ChorusFlowerBlockMixin {
 
-    @Shadow @Final private ChorusPlantBlock plant;
+    @Shadow @Final private Block plant;
 
     @Shadow @Final public static IntegerProperty AGE;
 
@@ -71,67 +73,74 @@ public abstract class ChorusFlowerBlockMixin {
      * @reason Allows chorus flowers to connect to purpurite.
      */
     @Overwrite
-    public void randomTick(BlockState p_220980_, ServerLevel p_220981_, BlockPos p_220982_, RandomSource p_220983_) {
-        BlockPos blockpos = p_220982_.above();
-        if (p_220981_.isEmptyBlock(blockpos) && blockpos.getY() < p_220981_.getMaxBuildHeight()) {
-            int i = p_220980_.getValue(AGE);
-            if (i < 5 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(p_220981_, blockpos, p_220980_, true)) {
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        BlockPos blockpos = pos.above();
+        if (level.isEmptyBlock(blockpos) && blockpos.getY() < level.getMaxBuildHeight()) {
+            int i = state.getValue(AGE);
+            if (i < 5 && net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, blockpos, state, true)) {
                 boolean flag = false;
                 boolean flag1 = false;
-                BlockState blockstate = p_220981_.getBlockState(p_220982_.below());
-                if (blockstate.is(Blocks.END_STONE) || blockstate.is(AstrologicalBlocks.PURPURITE.get())) {
+                BlockState blockstate = level.getBlockState(pos.below());
+                net.neoforged.neoforge.common.util.TriState soilDecision = blockstate.canSustainPlant(level, pos.below(), Direction.UP, state);
+                if (!soilDecision.isDefault()) flag = soilDecision.isTrue();
+                else
+                if (blockstate.is(Blocks.END_STONE) || blockstate.is(AstrologicalBlocks.PURPURITE)) {
                     flag = true;
                 } else if (blockstate.is(this.plant)) {
                     int j = 1;
 
-                    for(int k = 0; k < 4; ++k) {
-                        BlockState blockstate1 = p_220981_.getBlockState(p_220982_.below(j + 1));
+                    for (int k = 0; k < 4; k++) {
+                        BlockState blockstate1 = level.getBlockState(pos.below(j + 1));
                         if (!blockstate1.is(this.plant)) {
-                            if (blockstate1.is(Blocks.END_STONE) || blockstate1.is(AstrologicalBlocks.PURPURITE.get())) {
+                            net.neoforged.neoforge.common.util.TriState soilDecision2 = blockstate1.canSustainPlant(level, pos.below(j + 1), Direction.UP, state);
+                            if (!soilDecision2.isDefault()) flag1 = soilDecision2.isTrue();
+                            if (blockstate1.is(Blocks.END_STONE) || blockstate1.is(AstrologicalBlocks.PURPURITE)) {
                                 flag1 = true;
                             }
                             break;
                         }
 
-                        ++j;
+                        j++;
                     }
 
-                    if (j < 2 || j <= p_220983_.nextInt(flag1 ? 5 : 4)) {
+                    if (j < 2 || j <= random.nextInt(flag1 ? 5 : 4)) {
                         flag = true;
                     }
                 } else if (blockstate.isAir()) {
                     flag = true;
                 }
 
-                if (flag && allNeighborsEmpty(p_220981_, blockpos, (Direction)null) && p_220981_.isEmptyBlock(p_220982_.above(2))) {
-                    p_220981_.setBlock(p_220982_, this.plant.getStateForPlacement(p_220981_, p_220982_), 2);
-                    this.placeGrownFlower(p_220981_, blockpos, i);
+                if (flag && allNeighborsEmpty(level, blockpos, null) && level.isEmptyBlock(pos.above(2))) {
+                    level.setBlock(pos, ChorusPlantBlock.getStateWithConnections(level, pos, this.plant.defaultBlockState()), 2);
+                    this.placeGrownFlower(level, blockpos, i);
                 } else if (i < 4) {
-                    int l = p_220983_.nextInt(4);
+                    int l = random.nextInt(4);
                     if (flag1) {
-                        ++l;
+                        l++;
                     }
 
                     boolean flag2 = false;
 
-                    for(int i1 = 0; i1 < l; ++i1) {
-                        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(p_220983_);
-                        BlockPos blockpos1 = p_220982_.relative(direction);
-                        if (p_220981_.isEmptyBlock(blockpos1) && p_220981_.isEmptyBlock(blockpos1.below()) && allNeighborsEmpty(p_220981_, blockpos1, direction.getOpposite())) {
-                            this.placeGrownFlower(p_220981_, blockpos1, i + 1);
+                    for (int i1 = 0; i1 < l; i1++) {
+                        Direction direction = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+                        BlockPos blockpos1 = pos.relative(direction);
+                        if (level.isEmptyBlock(blockpos1)
+                                && level.isEmptyBlock(blockpos1.below())
+                                && allNeighborsEmpty(level, blockpos1, direction.getOpposite())) {
+                            this.placeGrownFlower(level, blockpos1, i + 1);
                             flag2 = true;
                         }
                     }
 
                     if (flag2) {
-                        p_220981_.setBlock(p_220982_, this.plant.getStateForPlacement(p_220981_, p_220982_), 2);
+                        level.setBlock(pos, ChorusPlantBlock.getStateWithConnections(level, pos, this.plant.defaultBlockState()), 2);
                     } else {
-                        this.placeDeadFlower(p_220981_, p_220982_);
+                        this.placeDeadFlower(level, pos);
                     }
                 } else {
-                    this.placeDeadFlower(p_220981_, p_220982_);
+                    this.placeDeadFlower(level, pos);
                 }
-                net.minecraftforge.common.ForgeHooks.onCropsGrowPost(p_220981_, p_220982_, p_220980_);
+                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
             }
         }
     }

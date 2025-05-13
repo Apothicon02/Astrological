@@ -19,9 +19,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.util.ObfuscationReflectionHelper;
 
 import javax.annotation.Nullable;
 
@@ -83,13 +83,13 @@ public class PrismaticWallBlock extends WallBlock implements EntityBlock {
     }
 
     private void fixShapeMaps() {
-        Map<BlockState, VoxelShape> shapeByIndex = ObfuscationReflectionHelper.getPrivateValue(WallBlock.class, this, "f_57955_");
+        Map<BlockState, VoxelShape> shapeByIndex = ObfuscationReflectionHelper.getPrivateValue(WallBlock.class, this, "shapeByIndex");
         shapeByIndex = fixShapeMap(shapeByIndex);
-        ObfuscationReflectionHelper.setPrivateValue(WallBlock.class, this, shapeByIndex, "f_57955_");
+        ObfuscationReflectionHelper.setPrivateValue(WallBlock.class, this, shapeByIndex, "shapeByIndex");
 
-        Map<BlockState, VoxelShape> collisionShapeByIndex = ObfuscationReflectionHelper.getPrivateValue(WallBlock.class, this, "f_57956_");
+        Map<BlockState, VoxelShape> collisionShapeByIndex = ObfuscationReflectionHelper.getPrivateValue(WallBlock.class, this, "collisionShapeByIndex");
         collisionShapeByIndex = fixShapeMap(collisionShapeByIndex);
-        ObfuscationReflectionHelper.setPrivateValue(WallBlock.class, this, collisionShapeByIndex, "f_57956_");
+        ObfuscationReflectionHelper.setPrivateValue(WallBlock.class, this, collisionShapeByIndex, "collisionShapeByIndex");
     }
 
     private static Map<BlockState, VoxelShape> fixShapeMap(Map<BlockState, VoxelShape> map) {

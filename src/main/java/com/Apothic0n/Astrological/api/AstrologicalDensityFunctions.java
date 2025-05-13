@@ -7,16 +7,16 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 import org.joml.SimplexNoise;
 
 public final class AstrologicalDensityFunctions {
-    public static final DeferredRegister<Codec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Astrological.MODID);
+    public static final DeferredRegister<MapCodec<? extends DensityFunction>> DENSITY_FUNCTION_TYPES = DeferredRegister.create(Registries.DENSITY_FUNCTION_TYPE, Astrological.MODID);
 
-    public static final RegistryObject<Codec<? extends DensityFunction>> LOWER_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("lower_islands", LowerIslands.CODEC::codec);
+    public static final DeferredHolder<MapCodec<? extends DensityFunction>, ?> LOWER_ISLANDS_DENSITY_FUNCTION_TYPE = DENSITY_FUNCTION_TYPES.register("lower_islands", LowerIslands.CODEC::codec);
 
     public static void register(IEventBus eventBus) {
         DENSITY_FUNCTION_TYPES.register(eventBus);

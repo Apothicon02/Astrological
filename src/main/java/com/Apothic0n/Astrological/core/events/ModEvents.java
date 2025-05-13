@@ -1,12 +1,10 @@
 package com.Apothic0n.Astrological.core.events;
 
 import com.Apothic0n.Astrological.Astrological;
-import com.Apothic0n.Astrological.api.MaskingSource;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlocks;
 import com.Apothic0n.Astrological.core.objects.AstrologicalItems;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -14,30 +12,26 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
-import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = Astrological.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Astrological.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEvents {
 
-    @SubscribeEvent
-    public static void registerMask(RegisterClientReloadListenersEvent event) {
-        MaskingSource.register();
-    }
+//    @SubscribeEvent
+//    public static void registerMask(RegisterClientReloadListenersEvent event) {
+//        MaskingSource.register();
+//    }
 
     @SubscribeEvent
     public static void addItemsToTabs(BuildCreativeModeTabContentsEvent event) {
@@ -65,9 +59,9 @@ public class ModEvents {
             event.accept(AstrologicalItems.LIGHT_JADE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(AstrologicalItems.CRACKED_LIGHT_JADE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(AstrologicalItems.PURPURITE_TILES.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            List<List<RegistryObject<Item>>> buildingBlockItems = List.of(AstrologicalItems.wallItems, AstrologicalItems.stairItems, AstrologicalItems.slabItems);
+            List<List<DeferredHolder<Item, Item>>> buildingBlockItems = List.of(AstrologicalItems.wallItems, AstrologicalItems.stairItems, AstrologicalItems.slabItems);
             for (int i = 0; i < buildingBlockItems.size(); i++) {
-                List<RegistryObject<Item>> blockItemTypeList = buildingBlockItems.get(i);
+                List<DeferredHolder<Item, Item>> blockItemTypeList = buildingBlockItems.get(i);
                 for (int o = 0; o < blockItemTypeList.size(); o++) {
                     event.accept(blockItemTypeList.get(o).get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 }

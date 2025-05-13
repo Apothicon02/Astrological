@@ -1,5 +1,5 @@
 {
-  "type": "forge:add_features",
+  "type": "neoforge:add_features",
   "biomes": "minecraft:the_end",
   "features": ["astrological:asteroids", "astrological:endstone_anvil_rocks", "astrological:tumors", "astrological:endstone_thin_anvil_rocks"],
   "step": "raw_generation"

@@ -12,31 +12,27 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.List;
 import java.util.Objects;
 
 import static net.minecraft.world.level.block.Block.UPDATE_ALL;
 
-@Mod.EventBusSubscriber(modid = Astrological.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = Astrological.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class CommonEvents {
     @SubscribeEvent
-    public static void playerTick(TickEvent.PlayerTickEvent event) {
-        Player player = event.player;
+    public static void playerTick(PlayerTickEvent.Pre event) {
+        Player player = event.getEntity();
         Level level = player.level();
         if (!level.isClientSide && !player.isSpectator() && !player.touchingUnloadedChunk()) {
             boolean underVoid = false;
@@ -86,12 +82,12 @@ public class CommonEvents {
                 if ((blockState.is(AstrologicalBlocks.TENDRILS.get()) || blockState.is(AstrologicalBlocks.TUMOR.get())) && !player.hasEffect(MobEffects.CONFUSION)) {
                     player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 120, 1));
                     player.addEffect(new MobEffectInstance(MobEffects.POISON, 120, 1));
-                    player.addEffect(new MobEffectInstance(AstrologicalMobEffects.ENDFECTED.get(), 80, 1));
+                    player.addEffect(new MobEffectInstance(AstrologicalMobEffects.ENDFECTED, 80, 1));
                     teleportPlayer(level, player);
                 }
             }
-            if (player.hasEffect(AstrologicalMobEffects.ENDFECTED.get())) {
-                if (((int)(Math.random()*(240)+1) < 2)  || (player.getEffect(AstrologicalMobEffects.ENDFECTED.get()).endsWithin(3)) && ((int)(Math.random()*(20)+1) < 2)) {
+            if (player.hasEffect(AstrologicalMobEffects.ENDFECTED)) {
+                if (((int)(Math.random()*(240)+1) < 2)  || (player.getEffect(AstrologicalMobEffects.ENDFECTED).endsWithin(3)) && ((int)(Math.random()*(20)+1) < 2)) {
                     teleportPlayer(level, player);
                 } else {
                     spreadEndfection(level, player.getOnPos(), false);

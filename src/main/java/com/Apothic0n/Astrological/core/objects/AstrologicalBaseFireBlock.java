@@ -131,7 +131,7 @@ public abstract class AstrologicalBaseFireBlock extends Block {
     protected abstract boolean canBurn(BlockState p_49284_);
 
     public void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity) {
-        if (!(entity instanceof LivingEntity) || entity.getFeetBlockState().is(this)) {
+        if (!(entity instanceof LivingEntity) || entity.getBlockStateOn().is(this)) {
             entity.makeStuckInBlock(blockState, new Vec3((double)0.9F, 1.5D, (double)0.9F));
             if (level.isClientSide) {
                 RandomSource randomsource = level.getRandom();
@@ -159,7 +159,7 @@ public abstract class AstrologicalBaseFireBlock extends Block {
         if (!p_49282_.is(p_49279_.getBlock())) {
             if (inPortalDimension(p_49280_)) {
                 Optional<PortalShape> optional = PortalShape.findEmptyPortalShape(p_49280_, p_49281_, Direction.Axis.X);
-                optional = net.minecraftforge.event.ForgeEventFactory.onTrySpawnPortal(p_49280_, p_49281_, optional);
+                optional = net.neoforged.neoforge.event.EventHooks.onTrySpawnPortal(p_49280_, p_49281_, optional);
                 if (optional.isPresent()) {
                     optional.get().createPortalBlocks();
                     return;
@@ -180,12 +180,12 @@ public abstract class AstrologicalBaseFireBlock extends Block {
     protected void spawnDestroyParticles(Level p_152139_, Player p_152140_, BlockPos p_152141_, BlockState p_152142_) {
     }
 
-    public void playerWillDestroy(Level p_49251_, BlockPos p_49252_, BlockState p_49253_, Player p_49254_) {
+    public BlockState playerWillDestroy(Level p_49251_, BlockPos p_49252_, BlockState p_49253_, Player p_49254_) {
         if (!p_49251_.isClientSide()) {
             p_49251_.levelEvent((Player)null, 1009, p_49252_, 0);
         }
 
-        super.playerWillDestroy(p_49251_, p_49252_, p_49253_, p_49254_);
+        return super.playerWillDestroy(p_49251_, p_49252_, p_49253_, p_49254_);
     }
 
     public static boolean canBePlacedAt(Level p_49256_, BlockPos p_49257_, Direction p_49258_) {

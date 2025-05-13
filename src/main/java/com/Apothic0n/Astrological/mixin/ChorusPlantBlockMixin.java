@@ -3,9 +3,11 @@ package com.Apothic0n.Astrological.mixin;
 import com.Apothic0n.Astrological.core.objects.AstrologicalBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChorusPlantBlock;
 import net.minecraft.world.level.block.PipeBlock;
@@ -24,14 +26,21 @@ public abstract class ChorusPlantBlockMixin extends PipeBlock {
      * @reason Allows chorus plants to connect to purpurite.
      */
     @Overwrite
-    public BlockState getStateForPlacement(BlockGetter p_51711_, BlockPos p_51712_) {
-        BlockState blockstate = p_51711_.getBlockState(p_51712_.below());
-        BlockState blockstate1 = p_51711_.getBlockState(p_51712_.above());
-        BlockState blockstate2 = p_51711_.getBlockState(p_51712_.north());
-        BlockState blockstate3 = p_51711_.getBlockState(p_51712_.east());
-        BlockState blockstate4 = p_51711_.getBlockState(p_51712_.south());
-        BlockState blockstate5 = p_51711_.getBlockState(p_51712_.west());
-        return this.defaultBlockState().setValue(DOWN, Boolean.valueOf(blockstate.is(this) || blockstate.is(Blocks.CHORUS_FLOWER) || blockstate.is(Blocks.END_STONE) || blockstate.is(AstrologicalBlocks.PURPURITE.get()))).setValue(UP, Boolean.valueOf(blockstate1.is(this) || blockstate1.is(Blocks.CHORUS_FLOWER))).setValue(NORTH, Boolean.valueOf(blockstate2.is(this) || blockstate2.is(Blocks.CHORUS_FLOWER))).setValue(EAST, Boolean.valueOf(blockstate3.is(this) || blockstate3.is(Blocks.CHORUS_FLOWER))).setValue(SOUTH, Boolean.valueOf(blockstate4.is(this) || blockstate4.is(Blocks.CHORUS_FLOWER))).setValue(WEST, Boolean.valueOf(blockstate5.is(this) || blockstate5.is(Blocks.CHORUS_FLOWER)));
+    public static BlockState getStateWithConnections(BlockGetter level, BlockPos pos, BlockState state) {
+        BlockState blockstate = level.getBlockState(pos.below());
+        BlockState blockstate1 = level.getBlockState(pos.above());
+        BlockState blockstate2 = level.getBlockState(pos.north());
+        BlockState blockstate3 = level.getBlockState(pos.east());
+        BlockState blockstate4 = level.getBlockState(pos.south());
+        BlockState blockstate5 = level.getBlockState(pos.west());
+        Block block = state.getBlock();
+        net.neoforged.neoforge.common.util.TriState soilDecision = blockstate.canSustainPlant(level, pos.below(), Direction.UP, state);
+        return state.trySetValue(DOWN, Boolean.valueOf(blockstate.is(block) || blockstate.is(Blocks.CHORUS_FLOWER) || blockstate.is(Blocks.END_STONE) || blockstate.is(AstrologicalBlocks.PURPURITE.get()) || soilDecision.isTrue()))
+                .trySetValue(UP, Boolean.valueOf(blockstate1.is(block) || blockstate1.is(Blocks.CHORUS_FLOWER) || blockstate.is(AstrologicalBlocks.PURPURITE.get())))
+                .trySetValue(NORTH, Boolean.valueOf(blockstate2.is(block) || blockstate2.is(Blocks.CHORUS_FLOWER) || blockstate.is(AstrologicalBlocks.PURPURITE.get())))
+                .trySetValue(EAST, Boolean.valueOf(blockstate3.is(block) || blockstate3.is(Blocks.CHORUS_FLOWER) || blockstate.is(AstrologicalBlocks.PURPURITE.get())))
+                .trySetValue(SOUTH, Boolean.valueOf(blockstate4.is(block) || blockstate4.is(Blocks.CHORUS_FLOWER) || blockstate.is(AstrologicalBlocks.PURPURITE.get())))
+                .trySetValue(WEST, Boolean.valueOf(blockstate5.is(block) || blockstate5.is(Blocks.CHORUS_FLOWER) || blockstate.is(AstrologicalBlocks.PURPURITE.get())));
     }
 
     /**
