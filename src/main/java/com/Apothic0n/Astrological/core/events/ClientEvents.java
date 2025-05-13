@@ -70,10 +70,10 @@ public class ClientEvents {
 
                     Matrix4f matrix4f = poseStack.last().pose();
                     bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-                    bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, -110.0F).uv(0.0F, 0.0F).color(255, 255, 255, 100).endVertex();
-                    bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, 110.0F).uv(0.0F, 1).color(255, 255, 255, 100).endVertex();
-                    bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, 110.0F).uv(1, 1).color(255, 255, 255, 100).endVertex();
-                    bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, -110.0F).uv(1, 0.0F).color(255, 255, 255, 100).endVertex();
+                    bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, -110.0F).uv(0.0F, 0.0F).color(0, 0, 0, 100).endVertex();
+                    bufferbuilder.vertex(matrix4f, -110.0F, -110.0F, 110.0F).uv(0.0F, 1).color(0, 0, 0, 100).endVertex();
+                    bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, 110.0F).uv(1, 1).color(0, 0, 0, 100).endVertex();
+                    bufferbuilder.vertex(matrix4f, 110.0F, -110.0F, -110.0F).uv(1, 0.0F).color(0, 0, 0, 100).endVertex();
                     tesselator.end();
                     poseStack.popPose();
                 }
