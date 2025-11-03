@@ -19,21 +19,19 @@ public abstract class AstrologicalFeatureRegistry {
             new AsteroidFeature(GeodeConfiguration.CODEC));
     public static final RegistryObject<Feature<AnvilRockConfiguration>> ANVIL_ROCK_FEATURE = FEATURES.register("anvil_rock", () ->
             new AnvilRockFeature(AnvilRockConfiguration.CODEC));
-
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> CRYSTAL_FEATURE = FEATURES.register("crystal", () ->
             new CrystalFeature(SimpleBlockConfiguration.CODEC));
-
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> JADE_CRYSTAL_FEATURE = FEATURES.register("jade_crystal", () ->
             new JadeCrystalFeature(SimpleBlockConfiguration.CODEC));
-
     public static final RegistryObject<Feature<PointedDripstoneConfiguration>> TENDRIL_FEATURE = FEATURES.register("tendril", () ->
             new TendrilFeature(PointedDripstoneConfiguration.CODEC));
-
     public static final RegistryObject<Feature<PointedDripstoneConfiguration>> CRYING_DUCT_FEATURE = FEATURES.register("crying_duct", () ->
             new CryingDuctFeature(PointedDripstoneConfiguration.CODEC));
-
     public static final RegistryObject<Feature<SimpleBlockConfiguration>> BASIC_3X2X3_CUBE_FEATURE = FEATURES.register("basic_3x2x3_cube", () ->
             new Basic3x2x3CubeFeature(SimpleBlockConfiguration.CODEC));
+    public static final RegistryObject<Feature<SimpleBlockConfiguration>> BASIC_3X2X3_CUBE_INVERTED_FEATURE = FEATURES.register("basic_3x2x3_cube_inverted", () ->
+            new Basic3x2x3CubeInvertedFeature(SimpleBlockConfiguration.CODEC));
+
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
     }

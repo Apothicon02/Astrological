@@ -1,20 +1,42 @@
 {
-  "feature": "astrological:endstone_thin_anvil_rocks",
+  "feature": "astrological:jade_crystals_inverted",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 32,
-      "noise_factor": 64,
-      "noise_offset": -0.3
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 220,
+          "max_inclusive": 250
+        }
+      }
     },
     {
       "type": "minecraft:random_offset",
       "xz_spread": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": 2,
-          "max_inclusive": 14
-        }
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 1,
+            "data": 1
+          },
+          {
+            "weight": 1,
+            "data": 4
+          },
+          {
+            "weight": 1,
+            "data": 7
+          },
+          {
+            "weight": 1,
+            "data": 10
+          },
+          {
+            "weight": 1,
+            "data": 13
+          }
+        ]
       },
       "y_spread": 0
     },
@@ -24,26 +46,26 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "weight": 4,
+            "weight": 5,
             "data": {
               "type": "minecraft:uniform",
               "min_inclusive": {
-                "absolute": 64
+                "absolute": 12
               },
               "max_inclusive": {
-                "absolute": 78
+                "absolute": 52
               }
             }
           },
           {
-            "weight": 6,
+            "weight": 5,
             "data": {
               "type": "minecraft:uniform",
               "min_inclusive": {
-                "absolute": -128
+                "absolute": -206
               },
               "max_inclusive": {
-                "absolute": -96
+                "absolute": -78
               }
             }
           }
@@ -52,20 +74,17 @@
     },
     {
       "type": "minecraft:environment_scan",
-      "direction_of_search": "down",
-      "max_steps": 12,
+      "direction_of_search": "up",
+      "max_steps": 22,
       "target_condition": {
-        "type": "minecraft:true"
-      },
-      "allowed_search_condition": {
         "type": "minecraft:matching_blocks",
         "offset": [
           0,
-          -1,
+          -4,
           0
         ],
         "blocks": [
-          "minecraft:end_stone"
+          "astrological:jade"
         ]
       }
     },

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": ["minecraft:the_end", "minecraft:end_midlands", "minecraft:small_end_islands", "minecraft:end_highlands", "minecraft:end_barrens"],
+  "features": ["astrological:jade_crystals", "astrological:jade_ceiling_crystals", "astrological:endstone_anvil_rocks", "astrological:endstone_thin_anvil_rocks"],
+  "step": "raw_generation"
+}
