@@ -1,6 +1,7 @@
 package com.Apothic0n.Astrological.mixin;
 
 import com.Apothic0n.Astrological.api.AstrologicalJsonReader;
+import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
@@ -14,60 +15,34 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.EndGatewayConfiguration;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EndGatewayFeature.class)
-public class EndGatewayFeatureMixin extends Feature<EndGatewayConfiguration> {
-
+public abstract class EndGatewayFeatureMixin extends Feature<EndGatewayConfiguration> {
     public EndGatewayFeatureMixin(Codec<EndGatewayConfiguration> config) {
         super(config);
     }
 
-    /**
-     * @author Apothicon
-     * @reason Prevents being stranded in the end after going through a gateway, by generating the gateway with a platform under it.
-     */
-    @Overwrite
-    public boolean place(FeaturePlaceContext<EndGatewayConfiguration> p_159715_) {
-        BlockPos blockpos = p_159715_.origin();
-        WorldGenLevel worldgenlevel = p_159715_.level();
-        EndGatewayConfiguration endgatewayconfiguration = p_159715_.config();
-
-        for(BlockPos blockpos1 : BlockPos.betweenClosed(blockpos.offset(-1, -2, -1), blockpos.offset(1, 2, 1))) {
-            boolean flag = blockpos1.getX() == blockpos.getX();
-            boolean flag1 = blockpos1.getY() == blockpos.getY();
-            boolean flag2 = blockpos1.getZ() == blockpos.getZ();
-            boolean flag3 = Math.abs(blockpos1.getY() - blockpos.getY()) == 2;
-            if (flag && flag1 && flag2) {
-                BlockPos blockpos2 = blockpos1.immutable();
-                this.setBlock(worldgenlevel, blockpos2, Blocks.END_GATEWAY.defaultBlockState());
-                makeSquare(worldgenlevel, blockpos2.below(3), Blocks.AIR.defaultBlockState());
-                makeSquare(worldgenlevel, blockpos2.below(4), Blocks.AIR.defaultBlockState());
-                if (AstrologicalJsonReader.endChestGeneratesBeneathGateways) {
-                    this.setBlock(worldgenlevel, blockpos2.below(4), Blocks.ENDER_CHEST.defaultBlockState());
-                }
-                makeSquare(worldgenlevel, blockpos2.below(5), Blocks.OBSIDIAN.defaultBlockState());
-                endgatewayconfiguration.getExit().ifPresent((p_65699_) -> {
-                    BlockEntity blockentity = worldgenlevel.getBlockEntity(blockpos2);
-                    if (blockentity instanceof TheEndGatewayBlockEntity theendgatewayblockentity) {
-                        theendgatewayblockentity.setExitPosition(p_65699_, endgatewayconfiguration.isExitExact());
-                        blockentity.setChanged();
-                    }
-
-                });
-            } else if (flag1) {
-                this.setBlock(worldgenlevel, blockpos1, Blocks.AIR.defaultBlockState());
-            } else if (flag3 && flag && flag2) {
-                this.setBlock(worldgenlevel, blockpos1, Blocks.BEDROCK.defaultBlockState());
-            } else if ((flag || flag2) && !flag3) {
-                this.setBlock(worldgenlevel, blockpos1, Blocks.BEDROCK.defaultBlockState());
-            } else {
-                this.setBlock(worldgenlevel, blockpos1, Blocks.AIR.defaultBlockState());
-            }
+    @Inject(method = "place", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/levelgen/feature/EndGatewayFeature;setBlock(Lnet/minecraft/world/level/LevelWriter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)V", ordinal = 0, shift = At.Shift.AFTER))
+    private void generateSquarePlatformBelowGateway(FeaturePlaceContext<EndGatewayConfiguration> context, CallbackInfoReturnable<Boolean> cir, @Local(ordinal = 2) BlockPos pos, @Local WorldGenLevel level) {
+        makeSquare(level, pos.below(3), Blocks.AIR.defaultBlockState());
+        makeSquare(level, pos.below(4), Blocks.AIR.defaultBlockState());
+        if (AstrologicalJsonReader.endChestGeneratesBeneathGateways) {
+            this.setBlock(level, pos.below(4), Blocks.ENDER_CHEST.defaultBlockState());
         }
-
-        return true;
+        makeSquare(level, pos.below(5), Blocks.OBSIDIAN.defaultBlockState());
     }
 
+    @Inject(method = "lambda$place$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/TheEndGatewayBlockEntity;setExitPosition(Lnet/minecraft/core/BlockPos;Z)V", shift = At.Shift.AFTER))
+    private static void markBlockEntityAsChanged(WorldGenLevel worldgenlevel, BlockPos blockpos2, EndGatewayConfiguration endgatewayconfiguration, BlockPos p_352890_, CallbackInfo ci, @Local TheEndGatewayBlockEntity blockEntity) {
+        blockEntity.setChanged();
+    }
+
+    @Unique
     private void makeSquare(WorldGenLevel worldgenlevel, BlockPos blockpos2, BlockState blockState) {
         this.setBlock(worldgenlevel, blockpos2, blockState);
         this.setBlock(worldgenlevel, blockpos2.north(), blockState);

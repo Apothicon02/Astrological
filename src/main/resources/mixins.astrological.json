@@ -16,10 +16,13 @@
     "RenderTypeMixin"
   ],
   "client": [
-    "DimensionSpecialEffectsMixin",
     "DimensionTypeMixin",
+    "EndEffectsMixin",
     "LevelRendererMixin"
   ],
   "server": [
-  ]
+  ],
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  }
 }
