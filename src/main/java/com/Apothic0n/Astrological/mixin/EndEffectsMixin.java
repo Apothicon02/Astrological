@@ -4,28 +4,16 @@ import com.Apothic0n.Astrological.api.AstrologicalJsonReader;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraftforge.client.extensions.IForgeDimensionSpecialEffects;
 import org.joml.Vector3f;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-
-import java.awt.*;
+import org.spongepowered.asm.mixin.*;
 
 @Mixin(value = DimensionSpecialEffects.class, priority = 69420)
-public class DimensionSpecialEffectsMixin implements IForgeDimensionSpecialEffects {
+@Implements(@Interface(iface = IForgeDimensionSpecialEffects.class, prefix = "astrological$"))
+public class EndEffectsMixin implements IForgeDimensionSpecialEffects {
 
-    /**
-     * @author Apothicon
-     * @reason Removes hardcoded ambient lighting from the end.
-     */
-    @Overwrite
-    public boolean constantAmbientLight() {
-        return false;
-    }
-
-    @Override
-    public void adjustLightmapColors(ClientLevel level, float partialTicks, float skyDarken, float blockLightRedFlicker, float skyLight, int pixelX, int pixelY, Vector3f colors) {
+    @Intrinsic(displace = true)
+    public void astrological$adjustLightmapColors(ClientLevel level, float partialTicks, float skyDarken, float blockLightRedFlicker, float skyLight, int pixelX, int pixelY, Vector3f colors) {
         if (AstrologicalJsonReader.customEndLighting) {
             //float light = Math.min(10, pixelX);
             //IForgeDimensionSpecialEffects.super.adjustLightmapColors(level, partialTicks, skyDarken, blockLightRedFlicker, skyLight, pixelX, pixelY, colors.add(new Vector3f(0.07F*light, -0.07F*light, 0.01F*light)).min(new Vector3f(1, 1, 1)).max(new Vector3f(0.01f, 0.01f, 0.02f)));
