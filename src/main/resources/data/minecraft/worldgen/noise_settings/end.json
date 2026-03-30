@@ -143,34 +143,6 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-            "type": "minecraft:y_above",
-            "anchor": {
-              "absolute": 32
-            },
-            "surface_depth_multiplier": 0,
-            "add_stone_depth": false
-        },
-        "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:stone_depth",
-            "offset": 3,
-            "surface_type": "floor",
-            "add_surface_depth": false,
-            "secondary_depth_range": 0
-          },
-          "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "minecraft:end_stone"
-            }
-          }
-        }
-      },
-
-      {
-        "type": "minecraft:condition",
-        "if_true": {
           "type": "minecraft:noise_threshold",
           "noise": "astrological:alternate_surface",
           "min_threshold": 0.056,
@@ -183,7 +155,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:stone_depth",
-                "offset": 3,
+                "offset": 1,
                 "surface_type": "floor",
                 "add_surface_depth": false,
                 "secondary_depth_range": 0
@@ -199,7 +171,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:stone_depth",
-                "offset": 3,
+                "offset": 1,
                 "surface_type": "ceiling",
                 "add_surface_depth": false,
                 "secondary_depth_range": 0
@@ -284,34 +256,10 @@
       {
         "type": "minecraft:condition",
         "if_true": {
-          "type": "minecraft:biome",
-          "biome_is": [
-            "minecraft:small_end_islands"
-          ]
-        },
-        "then_run": {
-          "type": "minecraft:condition",
-          "if_true": {
-            "type": "minecraft:noise_threshold",
-            "noise": "astrological:secondary_surface",
-            "min_threshold": -0.3,
-            "max_threshold": 0.3
-          },
-          "then_run": {
-            "type": "minecraft:block",
-            "result_state": {
-              "Name": "astrological:jade"
-            }
-          }
-        }
-      },
-      {
-        "type": "minecraft:condition",
-        "if_true": {
           "type": "minecraft:noise_threshold",
-          "noise": "astrological:secondary_surface",
-          "min_threshold": -0.7,
-          "max_threshold": 0.7
+          "noise": "minecraft:gravel",
+          "min_threshold": 0.45,
+          "max_threshold": 10
         },
         "then_run": {
           "type": "minecraft:sequence",
@@ -319,39 +267,46 @@
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 2,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
+                "type": "minecraft:noise_threshold",
+                "noise": "astrological:secondary_surface",
+                "min_threshold": -0.3,
+                "max_threshold": 0.3
               },
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "minecraft:obsidian"
+                  "Name": "astrological:jade"
                 }
               }
             },
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 1,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
+                "type": "minecraft:noise_threshold",
+                "noise": "astrological:alternate_surface",
+                "min_threshold": -0.03,
+                "max_threshold": 0.03
               },
               "then_run": {
                 "type": "minecraft:block",
                 "result_state": {
-                  "Name": "minecraft:air"
+                  "Name": "astrological:jade"
                 }
               }
             },
             {
-              "type": "minecraft:block",
-              "result_state": {
-                "Name": "minecraft:crying_obsidian"
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:noise_threshold",
+                "noise": "astrological:tertiary_surface",
+                "min_threshold": -0.66,
+                "max_threshold": 0.66
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "astrological:jade"
+                }
               }
             }
           ]
@@ -361,9 +316,9 @@
         "type": "minecraft:condition",
         "if_true": {
           "type": "minecraft:noise_threshold",
-          "noise": "astrological:tertiary_surface",
-          "min_threshold": -0.7,
-          "max_threshold": 0.7
+          "noise": "minecraft:gravel",
+          "min_threshold": -10,
+          "max_threshold": -0.33
         },
         "then_run": {
           "type": "minecraft:sequence",
@@ -371,39 +326,105 @@
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 2,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
+                "type": "minecraft:noise_threshold",
+                "noise": "astrological:secondary_surface",
+                "min_threshold": -0.7,
+                "max_threshold": 0.7
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:obsidian"
-                }
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:stone_depth",
+                      "offset": 2,
+                      "surface_type": "floor",
+                      "add_surface_depth": false,
+                      "secondary_depth_range": 0
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:obsidian"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:stone_depth",
+                      "offset": 1,
+                      "surface_type": "floor",
+                      "add_surface_depth": false,
+                      "secondary_depth_range": 0
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:air"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:crying_obsidian"
+                    }
+                  }
+                ]
               }
             },
             {
               "type": "minecraft:condition",
               "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 1,
-                "surface_type": "floor",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
+                "type": "minecraft:noise_threshold",
+                "noise": "astrological:tertiary_surface",
+                "min_threshold": -0.7,
+                "max_threshold": 0.7
               },
               "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:air"
-                }
-              }
-            },
-            {
-              "type": "minecraft:block",
-              "result_state": {
-                "Name": "minecraft:crying_obsidian"
+                "type": "minecraft:sequence",
+                "sequence": [
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:stone_depth",
+                      "offset": 2,
+                      "surface_type": "floor",
+                      "add_surface_depth": false,
+                      "secondary_depth_range": 0
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:obsidian"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:stone_depth",
+                      "offset": 1,
+                      "surface_type": "floor",
+                      "add_surface_depth": false,
+                      "secondary_depth_range": 0
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:air"
+                      }
+                    }
+                  },
+                  {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:crying_obsidian"
+                    }
+                  }
+                ]
               }
             }
           ]
